@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AHWForm.Repos
+namespace AHWForm.View
 {
-    interface IAuctionDetailsRepository : IGenericRepository<AuctionModel>
+    public interface IAuctionBidsViewModel
     {
-        AuctionModel GetSingle(int id);
+        IList<AuctionBidViewModel> bidsViewModel {get;set;}
     }
-    
 }

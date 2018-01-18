@@ -39,34 +39,5 @@ namespace AHWForm.Models
     public class AuctionContext : DbContext
     {
         public DbSet<AuctionModel> Auctions { get; set; }
-
-        public List<AuctionModel> ReturnSelectedAuctions(string id, paramTypeForCategory type)
-        {
-            switch (type)
-            {
-                case paramTypeForCategory.byId:
-                    return Auctions.Where(x => x.Id == id).ToList();
-                case paramTypeForCategory.byUserId:
-                    return Auctions.Where(x => x.CreatorId == id).ToList();
-                case paramTypeForCategory.bySelectedCategory:
-                    return Auctions.Where(x => x.CategoryId == id).ToList();
-                //case paramType.bySelectedCategoriesWithChildrens:
-
-                //    break;
-                default:
-                    return Auctions.Where(x => x.Id == id).ToList();
-            }
-        }
-
-        public AuctionModel ReturnSelectedAuction(string id, paramTypeForCategory type)
-        {
-            switch (type)
-            {
-                case paramTypeForCategory.byId:
-                    return Auctions.Where(x => x.Id == id).FirstOrDefault();
-                default:
-                    return Auctions.Where(x => x.Id == id).FirstOrDefault();
-            }
-        }
     }
 }

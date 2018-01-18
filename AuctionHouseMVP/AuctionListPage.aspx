@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuctionListPage.aspx.cs" Inherits="AHWForm.AuctionListPage" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    
-    <asp:ListView ID="AuctionList" runat="server" ItemType="AHWForm.Models.Auction" SelectMethod="AuctionList_GetData"  DataKeyNames="Id" >
+    <asp:ListView ID="AuctionList" runat="server" ItemType="AHWForm.Models.AuctionListSingleElemVM">
 
         <EmptyDataTemplate>
             <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
@@ -12,25 +12,26 @@
         </EmptyDataTemplate>
 
         <ItemTemplate>
-            <tr style="background-color: #FFFBD6;color: #333333;" "  >
+            <tr style="background-color: #FFFBD6;color: #333333;">
                 <td>
-                    <asp:DynamicControl runat="server" DataField="Title" Mode="ReadOnly" />
+                    <%# Eval("AuctionTitle") %>
                 </td>
                 <td>
-                    <asp:DynamicControl runat="server" DataField="StartPrice" Mode="ReadOnly" />
+                    <%# Eval("ActualPrice") %>
                 </td>
                 <td>
-                    <asp:DynamicControl runat="server" DataField="EndingPrice" Mode="ReadOnly" />
+                    <%# Eval("DateCreated") %>
                 </td>
-                <td>
-                    <asp:DynamicControl runat="server" DataField="DateCreated" Mode="ReadOnly" />
-                </td>
+               
+               
                 
     
                 <td>
-                    <asp:HyperLink ID="hpLinkUrl" runat="server" NavigateUrl='<%# Eval("Id", "~/AuctionDetails.aspx?Id={0}") %>' >
-                    <asp:DynamicControl runat="server" DataField="Description" Mode="ReadOnly" />
-                    </asp:HyperLink >
+                    
+                        <td>
+                            <%# Eval("ShortDescription") %>
+                        </td>
+                    
                 </td>
                 
             </tr>

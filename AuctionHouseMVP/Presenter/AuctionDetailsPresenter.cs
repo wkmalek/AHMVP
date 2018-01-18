@@ -10,6 +10,7 @@ namespace AHWForm.Presenter
     public class AuctionDetailsPresenter
 
     {
+
         IAuctionDetailsModel _pModel;
         IAuctionDetailsView _pView;
 
@@ -24,21 +25,20 @@ namespace AHWForm.Presenter
         internal void Bid()
         {
             //Here is just redirecting to bid site
-            throw new NotImplementedException();
+            HttpContext.Current.Response.Redirect("~/Bid/Id=" + HttpContext.Current.Request.QueryString["Id"]);
         }
 
         internal void PopulateAuction()
         {  
             //load query string and pass to method
-            var vm = _pModel.LoadAuction("1330ed01-c6a2-4474-a641-2f23a2f3b793");
+            var vm = _pModel.LoadAuction(HttpContext.Current.Request.QueryString["Id"]);
             _pView.AuctionTitle = vm.ActualPrice;
             _pView.CreatorName = vm.CreatorName;
             _pView.DateCreated = vm.DateCreated;
             _pView.LongDescription = vm.LongDescription;
             _pView.Price = vm.ActualPrice;
             _pView.ShortDescription = vm.ShortDescription;
-            
-
+            _pView.bids = vm.bidsViewModel.bidsViewModel.OrderByDescending(x=>x.Value).ToList();
         }
     }
 }

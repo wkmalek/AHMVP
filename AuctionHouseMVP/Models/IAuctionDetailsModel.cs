@@ -9,7 +9,5 @@ namespace AHWForm.Models
     public interface IAuctionDetailsModel
     {
         AuctionDetailsViewModel LoadAuction(string ID);
-
-
     }
 }

@@ -91,14 +91,15 @@ namespace AHWForm.Classes_And_Interfaces
             return bidContext.Auctions.Any(x => x.Id == id);
         }
 
-        public static void PopulateNodes(List<CategoryModel> categories, TreeView tw)
+        public static void PopulateNodes(IEnumerable<CategoryModel> categories, TreeView tw)
         {
+            
             foreach (var item in categories)
             {
                 if (item.ParentCategoryId == null)
                 {
                     var rootNode = new TreeNode(item.Name, item.Id.ToString());
-                    AddChildren(categories, rootNode);
+                    AddChildren(categories.ToList(), rootNode);
                     tw.Nodes.Add(rootNode);
                 }
 

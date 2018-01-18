@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AHWForm.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,6 @@ namespace AHWForm.View
         string Price { get; set; }
         string CreatorName { get; set; }
         string DateCreated { get; set; }
-
+        List<AuctionBidViewModel> bids {get;set;}
     }
 }

@@ -13,14 +13,19 @@ using System.Data;
 using System.Data.Linq;
 using MoreLinq;
 using AHWForm.Classes_And_Interfaces;
+using AHWForm.View;
+using AHWForm.Repos;
+using AHWForm.Presenter;
+
 namespace AHWForm
 {
-    public partial class SiteMaster : MasterPage, IExtensionMethods
+    public partial class SiteMaster : MasterPage, IExtensionMethods, IMasterPageView
     {
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
-
+        private CategoryRepository catRepo = new CategoryRepository(new CategoryContext());
+        public IEnumerable<CategoryModel> tv {get;set;}
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -76,15 +81,16 @@ namespace AHWForm
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             if(!this.IsPostBack)
             {
-                var categories = ExtensionMethods.GetCategories();
-
-                ExtensionMethods.PopulateNodes(categories, CategoriesTreeView);
+                MasterPagePresenter p = new MasterPagePresenter(new MasterPageViewModel(catRepo), this);
+                p.PopulateMasterPage();
+                ExtensionMethods.PopulateNodes(tv, CategoriesTreeView);
                 CategoriesTreeView.CollapseAll();
             }
         }
-
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
