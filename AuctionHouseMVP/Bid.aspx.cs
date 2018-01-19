@@ -17,7 +17,6 @@ namespace AHWForm
 {
     public partial class Bid : System.Web.UI.Page, IExtensionMethods, IBidView
     {
-        private BidsRepository bidsRepo = new BidsRepository(new BidContext());
         private BidPresenter p;
         public string Value
         {
@@ -27,7 +26,7 @@ namespace AHWForm
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            p = new BidPresenter(new NewBidViewModel(bidsRepo), this);
+            p = new BidPresenter(new NewBidViewModel(), this);
             
         }
 

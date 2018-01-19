@@ -30,7 +30,8 @@ namespace AHWForm.Presenter
                 UserId = UserHelper.GetCurrentUser(),
                 Id = Guid.NewGuid().ToString(),
                 DateCreated = DateTime.Now,
-            });
+            }, id);
+
             //should refresh db
             HttpContext.Current.Response.Redirect("~/AuctionDetails?Id=" + id);
         }

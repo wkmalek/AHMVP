@@ -24,13 +24,15 @@ namespace AHWForm.Repos
         {
             //returns list of categories with their childrens
             CategoryModel cat = GetSingleCategory(id);
-            return FindAllChildrens(GetCategories().ToList(), cat, cat.Id);    
+            List<CategoryModel> list = new List<CategoryModel>();
+            list.Add(cat);
+            return FindAllChildrens(list, cat, cat.Id);    
         }
 
         private List<CategoryModel> FindAllChildrens(List<CategoryModel> categoryList, CategoryModel cat, string parentId)
         {
             List<CategoryModel> catList = GetCategories().ToList();
-            categoryList.Add(cat);
+            
             foreach (var item in catList)
             {
                 if (item.ParentCategoryId == parentId)

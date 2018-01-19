@@ -8,12 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
 using AHWForm.Classes_And_Interfaces;
+using AHWForm.Repos;
 
 [assembly: OwinStartupAttribute(typeof(AHWForm.Startup))]
 namespace AHWForm
 {
     public partial class Startup: IExtensionMethods
         { 
+
+        
+
         public void Configuration(IAppBuilder app) {
             ConfigureAuth(app);
             AddTask("RefreshAuctions", 1);
@@ -23,6 +27,7 @@ namespace AHWForm
 
         protected void Application_Start(object sender, EventArgs e)
         {
+
         }
 
         private void AddTask(string name, int seconds)
@@ -38,10 +43,13 @@ namespace AHWForm
             if(k == "RefreshAuctions") {
 
 
-              //  ExtensionMethods.RefreshDB();
+            //RefreshDB();
             
             AddTask(k, Convert.ToInt32(v));
             }
         }
-    }
+
+           
+
+        }
 }

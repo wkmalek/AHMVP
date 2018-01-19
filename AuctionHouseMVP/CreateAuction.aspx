@@ -19,7 +19,7 @@
             </div>
             <div class="RightMiddleBar">
                 <asp:TreeView ID="NewAuctionTreeView" runat="server" Font-Names="Verdana" Font-Size="12px" 
-                ForeColor="#F48110" SkinID="NonPostBackTree" Height="296px" Width="415px" SelectedNodeStyle-ForeColor="blue" meta:resourcekey="NewAuctionTreeViewResource1" >
+                ForeColor="#F48110"  Height="296px" Width="415px" SelectedNodeStyle-ForeColor="blue" meta:resourcekey="NewAuctionTreeViewResource1" >
                 
                 <NodeStyle CssClass="tree_node_text" />
                 <ParentNodeStyle CssClass="tree_node_text" />

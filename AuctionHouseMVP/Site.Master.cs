@@ -24,7 +24,7 @@ namespace AHWForm
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
-        private CategoryRepository catRepo = new CategoryRepository(new CategoryContext());
+        
         public IEnumerable<CategoryModel> tv {get;set;}
 
         protected void Page_Init(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace AHWForm
 
             if(!this.IsPostBack)
             {
-                MasterPagePresenter p = new MasterPagePresenter(new MasterPageViewModel(catRepo), this);
+                MasterPagePresenter p = new MasterPagePresenter(new MasterPageViewModel(), this);
                 p.PopulateMasterPage();
                 ExtensionMethods.PopulateNodes(tv, CategoriesTreeView);
                 CategoriesTreeView.CollapseAll();

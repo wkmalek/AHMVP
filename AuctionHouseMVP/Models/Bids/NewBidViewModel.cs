@@ -8,17 +8,50 @@ namespace AHWForm.Models
 {
     public class NewBidViewModel : IBidViewModel
     {
+        
         public decimal Value { get; set; }
-        private BidsRepository repo;
-        public NewBidViewModel(BidsRepository repo)
+        private IBidsRepository bidsRepo;
+        private IAuctionsRepository auctionRepo;
+        public NewBidViewModel()
         {
-            this.repo = repo;
+            this.bidsRepo = new BidsRepository(new BidContext());
+            auctionRepo = new AuctionsRepository(new AuctionContext());
         }
 
-        public void Bid(BidsModel bidsModel)
+        public bool Bid(BidsModel bidsModel, string ID)
         {
-            repo.InsertAuction(bidsModel);
-            repo.Save();
+            BidsModel bid = bidsRepo.GetMaxBidOfAuction(bidsModel.AuctionId);
+            var auction = auctionRepo.GetAuctionByID(ID);
+            
+            if (!auctionRepo.CheckIfAuctionEnded(ID))
+            {
+                
+                if (bid == null)
+                {
+                    auction.EndingPrice = bidsModel.Value;
+                    bidsRepo.InsertAuction(bidsModel);
+                    bidsRepo.Save();
+                    return true;
+                }
+                else
+                {
+                    if (auctionRepo.CheckIfEndingPriceIsOk(bidsModel))
+                    {
+                        bidsRepo.InsertAuction(bidsModel);
+                        bidsRepo.Save();
+                        return true;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;         
         }
+
+        
+        
     }
 }

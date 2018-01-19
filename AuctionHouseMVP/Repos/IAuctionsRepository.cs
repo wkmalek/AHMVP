@@ -14,5 +14,7 @@ namespace AHWForm.Repos
         void InsertAuction(AuctionModel auctionModel);
         void UpdateAuction(AuctionModel auctionModel);
         void Save();
+        bool CheckIfAuctionEnded(string ID);
+        bool CheckIfEndingPriceIsOk(BidsModel bid);
     }
 }

@@ -461,6 +461,9 @@
     <Compile Include="Models\Auctions\AuctionList\AuctionListSingleElemVM.cs" />
     <Compile Include="Models\Auctions\AuctionList\AuctionListViewModel.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\IAuctionDetailsModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionViewModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\ICreateAuctionModel.cs" />
     <Compile Include="Models\Comments\ExtendentComments.cs" />
     <Compile Include="CommentSite.aspx.cs">
       <DependentUpon>CommentSite.aspx</DependentUpon>
@@ -508,6 +511,7 @@
     <Compile Include="Presenter\AuctionListPresenter.cs" />
     <Compile Include="Models\Auctions\AuctionList\IAuctionListModel.cs" />
     <Compile Include="Presenter\BidPresenter.cs" />
+    <Compile Include="Presenter\CreateAuctionPresenter.cs" />
     <Compile Include="View\IAuctionListView.cs" />
     <Compile Include="Presenter\MasterPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -542,6 +546,7 @@
     <Compile Include="View\IAuctionBidsViewModel.cs" />
     <Compile Include="View\IAuctionDetailsView.cs" />
     <Compile Include="View\IBidView.cs" />
+    <Compile Include="View\ICreateAuctionView.cs" />
     <Compile Include="View\IMasterPageView.cs" />
   </ItemGroup>
   <ItemGroup>

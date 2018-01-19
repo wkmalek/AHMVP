@@ -16,6 +16,7 @@ namespace AHWForm.Repos
         //FillOthers
         void InsertAuction(BidsModel bidsModel);
         void UpdateAuction(BidsModel bidsModel);
+        BidsModel GetMaxBidOfAuction(string auctionId);
         void Save();
     }
 }

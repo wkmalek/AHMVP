@@ -16,12 +16,11 @@ namespace AHWForm
 {
     public partial class AuctionDetails : System.Web.UI.Page, IAuctionDetailsView
     {
-        private AuctionsRepository auctionsRepo = new AuctionsRepository(new AuctionContext());
-        private BidsRepository bidsRepo = new BidsRepository(new BidContext());
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(auctionsRepo, bidsRepo), this);
+            AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(), this);
             
             p.PopulateAuction();
             BidsList.DataBind();
@@ -38,7 +37,7 @@ namespace AHWForm
 
         protected void Bid_Click(object sender, EventArgs e)
         {
-            AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(auctionsRepo, bidsRepo), this);
+            AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(), this);
             p.Bid();
         }
     }

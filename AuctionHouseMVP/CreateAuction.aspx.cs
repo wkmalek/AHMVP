@@ -7,62 +7,51 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AHWForm.Classes_And_Interfaces;
+using AHWForm.Models.Auctions.CreateAuction;
+using AHWForm.Presenter;
+using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class CreateAuction : System.Web.UI.Page, IExtensionMethods
+    public partial class CreateAuction : System.Web.UI.Page, IExtensionMethods, ICreateAuctionView
     {
+        private CreateAuctionPresenter p;
+        public IEnumerable<CategoryModel> tv { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!User.Identity.IsAuthenticated)
-                RedirectToLoginPage();
-            
+            p = new CreateAuctionPresenter(new CreateAuctionModel(), this);
             if (!this.IsPostBack)
             {
-                var categories = ExtensionMethods.GetCategories();
-                ExtensionMethods.PopulateNodes(categories, NewAuctionTreeView);
-                NewAuctionTreeView.CollapseAll();
-                for(int i = 1; i < 14; i++)
+                for (int i = 0; i < 16; i++)
                 {
                     ExpiresInDropDown.Items.Add(i.ToString());
-                }                
-            }
-        }
+                }
 
-        private void RedirectToLoginPage()
-        {
-            Response.Redirect("/Account/Login");
+                
+                p.Populate();
+                ExtensionMethods.PopulateNodes(tv, NewAuctionTreeView);
+                NewAuctionTreeView.CollapseAll();
+            }
+
         }
 
         protected void PassNewAuctionButton_Click(object sender, EventArgs e)
         {
-            //If everything is fine create new auction and redirect to it 
-            if (User.Identity.IsAuthenticated)
-            { 
-                AuctionContext auctionContext = new AuctionContext();
-                AuctionModel auction = new AuctionModel()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    CategoryId = NewAuctionTreeView.SelectedNode.Value,
-                    Title = AuctionTitleTextBox.Text,
-                    StartPrice = Decimal.Parse(MinimalPriceTextBox.Text),
-                    EndingPrice = Decimal.Parse(MinimalPriceTextBox.Text),
-                    DateCreated = DateTime.Now,
-                    ExpiresIn = Convert.ToInt32(ExpiresInDropDown.SelectedItem.Value),
-                    Description = DescriptionTextBox.Text,
-                    IsEnded = false,
-                    CreatorId = HttpContext.Current.User.Identity.GetUserId(),
-                    LongDescription = DescriptionLongTextBox.Text,
-                };
-
-                auctionContext.Auctions.Add(auction);
-                auctionContext.SaveChanges();
-                Response.Redirect("/AuctionDetails?Id=" + auction.Id);
-            }
-            else
+            CreateAuctionViewModel vm = new CreateAuctionViewModel()
             {
-                Response.Redirect("/Account/Login");
-            }
+                AuctionTitle = AuctionTitleTextBox.Text,
+                ActualPrice = MinimalPriceTextBox.Text,
+                ExpiresIn = Int32.Parse(ExpiresInDropDown.SelectedItem.Value),
+                ShortDescription = DescriptionTextBox.Text,
+                LongDescription = DescriptionLongTextBox.Text,
+                CategoryId = NewAuctionTreeView.SelectedValue,
+            };
+            p.CreateAuction(vm);
+            //Response.Redirect("~/AuctionDetails?Id=" + vm.Id);
+
         }
+
+        
     }
 }

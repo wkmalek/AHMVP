@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AHWForm.Models
+namespace ImageLoader
 {
-    public interface IBidViewModel
+    public class Loader
     {
-        bool Bid(BidsModel bidsModel, string ID);
+       
     }
 }

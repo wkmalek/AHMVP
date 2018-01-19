@@ -13,11 +13,11 @@ namespace AHWForm.Models
         private IBidsRepository bidsRepo { get; set; }
         private ICategoryRepository catRepo { get; set; }
 
-        public AuctionListModel(IAuctionsRepository auctionRepo, IBidsRepository bidsRepo, ICategoryRepository catRepo)
+        public AuctionListModel()
         {
-            this.auctionRepo = auctionRepo;
-            this.bidsRepo = bidsRepo;
-            this.catRepo = catRepo;
+            this.auctionRepo = new AuctionsRepository(new AuctionContext());
+            this.bidsRepo = new BidsRepository(new BidContext());
+            this.catRepo = new CategoryRepository(new CategoryContext());
         }
 
         public AuctionListViewModel LoadAuctions(string ID)

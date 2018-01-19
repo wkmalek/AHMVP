@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using MoreLinq;
 using System.Web.UI.WebControls;
 using System;
+using AHWForm.Repos;
 
 namespace AHWForm.Classes_And_Interfaces
 {
@@ -28,6 +29,29 @@ namespace AHWForm.Classes_And_Interfaces
                           };
             return maxBids.Select(t => t.AuctionId).ToList();
         }
+
+        public static void UpdateDB(IAuctionsRepository auctionRepo, IBidsRepository bidsRepo)
+        {
+            //var auc = auctionRepo.GetAuctions();
+            //var bid = bidsRepo.GetBids();
+            //foreach (AuctionModel item in auc)
+            //{
+            //    if (DateTime.Now >= item.DateCreated.AddDays(item.ExpiresIn))
+            //    {
+            //        item.IsEnded = true;
+            //        item.WinnerId = ExtensionMethods.SetWinnerID(item);
+            //    }
+
+            //    BidsModel MaxBid = ExtensionMethods.GetMaxBidOfAuction(item.Id, bc, item);
+            //    if (MaxBid != null)
+            //    {
+            //        item.EndingPrice = MaxBid.Value;
+            //    }
+
+            //}
+            //auctionRepo.Save();
+        }
+
         public static string GetUserNameByID(string creatorId)
         {
             return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(creatorId).UserName;

@@ -22,6 +22,37 @@ namespace AHWForm.Repos
             return context.Auctions.Find(ID);
         }
 
+
+        public bool CheckIfAuctionEnded(string ID)
+        {
+            var auction = GetAuctionByID(ID);
+            var date = auction.DateCreated.AddDays(auction.ExpiresIn);
+            if (date > DateTime.Now)
+            {
+                auction.IsEnded = true;
+                UpdateAuction(auction);
+                Save();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CheckIfEndingPriceIsOk(BidsModel bid)
+        {
+            var auc = GetAuctionByID(bid.AuctionId);
+            if (auc.EndingPrice < bid.Value)
+            {
+                auc.EndingPrice = bid.Value;
+                UpdateAuction(auc);
+                Save();
+                return true;
+            }
+
+            return false;
+
+        }
+
         public IEnumerable<AuctionModel> GetAuctionModelsBySingleCategory(string ID)
         {
             return context.Auctions.Where(x => x.CategoryId == ID);
@@ -29,8 +60,12 @@ namespace AHWForm.Repos
 
         public IEnumerable<AuctionModel> GetAuctionsByCatList(IEnumerable<CategoryModel> Categories)
         {
-            
-            return GetAuctions().Where(x => x.CategoryId.Contains(x.CategoryId));
+            List<string> lst = new List<string>();
+            foreach (var item in Categories)
+            {
+                lst.Add(item.Id);
+            }
+            return GetAuctions().Where(x => lst.Contains(x.CategoryId));
 
         }
 

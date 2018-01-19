@@ -9,9 +9,9 @@ namespace AHWForm.Presenter
     {
         private ICategoryRepository catRepo { get; set; }
 
-        public MasterPageViewModel(ICategoryRepository catRepo)
+        public MasterPageViewModel()
         {
-            this.catRepo = catRepo;
+            this.catRepo = new CategoryRepository(new CategoryContext());
         }
 
         public IEnumerable<CategoryModel> LoadCategories()

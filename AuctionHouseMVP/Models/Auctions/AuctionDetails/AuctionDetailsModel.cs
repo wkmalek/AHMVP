@@ -14,19 +14,15 @@ namespace AHWForm.Models
         private IAuctionsRepository auctionRepo {get;set;}
         private IBidsRepository bidsRepo { get; set; }
 
-       
-        
-
-        public AuctionDetailsModel(IAuctionsRepository auctionRepo, IBidsRepository bidsRepo)
+        public AuctionDetailsModel()
         {
-            this.auctionRepo = auctionRepo;
-            this.bidsRepo = bidsRepo;
+            auctionRepo = new AuctionsRepository(new AuctionContext());
+            bidsRepo = new BidsRepository(new BidContext());
         }
 
         public AuctionDetailsViewModel LoadAuction(string ID)
         {
             var auction = auctionRepo.GetAuctionByID(ID);
-            
             var bids = bidsRepo.GetBidsByAuctionID(ID);
             var bidsVM = new AuctionBidsViewModel(bids);
             return new AuctionDetailsViewModel(auction, bidsVM);   
@@ -35,7 +31,6 @@ namespace AHWForm.Models
 
     public class AuctionDetailsViewModel : SingleAuctionViewModel
     {
-
         public string LongDescription { get; set; }
         public IAuctionBidsViewModel bidsViewModel { get; set; }
 
