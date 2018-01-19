@@ -19,7 +19,7 @@ namespace AHWForm.Presenter
         internal void RedirectToAuction(string id)
         {
             HttpContext.Current.Response.Redirect(
-                "~/AuctionDetails/Id=" + HttpContext.Current.Request.QueryString["Id"]);
+                "~/AuctionDetails/Id=" + HttpContext.Current.Request.QueryString["Id"]);      
         }
 
         internal void PopulateAuctionList()

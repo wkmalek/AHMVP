@@ -301,8 +301,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AuctionBidsViewModel.cs" />
-    <Compile Include="Models\AuctionDetailsModel.cs" />
+    <Compile Include="ExtMethods\UrlHelper.cs" />
+    <Compile Include="ExtMethods\UserHelper.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\AuctionBidsViewModel.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\AuctionDetailsModel.cs" />
     <Compile Include="AccountComments.aspx.cs">
       <DependentUpon>AccountComments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -452,14 +454,14 @@
     <Compile Include="Bid.aspx.designer.cs">
       <DependentUpon>Bid.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Classes_And_Interfaces\ExtensionMethods.cs" />
-    <Compile Include="Classes_And_Interfaces\IExtensionMethods.cs" />
-    <Compile Include="Models\AuctionBidViewModel.cs" />
-    <Compile Include="Models\AuctionListModel.cs" />
-    <Compile Include="Models\AuctionListSingleElemVM.cs" />
-    <Compile Include="Models\AuctionListViewModel.cs" />
-    <Compile Include="Models\IAuctionDetailsModel.cs" />
-    <Compile Include="Models\ExtendentComments.cs" />
+    <Compile Include="ExtMethods\ExtensionMethods.cs" />
+    <Compile Include="ExtMethods\IExtensionMethods.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\AuctionBidViewModel.cs" />
+    <Compile Include="Models\Auctions\AuctionList\AuctionListModel.cs" />
+    <Compile Include="Models\Auctions\AuctionList\AuctionListSingleElemVM.cs" />
+    <Compile Include="Models\Auctions\AuctionList\AuctionListViewModel.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\IAuctionDetailsModel.cs" />
+    <Compile Include="Models\Comments\ExtendentComments.cs" />
     <Compile Include="CommentSite.aspx.cs">
       <DependentUpon>CommentSite.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -491,18 +493,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AuctionModel.cs" />
-    <Compile Include="Models\BidsModel.cs" />
-    <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\CommentsModel.cs" />
+    <Compile Include="Models\Auctions\AuctionModel.cs" />
+    <Compile Include="Models\Bids\BidsModel.cs" />
+    <Compile Include="Models\Category\CategoryModel.cs" />
+    <Compile Include="Models\Comments\CommentsModel.cs" />
+    <Compile Include="Models\Bids\IBidViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Enum\paramTypeForCategory.cs" />
     <Compile Include="Models\MasterPageViewModel.cs" />
-    <Compile Include="Models\SingleAuctionViewModel.cs" />
+    <Compile Include="Models\Bids\NewBidViewModel.cs" />
+    <Compile Include="Models\Auctions\SingleAuctionViewModel.cs" />
     <Compile Include="Presenter\AuctionDetailsPresenter.cs" />
     <Compile Include="Models\IMasterPageModel.cs" />
     <Compile Include="Presenter\AuctionListPresenter.cs" />
-    <Compile Include="Models\IAuctionListModel.cs" />
+    <Compile Include="Models\Auctions\AuctionList\IAuctionListModel.cs" />
+    <Compile Include="Presenter\BidPresenter.cs" />
     <Compile Include="View\IAuctionListView.cs" />
     <Compile Include="Presenter\MasterPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -536,6 +541,7 @@
     </Compile>
     <Compile Include="View\IAuctionBidsViewModel.cs" />
     <Compile Include="View\IAuctionDetailsView.cs" />
+    <Compile Include="View\IBidView.cs" />
     <Compile Include="View\IMasterPageView.cs" />
   </ItemGroup>
   <ItemGroup>

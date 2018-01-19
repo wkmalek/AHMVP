@@ -27,49 +27,5 @@ namespace AHWForm
             AuctionList.DataSource = vm;
             AuctionList.DataBind();
         }
-        
-
-        //public IQueryable<AuctionModel> AuctionList_GetData()
-        //{
-
-        //    ////returns query that contains auctions list based on selected category
-        //    //string SelectedCategory = Request.QueryString["category"];
-
-        //    //AuctionContext auctionContext = new AuctionContext();
-        //    //IQueryable<AuctionModel> ls;
-        //    ////Redirect when v is null
-        //    //List<string> allCats = GetCategories(SelectedCategory);
-        //    //allCats.Add(SelectedCategory);
-        //    //List<string> allCatsN = allCats.ConvertAll<string>(delegate (string x) { return x; });
-        //    //ls = auctionContext.Auctions.Where(t => allCatsN.Contains(t.CategoryId));
-        //    //return ls;
-        //}
-
-        //private List<string> GetCategories(string id)
-        //{
-        //    //returns list of categories connected to selected parent
-        //    CategoryContext ac = new CategoryContext();
-        //    CategoryModel cat = ac.Categories.Where(x => x.Id == id).SingleOrDefault();
-        //    List<string> allChildrenList = new List<string>();
-        //    allChildrenList = FindChildrens(allChildrenList, cat.Id,cat, ac);
-        //    return allChildrenList;
-        //}
-
-
-        //private List<string> FindChildrens(List<string> listOfCatId, string parentId, CategoryModel cat, CategoryContext ac)
-        //{
-        //    //returns list of childrens connected to selected parent
-        //    List<CategoryModel> categories = ac.Categories.ToList();
-        //    foreach (var item in categories)
-        //    {
-        //        if (item.ParentCategoryId == parentId)
-        //        {
-        //            listOfCatId.Add(item.Id);
-        //            listOfCatId.AddRange(FindChildrens(listOfCatId, item.Id, cat, ac));
-        //        }       
-        //    }
-        //    return listOfCatId;
-        //}
-
     }
 }

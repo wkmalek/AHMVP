@@ -25,7 +25,7 @@ namespace AHWForm.Presenter
         internal void Bid()
         {
             //Here is just redirecting to bid site
-            HttpContext.Current.Response.Redirect("~/Bid/Id=" + HttpContext.Current.Request.QueryString["Id"]);
+            HttpContext.Current.Response.Redirect("~/Bid?Id=" + HttpContext.Current.Request.QueryString["ID"]);
         }
 
         internal void PopulateAuction()

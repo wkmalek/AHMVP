@@ -12,11 +12,11 @@ namespace AHWForm.Models
         public decimal Value { get; set; }
         public string UserId { get; set; }
         public string AuctionId { get; set; }
+        public DateTime DateCreated { get; internal set; }
     }
 
     public class BidContext : DbContext
     {
         public DbSet<BidsModel> Bids { get; set; }
-        public DbSet<AuctionModel> Auctions { get; set; }
     }
 }

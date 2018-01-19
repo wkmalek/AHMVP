@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuctionListPage.aspx.cs" Inherits="AHWForm.AuctionListPage" %>
+<%@ Import Namespace="AHWForm.Classes_And_Interfaces" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    
     <asp:ListView ID="AuctionList" runat="server" ItemType="AHWForm.Models.AuctionListSingleElemVM">
@@ -13,12 +14,16 @@
 
         <ItemTemplate>
             <tr style="background-color: #FFFBD6;color: #333333;">
+                
                 <td>
+                <asp:HyperLink runat="server" ID="AuctionLink" NavigateUrl='<%# Eval("AuctionUrl")%>'>
                     <%# Eval("AuctionTitle") %>
+                </asp:HyperLink>
                 </td>
                 <td>
                     <%# Eval("ActualPrice") %>
                 </td>
+
                 <td>
                     <%# Eval("DateCreated") %>
                 </td>

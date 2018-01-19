@@ -86,10 +86,10 @@ namespace AHWForm.Classes_And_Interfaces
                 return null;
         }
 
-        public static bool CheckIfAuctionExist(string id, BidContext bidContext)
-        {
-            return bidContext.Auctions.Any(x => x.Id == id);
-        }
+        //public static bool CheckIfAuctionExist(string id, BidContext bidContext)
+        //{
+        //    return bidContext.Auctions.Any(x => x.Id == id);
+        //}
 
         public static void PopulateNodes(IEnumerable<CategoryModel> categories, TreeView tw)
         {
