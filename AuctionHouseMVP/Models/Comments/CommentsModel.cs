@@ -7,7 +7,7 @@ using System.Web;
 
 namespace AHWForm.Models
 {
-     public class CommentsModel
+     public class CommentsModel: ICommentsModel
      {
         [ScaffoldColumn(false)]
         public string Id { get; set; }

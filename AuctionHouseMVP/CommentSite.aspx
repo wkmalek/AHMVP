@@ -9,7 +9,7 @@
             </table>
         </EmptyDataTemplate>
         <ItemTemplate>
-            <tr style="background-color: #FFFBD6;color: #333333;" "  >
+            <tr style="background-color: #FFFBD6;color: #333333;"  >
                 <%--<td><%# Eval("Id") %></td>--%>
                 <td><asp:HyperLink runat="server" NavigateUrl='<%# Eval("AuctionUrl") %>' ><%# Eval("AuctionTitle") %></asp:HyperLink></td>
                 <td><asp:HyperLink runat="server" NavigateUrl='<%# Eval("BuyerUrl") %>' ><%# Eval("BuyerName") %></asp:HyperLink></td>

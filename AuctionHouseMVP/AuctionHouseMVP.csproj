@@ -512,6 +512,9 @@
     <Compile Include="Models\Auctions\AuctionList\IAuctionListModel.cs" />
     <Compile Include="Presenter\BidPresenter.cs" />
     <Compile Include="Presenter\CreateAuctionPresenter.cs" />
+    <Compile Include="Presenter\ICommentsModel.cs" />
+    <Compile Include="View\ICommentsView.cs" />
+    <Compile Include="Presenter\UserCommentListPresenter.cs" />
     <Compile Include="View\IAuctionListView.cs" />
     <Compile Include="Presenter\MasterPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
