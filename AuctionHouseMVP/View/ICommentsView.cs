@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using AHWForm.Models;
+using AHWForm.Models.Comments;
 
 namespace AHWForm
 {
     internal interface ICommentsView
     {
-        List<CommentsView> vm { get; set; }
+        List<CommentsBuyView> vm { get; set; }
     }
 }

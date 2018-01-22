@@ -11,7 +11,17 @@ namespace AHWForm.ExtMethods
     {
         public static string GetUserNameById(string id)
         {
-            return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(id).UserName;
+            try
+            {
+                return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(id).UserName;
+            }
+            catch (Exception e)
+            {
+                //Console.WriteLine(e);
+                //throw;
+                return "";
+            }
+            
         }
 
         public static string GetCurrentUser()

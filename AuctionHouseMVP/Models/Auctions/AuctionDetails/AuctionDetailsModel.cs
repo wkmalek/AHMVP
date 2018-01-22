@@ -16,7 +16,7 @@ namespace AHWForm.Models
 
         public AuctionDetailsModel()
         {
-            auctionRepo = new AuctionsRepository(new AuctionContext());
+            auctionRepo = new AuctionsRepository();
             bidsRepo = new BidsRepository(new BidContext());
         }
 

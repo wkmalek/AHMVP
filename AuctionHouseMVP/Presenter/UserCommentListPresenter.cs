@@ -17,8 +17,9 @@ namespace AHWForm
 
         internal void PopulateCommentList()
         {
-            var vm = _pModel.LoadComments(HttpContext.Current.Request.QueryString["Id"]);
-            _pView.vm = vm.List;
+            //var vm = _pModel.LoadComments(HttpContext.Current.Request.QueryString["Id"]);
+            var vm = _pModel.LoadComments("03c58d0b-7548-44cf-807b-561884180bb6");
+            _pView.vm = vm;
         }
     }
 }

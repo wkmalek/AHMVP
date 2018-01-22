@@ -15,7 +15,7 @@ namespace AHWForm.Models
 
         public AuctionListModel()
         {
-            this.auctionRepo = new AuctionsRepository(new AuctionContext());
+            this.auctionRepo = new AuctionsRepository();
             this.bidsRepo = new BidsRepository(new BidContext());
             this.catRepo = new CategoryRepository(new CategoryContext());
         }

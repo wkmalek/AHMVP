@@ -17,48 +17,48 @@ namespace AHWForm
         {
             if (!User.Identity.IsAuthenticated)
                 RedirectToLoginPage();
-            CommentList.DataSource = AuctionList_GetData();
+          //  CommentList.DataSource = AuctionList_GetData();
             CommentList.DataBind();
 
         }
 
-        private List<ExtendentComments> AuctionList_GetData()
-        {
-            //returns list of comments connected to user
-            CommentsContext commentsContext = new CommentsContext();
-            string ID = HttpContext.Current.User.Identity.GetUserId();
-            List<AuctionModel> assAuctionList = GetListOfAssAuctions(ID, commentsContext).ToList();
-            List<ExtendentComments> extendentCommentsList = new List<ExtendentComments>();
+        //private List<ExtendentComments> AuctionList_GetData()
+        //{
+        //    //returns list of comments connected to user
+        //    CommentsContext commentsContext = new CommentsContext();
+        //    string ID = HttpContext.Current.User.Identity.GetUserId();
+        //    List<AuctionModel> assAuctionList = GetListOfAssAuctions(ID, commentsContext).ToList();
+        //    List<ExtendentComments> extendentCommentsList = new List<ExtendentComments>();
 
-            foreach(AuctionModel item in assAuctionList)
-            {
-                ExtendentComments row = new ExtendentComments()
-                {
-                    AuctionTitle = item.Title,
-                    AuctionUrl = "AuctionDetails.aspx?Id=" + item.Id,
-                    SellerUrl = "CommentSite.aspx?Id=" + item.CreatorId,
-                    SellerName = ExtensionMethods.GetUserNameByID(item.CreatorId),
-                };
-                if (item.IsEnded)
-                {
-                    row.Id = ExtensionMethods.GetCommentFromAuction(item.Id, ID, commentsContext).Id;
-                    row.Rate = ExtensionMethods.GetCommentFromAuction(item.Id, ID, commentsContext).Rate;
-                    row.Comment = ExtensionMethods.GetCommentFromAuction(item.Id, ID, commentsContext).Description;
-                }
-                extendentCommentsList.Add(row);
-            }
-            return extendentCommentsList;
-        }
+        //    foreach(AuctionModel item in assAuctionList)
+        //    {
+        //        ExtendentComments row = new ExtendentComments()
+        //        {
+        //            AuctionTitle = item.Title,
+        //            AuctionUrl = "AuctionDetails.aspx?Id=" + item.Id,
+        //            SellerUrl = "CommentSite.aspx?Id=" + item.CreatorId,
+        //            SellerName = ExtensionMethods.GetUserNameByID(item.CreatorId),
+        //        };
+        //        if (item.IsEnded)
+        //        {
+        //            row.Id = ExtensionMethods.GetCommentFromAuction(item.Id, ID, commentsContext).Id;
+        //            row.Rate = ExtensionMethods.GetCommentFromAuction(item.Id, ID, commentsContext).Rate;
+        //            row.Comment = ExtensionMethods.GetCommentFromAuction(item.Id, ID, commentsContext).Description;
+        //        }
+        //        extendentCommentsList.Add(row);
+        //    }
+        //    return extendentCommentsList;
+        //}
 
-        private IQueryable<AuctionModel> GetListOfAssAuctions(string id, CommentsContext commentsContext)
-        {
-            //returns query that gives auctions that are connected to actual user 
-            IQueryable<AuctionModel> auctions;
-            var MaxBids = ExtensionMethods.GetMaxBidsPerUser(ID, commentsContext);
-            auctions = commentsContext.Auctions.Where(t => t.CreatorId == ID);
-            auctions = auctions.Where(t => MaxBids.Contains(t.Id));
-            return auctions;
-        }
+        //private IQueryable<AuctionModel> GetListOfAssAuctions(string id, CommentsContext commentsContext)
+        //{
+        //    //returns query that gives auctions that are connected to actual user 
+        //    IQueryable<AuctionModel> auctions;
+        //    var MaxBids = ExtensionMethods.GetMaxBidsPerUser(ID, commentsContext);
+        //    auctions = commentsContext.Auctions.Where(t => t.CreatorId == ID);
+        //    auctions = auctions.Where(t => MaxBids.Contains(t.Id));
+        //    return auctions;
+        //}
 
         private void RedirectToLoginPage()
         {

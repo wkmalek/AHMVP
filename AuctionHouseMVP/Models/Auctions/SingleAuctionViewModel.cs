@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AHWForm.Models
 {
-    public class SingleAuctionViewModel
+    public abstract class SingleAuctionViewModel
     {
         public string AuctionTitle { get; set; }
         public string ActualPrice { get; set; }

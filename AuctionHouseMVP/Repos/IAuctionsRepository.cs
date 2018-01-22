@@ -10,6 +10,7 @@ namespace AHWForm.Repos
     {
         IEnumerable<AuctionModel> GetAuctions();
         IEnumerable<AuctionModel> GetAuctionsByCatList(IEnumerable<CategoryModel> cat);
+        IEnumerable<AuctionModel> GetAuctionByUserID(string ID);
         AuctionModel GetAuctionByID(string ID);
         void InsertAuction(AuctionModel auctionModel);
         void UpdateAuction(AuctionModel auctionModel);

@@ -15,7 +15,7 @@ namespace AHWForm.Models.Auctions.CreateAuction
 
         public CreateAuctionModel()
         {
-            auctionRepo = new AuctionsRepository(new AuctionContext());
+            auctionRepo = new AuctionsRepository();
             catRepo = new CategoryRepository(new CategoryContext());
         }
 

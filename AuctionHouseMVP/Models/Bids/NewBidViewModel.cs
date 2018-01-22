@@ -15,7 +15,7 @@ namespace AHWForm.Models
         public NewBidViewModel()
         {
             this.bidsRepo = new BidsRepository(new BidContext());
-            auctionRepo = new AuctionsRepository(new AuctionContext());
+            auctionRepo = new AuctionsRepository();
         }
 
         public bool Bid(BidsModel bidsModel, string ID)

@@ -14,21 +14,21 @@ namespace AHWForm.Classes_And_Interfaces
     public class ExtensionMethods
     {
         
-        public static List<string> GetMaxBidsPerUser(string id, CommentsContext context)
-        {
-            List<BidsModel> bids = context.Bids.Where(x => x.UserId == id).ToList();
-            var maxBids = from e in bids
-                          group e by e.UserId into Auct
-                          let top = Auct.Max(x => x.Value)
-                          select new BidsModel
-                          {
-                              UserId = Auct.Key,
-                              AuctionId = Auct.First(y => y.Value == top).AuctionId,
-                              Value = top,
-                              Id = Auct.First(y => y.Value == top).Id,
-                          };
-            return maxBids.Select(t => t.AuctionId).ToList();
-        }
+        //public static List<string> GetMaxBidsPerUser(string id, CommentsContext context)
+        //{
+        //    List<BidsModel> bids = context.Bids.Where(x => x.UserId == id).ToList();
+        //    var maxBids = from e in bids
+        //                  group e by e.UserId into Auct
+        //                  let top = Auct.Max(x => x.Value)
+        //                  select new BidsModel
+        //                  {
+        //                      UserId = Auct.Key,
+        //                      AuctionId = Auct.First(y => y.Value == top).AuctionId,
+        //                      Value = top,
+        //                      Id = Auct.First(y => y.Value == top).Id,
+        //                  };
+        //    return maxBids.Select(t => t.AuctionId).ToList();
+        //}
 
         public static void UpdateDB(IAuctionsRepository auctionRepo, IBidsRepository bidsRepo)
         {
@@ -57,26 +57,26 @@ namespace AHWForm.Classes_And_Interfaces
             return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(creatorId).UserName;
         }
 
-        public static CommentsModel GetCommentFromAuction(string auctionId, string userId, CommentsContext context)
-        {
-            return context.Comment.Where(x => x.AuctionId == auctionId && x.BuyerId == userId).SingleOrDefault();
-        }
+        //public static CommentsModel GetCommentFromAuction(string auctionId, string userId, CommentsContext context)
+        //{
+        //    return context.Comment.Where(x => x.AuctionId == auctionId && x.BuyerId == userId).SingleOrDefault();
+        //}
 
-        public static AuctionModel GetAuction(string id)
-        {
-            try
-            {
+        //public static AuctionModel GetAuction(string id)
+        //{
+        //    try
+        //    {
 
-                AuctionContext auctionContext = new AuctionContext();
-                AuctionModel actAuction = auctionContext.Auctions.Where(s => s.Id == id).SingleOrDefault();
-                return actAuction;
-            }
-            catch
-            {
-                return null;
-            }
+        //        AuctionContext auctionContext = new AuctionContext();
+        //        AuctionModel actAuction = auctionContext.Auctions.Where(s => s.Id == id).SingleOrDefault();
+        //        return actAuction;
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
 
-        }
+        //}
 
         public static List<CategoryModel> GetCategories()
         {
@@ -155,26 +155,26 @@ namespace AHWForm.Classes_And_Interfaces
                 return null;
         }
 
-        public static void RefreshDB()
-        {
-            AuctionContext ac = new AuctionContext();
-            BidContext bc = new BidContext();
-            foreach (AuctionModel item in ac.Auctions)
-            {
-                if (DateTime.Now >= item.DateCreated.AddDays(item.ExpiresIn))
-                {
-                    item.IsEnded = true;
-                    item.WinnerId = ExtensionMethods.SetWinnerID(item);
-                }
+        //public static void RefreshDB()
+        //{
+        //    AuctionContext ac = new AuctionContext();
+        //    BidContext bc = new BidContext();
+        //    foreach (AuctionModel item in ac.Auctions)
+        //    {
+        //        if (DateTime.Now >= item.DateCreated.AddDays(item.ExpiresIn))
+        //        {
+        //            item.IsEnded = true;
+        //            item.WinnerId = ExtensionMethods.SetWinnerID(item);
+        //        }
 
-                BidsModel MaxBid = ExtensionMethods.GetMaxBidOfAuction(item.Id, bc, item);
-                if (MaxBid != null)
-                {
-                    item.EndingPrice = MaxBid.Value;
-                }
+        //        BidsModel MaxBid = ExtensionMethods.GetMaxBidOfAuction(item.Id, bc, item);
+        //        if (MaxBid != null)
+        //        {
+        //            item.EndingPrice = MaxBid.Value;
+        //        }
 
-            }
-            ac.SaveChanges();
-        }
+        //    }
+        //    ac.SaveChanges();
+        //}
     }
 }

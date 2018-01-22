@@ -84,6 +84,7 @@
       <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -243,6 +244,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CreateAuction.aspx" />
+    <Content Include="CreateComment.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -301,6 +303,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateComment.aspx.cs">
+      <DependentUpon>CreateComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateComment.aspx.designer.cs">
+      <DependentUpon>CreateComment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExtMethods\MiscHelper.cs" />
+    <Compile Include="ExtMethods\UIHelper.cs" />
     <Compile Include="ExtMethods\UrlHelper.cs" />
     <Compile Include="ExtMethods\UserHelper.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\AuctionBidsViewModel.cs" />
@@ -464,6 +475,8 @@
     <Compile Include="Models\Auctions\CreateAuction\CreateAuctionModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\CreateAuctionViewModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\ICreateAuctionModel.cs" />
+    <Compile Include="Models\Comments\CommentsBuyView.cs" />
+    <Compile Include="Models\Comments\CommentsSellView.cs" />
     <Compile Include="Models\Comments\ExtendentComments.cs" />
     <Compile Include="CommentSite.aspx.cs">
       <DependentUpon>CommentSite.aspx</DependentUpon>
@@ -501,6 +514,7 @@
     <Compile Include="Models\Category\CategoryModel.cs" />
     <Compile Include="Models\Comments\CommentsModel.cs" />
     <Compile Include="Models\Bids\IBidViewModel.cs" />
+    <Compile Include="Models\Comments\UserCommentsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Enum\paramTypeForCategory.cs" />
     <Compile Include="Models\MasterPageViewModel.cs" />
@@ -512,7 +526,10 @@
     <Compile Include="Models\Auctions\AuctionList\IAuctionListModel.cs" />
     <Compile Include="Presenter\BidPresenter.cs" />
     <Compile Include="Presenter\CreateAuctionPresenter.cs" />
-    <Compile Include="Presenter\ICommentsModel.cs" />
+    <Compile Include="Presenter\CreateCommentPresenter.cs" />
+    <Compile Include="Models\Comments\ICommentsModel.cs" />
+    <Compile Include="Repos\CommentsRepository.cs" />
+    <Compile Include="Repos\ICommentsRepository.cs" />
     <Compile Include="View\ICommentsView.cs" />
     <Compile Include="Presenter\UserCommentListPresenter.cs" />
     <Compile Include="View\IAuctionListView.cs" />
@@ -550,6 +567,7 @@
     <Compile Include="View\IAuctionDetailsView.cs" />
     <Compile Include="View\IBidView.cs" />
     <Compile Include="View\ICreateAuctionView.cs" />
+    <Compile Include="View\ICreateComment.cs" />
     <Compile Include="View\IMasterPageView.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CommentSite.aspx.cs" Inherits="AHWForm.CommentSite" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ListView ID="CommentList" runat="server" DataKeyNames="Id">
+    <asp:ListView ID="CommentList" runat="server" DataKeyNames="Id" OnItemCommand="CommentList_OnItemCommand">
         <EmptyDataTemplate>
             <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                 <tr>
@@ -15,7 +15,8 @@
                 <td><asp:HyperLink runat="server" NavigateUrl='<%# Eval("BuyerUrl") %>' ><%# Eval("BuyerName") %></asp:HyperLink></td>
                 <td><asp:HyperLink runat="server" NavigateUrl='<%# Eval("SellerUrl") %>' ><%# Eval("SellerName") %></asp:HyperLink></td>
                 <td><%# Eval("Rate") %></td>
-                <td><%# Eval("Description") %></td>    
+                <td><%# Eval("Description") %></td>
+                <td><asp:Button runat="server" CommandName="Go" CommandArgument='<%#Eval("WriteCommentUrl") %>' Visible=<%# Eval("CommentGranted") %>/></td>
             </tr>
         </ItemTemplate>
         <LayoutTemplate>

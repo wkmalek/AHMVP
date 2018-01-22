@@ -10,24 +10,41 @@ namespace AHWForm.Repos
 {
     public class AuctionsRepository : IAuctionsRepository, IDisposable
     {
+        public class AuctionContext : DbContext
+        {
+            public AuctionContext(): base("name=AuctionContext")
+            {
+
+            }
+            public DbSet<AuctionModel> AuctionModel { get; set; }
+        }
+
         private AuctionContext context;
 
-        public AuctionsRepository(AuctionContext context)
+        public AuctionsRepository()
         {
-            this.context = context;
+            context = new AuctionContext();
+            Console.Write(12);
         }
 
         public AuctionModel GetAuctionByID(string ID)
         {
-            return context.Auctions.Find(ID);
+            return context.AuctionModel.Find(ID);
         }
 
+        
+
+        public IEnumerable<AuctionModel> GetAuctionByUserID(string ID)
+        {
+            return context.AuctionModel.Where(x => x.WinnerId == ID).ToList();
+        }
 
         public bool CheckIfAuctionEnded(string ID)
         {
             var auction = GetAuctionByID(ID);
             var date = auction.DateCreated.AddDays(auction.ExpiresIn);
-            if (date > DateTime.Now)
+            var comp = DateTime.Compare(date, DateTime.Now);
+            if (comp>0)
             {
                 auction.IsEnded = true;
                 UpdateAuction(auction);
@@ -55,7 +72,7 @@ namespace AHWForm.Repos
 
         public IEnumerable<AuctionModel> GetAuctionModelsBySingleCategory(string ID)
         {
-            return context.Auctions.Where(x => x.CategoryId == ID);
+            return context.AuctionModel.Where(x => x.CategoryId == ID);
         }
 
         public IEnumerable<AuctionModel> GetAuctionsByCatList(IEnumerable<CategoryModel> Categories)
@@ -71,12 +88,12 @@ namespace AHWForm.Repos
 
         public IEnumerable<AuctionModel> GetAuctions()
         {
-            return context.Auctions.ToList();
+            return context.AuctionModel.ToList();
         }
 
         public void InsertAuction(AuctionModel auctionModel)
         {
-            context.Auctions.Add(auctionModel);
+            context.AuctionModel.Add(auctionModel);
         }
 
         public void Save()

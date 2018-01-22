@@ -36,8 +36,5 @@ namespace AHWForm.Models
 
     
 
-    public class AuctionContext : DbContext
-    {
-        public DbSet<AuctionModel> Auctions { get; set; }
-    }
+
 }
