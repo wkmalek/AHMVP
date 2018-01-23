@@ -19,7 +19,7 @@ namespace AHWForm.Models
             Id = auctionModel.Id;
             AuctionTitle = auctionModel.Title;
             ActualPrice = auctionModel.EndingPrice.ToString();
-            //Currency
+            Currency = auctionModel.Currency;
             CreatorName = UserHelper.GetUserNameById(auctionModel.CreatorId);
             CreatorId = auctionModel.CreatorId;
             ShortDescription = auctionModel.Description;

@@ -72,6 +72,14 @@
                         --%>
                         <% } %>
                     </dd>
+                    <dt>MainCurrency:</dt>
+                    <dd>
+                        <asp:DropDownList runat="server" ID="CurrencyDropDown" OnSelectedIndexChanged="CurrencyDropDown_OnSelectedIndexChanged" AutoPostBack="true"/>
+                    </dd>
+                    <dt>Language:</dt>
+                    <dd>
+                        <asp:DropDownList runat="server" ID="LanguageDropDown" OnSelectedIndexChanged="LanguageDropDown_OnSelectedIndexChanged" AutoPostBack="true"/>
+                    </dd>
                 </dl>
             </div>
         </div>

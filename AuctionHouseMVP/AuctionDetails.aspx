@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuctionDetails.aspx.cs" Inherits="AHWForm.AuctionDetails" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+<%@ Import Namespace="AHWForm.Classes_And_Interfaces" %>
+<%@ Import Namespace="AHWForm.ExtMethods" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
@@ -9,8 +11,9 @@
             </div>
             <div class="PhotoAndRightBar">
                 <div class="Photo">
-
-            </div>
+                      <asp:Image runat="server" ID="Thumbnail"/>
+                    
+                </div>
                 <div class="BasicInfo">
                 <div class="Price">
                     <asp:Label ID="PriceLabel" runat="server" Font-Size="24pt" meta:resourcekey="PriceLabel"/>
@@ -50,6 +53,17 @@
             <%--<div class="AuctionText">--%>
                 <asp:TextBox runat="server"  ID="AuctionLongDescription" CssClass="AuctionText" TextMode="MultiLine" ReadOnly="true" />
             <%--</div>--%>
+            <asp:DataList runat="server" ID="ImageGallery" RepeatLayout="Table" RepeatColumns="5" CellPadding="2" CellSpacing="20">
+                <ItemTemplate>
+                    <table class="GalleryItem" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td align="center" class="body">
+                                <img class="image" src='<%# ImageHelper.GetUrlForImage(Eval("Id").ToString(),Eval("Extension").ToString(), ver: false) %>' alt="" />
+                            </td>
+                        </tr>
+                    </table>
+                </ItemTemplate>
+            </asp:DataList>
         </div>
         <div class="LowerInfo">
             <div class="Bidders">

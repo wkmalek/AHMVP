@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AHWForm.Models.Images;
 
 namespace AHWForm.View
 {
@@ -16,5 +17,6 @@ namespace AHWForm.View
         string CreatorName { get; set; }
         string DateCreated { get; set; }
         List<AuctionBidViewModel> bids {get;set;}
+        List<ImagesModel> listOFImages { get; set; }
     }
 }

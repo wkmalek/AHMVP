@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AHWForm.Models.Images;
 
 namespace AHWForm.Models
 {
@@ -13,11 +14,12 @@ namespace AHWForm.Models
     {
         private IAuctionsRepository auctionRepo {get;set;}
         private IBidsRepository bidsRepo { get; set; }
-
+        private IImageRepository imageRepo { get; set; }
         public AuctionDetailsModel()
         {
             auctionRepo = new AuctionsRepository();
             bidsRepo = new BidsRepository(new BidContext());
+            imageRepo = new ImageRepository();
         }
 
         public AuctionDetailsViewModel LoadAuction(string ID)
@@ -25,7 +27,9 @@ namespace AHWForm.Models
             var auction = auctionRepo.GetAuctionByID(ID);
             var bids = bidsRepo.GetBidsByAuctionID(ID);
             var bidsVM = new AuctionBidsViewModel(bids);
-            return new AuctionDetailsViewModel(auction, bidsVM);   
+            var img = imageRepo.GetImagesByAuctionID(ID).ToList();
+
+            return new AuctionDetailsViewModel(auction, bidsVM, img);   
         }
     }
 
@@ -33,8 +37,9 @@ namespace AHWForm.Models
     {
         public string LongDescription { get; set; }
         public IAuctionBidsViewModel bidsViewModel { get; set; }
+        public List<ImagesModel> imgModel { get; set; }
 
-        public AuctionDetailsViewModel(AuctionModel auc, IAuctionBidsViewModel bid)
+        public AuctionDetailsViewModel(AuctionModel auc, IAuctionBidsViewModel bid, List<ImagesModel> img)
         {
             AuctionTitle = auc.Title;
             ActualPrice = auc.EndingPrice.ToString();
@@ -51,6 +56,7 @@ namespace AHWForm.Models
             bidsViewModel = bid;
             Id = auc.Id;
             IsEnded = IsEnded;
+            imgModel = img;
         }
     }
 }

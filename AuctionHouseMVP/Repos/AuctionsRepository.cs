@@ -24,7 +24,6 @@ namespace AHWForm.Repos
         public AuctionsRepository()
         {
             context = new AuctionContext();
-            Console.Write(12);
         }
 
         public AuctionModel GetAuctionByID(string ID)

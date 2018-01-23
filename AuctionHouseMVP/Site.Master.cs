@@ -11,8 +11,10 @@ using AHWForm.Models;
 using System.Linq;
 using System.Data;
 using System.Data.Linq;
+using System.Globalization;
 using MoreLinq;
 using AHWForm.Classes_And_Interfaces;
+using AHWForm.ExtMethods;
 using AHWForm.View;
 using AHWForm.Repos;
 using AHWForm.Presenter;
@@ -54,11 +56,37 @@ namespace AHWForm
                     responseCookie.Secure = true;
                 }
                 Response.Cookies.Set(responseCookie);
+
+                
             }
+
+            //var reasd = CurrencyHelper.GetValueInAnotherCurrency(12, "PL");
+            Console.Write("");
+
+            if (Request.Cookies["lang"] == null)
+            {
+                //Write cookie with default lang
+                HttpCookie langCookie = new HttpCookie("lang");
+                langCookie.Value = "en-US";
+                langCookie.Expires = DateTime.Now.AddDays(7);
+                Response.Cookies.Add(langCookie);
+            }
+
+            if (Request.Cookies["currency"] == null)
+            {
+                //Write coockie with default currency
+                HttpCookie currencyCookie = new HttpCookie("currency");
+                currencyCookie.Value = "USD";
+                currencyCookie.Expires = DateTime.Now.AddDays(7);
+                Response.Cookies.Add(currencyCookie);
+            }
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Request.Cookies["lang"].Value);
 
             Page.PreLoad += master_Page_PreLoad;
         }
 
+        
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {

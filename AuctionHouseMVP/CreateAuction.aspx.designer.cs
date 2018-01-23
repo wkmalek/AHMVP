@@ -94,6 +94,33 @@ namespace AHWForm {
         protected global::System.Web.UI.WebControls.TextBox DescriptionTextBox;
         
         /// <summary>
+        /// AddImagesLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AddImagesLabel;
+        
+        /// <summary>
+        /// ImageUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageUpload;
+        
+        /// <summary>
+        /// UploadImageButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UploadImageButton;
+        
+        /// <summary>
         /// NewAuctionTreeView control.
         /// </summary>
         /// <remarks>

@@ -34,7 +34,6 @@ namespace AHWForm
             {
                 object commandArg = e.CommandArgument;
                 UrlHelper.RedirectToWriteComment((string)commandArg);
-                Console.WriteLine("asd");
             }
         }
     }

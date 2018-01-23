@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AHWForm.Classes_And_Interfaces;
+using AHWForm.ExtMethods;
+using AHWForm.Models.Images;
 using AHWForm.View;
 using AHWForm.Presenter;
 using AHWForm.Repos;
@@ -23,6 +25,15 @@ namespace AHWForm
             AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(), this);
             
             p.PopulateAuction();
+            if(listOFImages!=null)
+            foreach (var item in listOFImages)
+            {
+                if (item.IsThumbnail)
+                    Thumbnail.ImageUrl = ImageHelper.GetUrlForImage(item.Id, item.Extension);
+            }
+
+            ImageGallery.DataSource = listOFImages;
+            ImageGallery.DataBind();
             BidsList.DataBind();
         }
 
@@ -33,7 +44,7 @@ namespace AHWForm
         public string CreatorName { get { return AuctionCreatorName.Text; }set { AuctionCreatorName.Text = value; } }
         public string DateCreated { get { return AuctionCreated.Text; } set { AuctionCreated.Text = value; } }
         public List<AuctionBidViewModel> bids { get { return null; } set { BidsList.DataSource = value; } }
-
+        public List<ImagesModel> listOFImages { get; set; }
 
         protected void Bid_Click(object sender, EventArgs e)
         {

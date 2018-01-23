@@ -16,6 +16,17 @@
                 <asp:DropDownList runat="server" ID="ExpiresInDropDown" ></asp:DropDownList><br>
                 <asp:Label runat="server"  ID="DescriptionTextBoxLabel" meta:resourcekey="DescriptionTextBoxLabelResource1"></asp:Label><br>
                 <asp:TextBox runat="server" ID="DescriptionTextBox" meta:resourcekey="DescriptionTextBoxResource1"></asp:TextBox>
+                <asp:Label runat="server" ID="AddImagesLabel"/><br/>
+                <asp:FileUpload runat="server" Id="ImageUpload"/>
+                <asp:Button runat="server" ID="UploadImageButton" OnClick="UploadImageButton_OnClick" />
+                <asp:GridView runat="server" AutoGenerateColumns="false" ShowHeader="False">
+                    <Columns>
+                        <asp:BoundField DataField="ImageText"/>
+                        <asp:ImageField DataImageUrlField="ImagePath" ControlStyle-Height="100" ControlStyle-Width="100"/>
+                    </Columns>
+                </asp:GridView>
+
+                
             </div>
             <div class="RightMiddleBar">
                 <asp:TreeView ID="NewAuctionTreeView" runat="server" Font-Names="Verdana" Font-Size="12px" 

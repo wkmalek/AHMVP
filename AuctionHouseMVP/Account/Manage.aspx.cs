@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using AHWForm.Models;
+using System.Globalization;
 
 namespace AHWForm.Account
 {
@@ -77,6 +78,15 @@ namespace AHWForm.Account
                         : String.Empty;
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
                 }
+                //TO CHANGE
+                LanguageDropDown.Items.Add("EN");
+                LanguageDropDown.Items.Add("PL");
+
+                CurrencyDropDown.Items.Add("USD");
+                CurrencyDropDown.Items.Add("PLN");
+
+                LanguageDropDown.Items.FindByValue(Request.Cookies["lang"].Value).Selected = true;
+                CurrencyDropDown.Items.FindByValue(Request.Cookies["currency"].Value).Selected = true;
             }
         }
 
@@ -123,6 +133,25 @@ namespace AHWForm.Account
             manager.SetTwoFactorEnabled(User.Identity.GetUserId(), true);
 
             Response.Redirect("/Account/Manage");
+        }
+
+        protected void CurrencyDropDown_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Write coockie with default currency
+            HttpCookie currencyCookie = new HttpCookie("currency");
+            currencyCookie.Value = CurrencyDropDown.SelectedItem.Value;
+            currencyCookie.Expires = DateTime.Now.AddDays(7);
+            Response.Cookies.Add(currencyCookie);
+        }
+
+        protected void LanguageDropDown_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Write cookie with default lang
+            HttpCookie langCookie = new HttpCookie("lang");
+            langCookie.Value = LanguageDropDown.SelectedItem.Value;
+            langCookie.Expires = DateTime.Now.AddDays(7);
+            Response.Cookies.Add(langCookie);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Request.Cookies["lang"].Value);
         }
     }
 }

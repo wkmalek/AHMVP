@@ -10,6 +10,7 @@ namespace AHWForm.Models
 {
     public class AuctionModel 
     {
+        //Somecode to calculate currency HERE
         [ScaffoldColumn(false)]        
         public string Id { get; set; }
         [ScaffoldColumn(false)]
@@ -31,7 +32,7 @@ namespace AHWForm.Models
         [ScaffoldColumn(false)]
         public string WinnerId { get; set; }
         public string LongDescription { get; set; }
-        //public string Currency { get; set; }
+        public string Currency { get; set; }
     }
 
     

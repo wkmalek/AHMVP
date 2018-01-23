@@ -17,10 +17,10 @@ namespace AHWForm.ExtMethods
             }
             catch (Exception e)
             {
-                //Console.WriteLine(e);
-                //throw;
+                ExHelper.HandleException(e);
                 return "";
             }
+
             
         }
 

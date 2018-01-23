@@ -39,6 +39,8 @@ namespace AHWForm.Presenter
             _pView.Price = vm.ActualPrice;
             _pView.ShortDescription = vm.ShortDescription;
             _pView.bids = vm.bidsViewModel.bidsViewModel.OrderByDescending(x=>x.Value).ToList();
+            _pView.listOFImages = vm.imgModel;
+
         }
     }
 }
