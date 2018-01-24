@@ -1,0 +1,9 @@
+-Resource, multilang(done)
+-Search filters(done)
+-ValueExchange as repo(Done)
+-Own webservice, rest api, one functionnality of service, json format
+-Logger
+-DataBound
+-Bugfixing{
+	-Wrong prices
+}

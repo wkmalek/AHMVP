@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionHouseMVP", "AuctionH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageHandler", "..\AuctionHouse MVC\ImageHandler\ImageHandler.csproj", "{EE295FC4-A55C-42F1-8C61-383033F2DC57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageLoader", "ImageLoader\ImageLoader.csproj", "{E9D3E601-C20C-4C0D-A0C3-A751AB33C948}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{77B886E3-9E40-4F50-A611-B6498A17E041}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{EE295FC4-A55C-42F1-8C61-383033F2DC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE295FC4-A55C-42F1-8C61-383033F2DC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE295FC4-A55C-42F1-8C61-383033F2DC57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9D3E601-C20C-4C0D-A0C3-A751AB33C948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9D3E601-C20C-4C0D-A0C3-A751AB33C948}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9D3E601-C20C-4C0D-A0C3-A751AB33C948}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9D3E601-C20C-4C0D-A0C3-A751AB33C948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B886E3-9E40-4F50-A611-B6498A17E041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B886E3-9E40-4F50-A611-B6498A17E041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B886E3-9E40-4F50-A611-B6498A17E041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B886E3-9E40-4F50-A611-B6498A17E041}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

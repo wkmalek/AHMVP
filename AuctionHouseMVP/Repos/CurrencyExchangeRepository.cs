@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Web.Http.ExceptionHandling;
+using System.Linq;
+using System.Web;
 using System.Xml;
-using System.Xml.Serialization;
-using Antlr.Runtime.Tree;
+using AHWForm.ExtMethods;
 
-
-namespace AHWForm.ExtMethods
+namespace AHWForm.Repos
 {
-    public class CurrencyCalc
+    public class CurrencyExchangeRepository:ICurrencyExchangeRepository
     {
         private static readonly string linkToService = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
         private XmlNodeList nodes;
         private List<XmlNode> lst;
-        public CurrencyCalc()
+        public CurrencyExchangeRepository()
         {
             List<string> finallist = new List<string>();
             XmlDocument doc = new XmlDocument();
@@ -27,34 +25,41 @@ namespace AHWForm.ExtMethods
             {
                 lst.Add(nodes[i]);
             }
-           
+
         }
 
-        public decimal GetMultiplier(string first, string second)
+        private decimal GetMultiplier(string first, string second)
         {
-            var one = GetAttribute(first, lst);
-            var two = GetAttribute(second, lst);
+            var one = GetAttribute(first, lst).Replace('.', ',');
+            var two = GetAttribute(second, lst).Replace('.', ',');
             if ((one != null) && (two != null) && (one != "0") && (two != "0"))
             {
-                return Decimal.Parse(two) / Decimal.Parse(one);
+                return Decimal.Round((Decimal.Parse(two) / Decimal.Parse(one)), 2);
             }
             return 0;
         }
 
-        public string GetAttribute(string attrib, List<XmlNode> lst)
+        private string GetAttribute(string attrib, List<XmlNode> lst)
         {
             if (attrib == "EUR")
                 return "1";
             foreach (var item in lst)
             {
-                if(item.Attributes["currency"]?.Value != null)
-                    if(item.Attributes.Count > 0)
+                if (item.Attributes["currency"]?.Value != null)
+                    if (item.Attributes.Count > 0)
                         if (item.Attributes["currency"].Value == attrib)
                         {
                             return item.Attributes["rate"].Value;
                         }
             }
             return null;
+        }
+
+        public decimal GetValueInAnotherCurrency(decimal value, string currency, string currency2)
+        {
+            if (currency == currency2)
+                return value;
+            return (GetMultiplier(currency, currency2)) * value;
         }
     }
 }

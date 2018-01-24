@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AHWForm.Repos;
 
 namespace AHWForm.Presenter
 {
@@ -28,10 +29,10 @@ namespace AHWForm.Presenter
             HttpContext.Current.Response.Redirect("~/Bid?Id=" + HttpContext.Current.Request.QueryString["ID"]);
         }
 
-        internal void PopulateAuction()
+        internal void PopulateAuction(string currency)
         {  
             //load query string and pass to method
-            var vm = _pModel.LoadAuction(HttpContext.Current.Request.QueryString["Id"]);
+            var vm = _pModel.LoadAuction(HttpContext.Current.Request.QueryString["Id"], currency, new CurrencyExchangeRepository());
             _pView.AuctionTitle = vm.ActualPrice;
             _pView.CreatorName = vm.CreatorName;
             _pView.DateCreated = vm.DateCreated;
@@ -40,7 +41,7 @@ namespace AHWForm.Presenter
             _pView.ShortDescription = vm.ShortDescription;
             _pView.bids = vm.bidsViewModel.bidsViewModel.OrderByDescending(x=>x.Value).ToList();
             _pView.listOFImages = vm.imgModel;
-
+            _pView.Currency = currency;
         }
     }
 }

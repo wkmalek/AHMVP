@@ -112,6 +112,10 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
@@ -260,6 +264,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="WebService1.asmx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\UnderConstruction.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -313,6 +318,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\WebApiController.cs" />
+    <Compile Include="Api\WebApiConfig.cs" />
     <Compile Include="CreateComment.aspx.cs">
       <DependentUpon>CreateComment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -320,14 +327,16 @@
     <Compile Include="CreateComment.aspx.designer.cs">
       <DependentUpon>CreateComment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ExtMethods\CurrencyCalc.cs" />
-    <Compile Include="ExtMethods\CurrencyHelper.cs" />
+    <Compile Include="ExtMethods\ApiPostDecrypter.cs" />
+    <Compile Include="ExtMethods\EncryptionModule.cs" />
     <Compile Include="ExtMethods\ExHelper.cs" />
     <Compile Include="ExtMethods\ImageHelper.cs" />
     <Compile Include="ExtMethods\MiscHelper.cs" />
     <Compile Include="ExtMethods\UIHelper.cs" />
     <Compile Include="ExtMethods\UrlHelper.cs" />
     <Compile Include="ExtMethods\UserHelper.cs" />
+    <Compile Include="Models\ApiDataObject.cs" />
+    <Compile Include="Models\ApiUser.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\AuctionBidsViewModel.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\AuctionDetailsModel.cs" />
     <Compile Include="AccountComments.aspx.cs">
@@ -487,6 +496,7 @@
     <Compile Include="Models\Auctions\AuctionList\AuctionListViewModel.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\IAuctionDetailsModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\CreateAuctionModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionThroughApiModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\CreateAuctionViewModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\ICreateAuctionModel.cs" />
     <Compile Include="Models\Comments\CommentsBuyView.cs" />
@@ -543,8 +553,12 @@
     <Compile Include="Presenter\CreateAuctionPresenter.cs" />
     <Compile Include="Presenter\CreateCommentPresenter.cs" />
     <Compile Include="Models\Comments\ICommentsModel.cs" />
+    <Compile Include="Repos\ApiAuthRepository.cs" />
     <Compile Include="Repos\CommentsRepository.cs" />
+    <Compile Include="Repos\CurrencyExchangeRepository.cs" />
+    <Compile Include="Repos\IApiAuthRepository.cs" />
     <Compile Include="Repos\ICommentsRepository.cs" />
+    <Compile Include="Repos\ICurrencyExchangeRepository.cs" />
     <Compile Include="Repos\IImageRepository.cs" />
     <Compile Include="Repos\ImageRepository.cs" />
     <Compile Include="View\ICommentsView.cs" />
@@ -586,6 +600,10 @@
     <Compile Include="View\ICreateAuctionView.cs" />
     <Compile Include="View\ICreateComment.cs" />
     <Compile Include="View\IMasterPageView.cs" />
+    <Compile Include="WebService1.asmx.cs">
+      <DependentUpon>WebService1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -613,6 +631,12 @@
       <Project>{ee295fc4-a55c-42f1-8c61-383033f2dc57}</Project>
       <Name>ImageHandler</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AuctionDetails.aspx.pl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AuctionDetails.aspx.en.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

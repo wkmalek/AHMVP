@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
@@ -29,6 +30,7 @@ namespace AHWForm
         
         public IEnumerable<CategoryModel> tv {get;set;}
 
+        
         protected void Page_Init(object sender, EventArgs e)
         {
             // The code below helps to protect against XSRF attacks
@@ -60,9 +62,6 @@ namespace AHWForm
                 
             }
 
-            //var reasd = CurrencyHelper.GetValueInAnotherCurrency(12, "PL");
-            Console.Write("");
-
             if (Request.Cookies["lang"] == null)
             {
                 //Write cookie with default lang
@@ -81,7 +80,11 @@ namespace AHWForm
                 Response.Cookies.Add(currencyCookie);
             }
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Request.Cookies["lang"].Value);
+            
+            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(Request.Cookies["lang"].Value);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(Request.Cookies["lang"].Value);
+            
+
 
             Page.PreLoad += master_Page_PreLoad;
         }

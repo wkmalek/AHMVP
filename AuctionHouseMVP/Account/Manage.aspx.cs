@@ -10,6 +10,8 @@ using Microsoft.Owin.Security;
 using Owin;
 using AHWForm.Models;
 using System.Globalization;
+using AHWForm.ExtMethods;
+using AHWForm.Repos;
 
 namespace AHWForm.Account
 {
@@ -78,15 +80,47 @@ namespace AHWForm.Account
                         : String.Empty;
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
                 }
+                //
+                
                 //TO CHANGE
-                LanguageDropDown.Items.Add("EN");
-                LanguageDropDown.Items.Add("PL");
+                LanguageDropDown.Items.Add("en-US");
+                LanguageDropDown.Items.Add("pl-PL");
 
                 CurrencyDropDown.Items.Add("USD");
                 CurrencyDropDown.Items.Add("PLN");
+                try
+                {
+                    LanguageDropDown.Items.FindByValue(Request.Cookies["lang"].Value).Selected = true;
+                }
+                catch (Exception ex)
+                {
+                    ExHelper.HandleException(ex);
+                }
 
-                LanguageDropDown.Items.FindByValue(Request.Cookies["lang"].Value).Selected = true;
-                CurrencyDropDown.Items.FindByValue(Request.Cookies["currency"].Value).Selected = true;
+                try
+                {
+                    CurrencyDropDown.Items.FindByValue(Request.Cookies["currency"].Value).Selected = true;
+                }
+                catch (Exception ex)
+                {
+                    ExHelper.HandleException(ex);
+                }
+
+                ApiAuthRepository apiRepo = new ApiAuthRepository();
+                if (User.Identity.IsAuthenticated)
+                {
+                    var ApiMod = apiRepo.GetApiUserByUserID(User.Identity.GetUserId());
+                    if (ApiMod != null)
+                    {
+                        PublicApiKey.Text = ApiMod.PublicKey;
+                        PrivateApiKey.Text = ApiMod.PrivateKey;
+                    }
+                    else
+                    {
+                        PublicApiKey.Text = "";
+                        PrivateApiKey.Text = "";
+                    }
+                }
             }
         }
 
@@ -152,6 +186,36 @@ namespace AHWForm.Account
             langCookie.Expires = DateTime.Now.AddDays(7);
             Response.Cookies.Add(langCookie);
             System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Request.Cookies["lang"].Value);
+        }
+
+        protected void GenerateNewPairOfKeysButton_OnClick(object sender, EventArgs e)
+        {
+            ApiAuthRepository apiRepo = new ApiAuthRepository();
+            if (User.Identity.IsAuthenticated)
+            {
+                var ApiMod = apiRepo.GetApiUserByUserID(User.Identity.GetUserId());
+                if (ApiMod != null)
+                {
+                    ApiMod.PrivateKey = Guid.NewGuid().ToString();
+                    ApiMod.PublicKey = Guid.NewGuid().ToString();
+                    apiRepo.UpdateApiUser(ApiMod);
+                    apiRepo.Save();
+                    
+                }
+                else
+                {
+                    ApiUser apiU = new ApiUser()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        PrivateKey = Guid.NewGuid().ToString(),
+                        PublicKey = Guid.NewGuid().ToString(),
+                        UserId = User.Identity.GetUserId(),
+                    };
+                    apiRepo.InsertUser(apiU);
+                    apiRepo.Save();
+                }
+            }
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

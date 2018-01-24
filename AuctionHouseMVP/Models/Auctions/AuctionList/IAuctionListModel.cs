@@ -5,6 +5,6 @@ namespace AHWForm.Presenter
 {
     public interface IAuctionListModel
     {
-        AuctionListViewModel LoadAuctions(string ID);
+        AuctionListViewModel LoadAuctions(string ID, string currency);
     }
 }

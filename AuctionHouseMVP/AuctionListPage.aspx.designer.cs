@@ -13,6 +13,87 @@ namespace AHWForm {
     public partial class AuctionListPage {
         
         /// <summary>
+        /// FilterByPriceLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FilterByPriceLabel;
+        
+        /// <summary>
+        /// FilterByPriceAscending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FilterByPriceAscending;
+        
+        /// <summary>
+        /// FilterByPriceDescending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FilterByPriceDescending;
+        
+        /// <summary>
+        /// FilterByDateLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FilterByDateLabel;
+        
+        /// <summary>
+        /// FilterByDateAscending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FilterByDateAscending;
+        
+        /// <summary>
+        /// FilterByDateDescending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FilterByDateDescending;
+        
+        /// <summary>
+        /// FilterByDescriptionLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FilterByDescriptionLabel;
+        
+        /// <summary>
+        /// FilterByDescriptionAscending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FilterByDescriptionAscending;
+        
+        /// <summary>
+        /// FilterByDescriptionDescending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FilterByDescriptionDescending;
+        
+        /// <summary>
         /// AuctionList control.
         /// </summary>
         /// <remarks>

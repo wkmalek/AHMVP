@@ -18,7 +18,7 @@
                 <div class="Price">
                     <asp:Label ID="PriceLabel" runat="server" Font-Size="24pt" meta:resourcekey="PriceLabel"/>
                     <asp:Label ID="AuctionPrice" runat="server" Font-Size="24pt" meta:resourcekey="PriceResource1" />
-                    <asp:Label ID="Currency" runat="server" Font-Size="24pt"  meta:resourcekey="Currency"/>
+                    <asp:Label ID="CurrencyLabel" runat="server" Font-Size="24pt"  meta:resourcekey="Currency"/>
                 </div>
 
                 <div class="Creator">

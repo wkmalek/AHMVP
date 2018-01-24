@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AHWForm.ExtMethods;
 using AHWForm.Models.Images;
 
 namespace AHWForm.Models
@@ -22,13 +23,18 @@ namespace AHWForm.Models
             imageRepo = new ImageRepository();
         }
 
-        public AuctionDetailsViewModel LoadAuction(string ID)
+        public AuctionDetailsViewModel LoadAuction(string ID, string currency, ICurrencyExchangeRepository currencyExchangeRepository)
         {
             var auction = auctionRepo.GetAuctionByID(ID);
+            var startPrice = currencyExchangeRepository.GetValueInAnotherCurrency(auction.EndingPrice, auction.Currency, currency);
+            var endingPrice = currencyExchangeRepository.GetValueInAnotherCurrency(auction.StartPrice, auction.Currency, currency);
+            auction.EndingPrice = endingPrice;
+            auction.StartPrice = startPrice;
+            auction.Currency = currency;
             var bids = bidsRepo.GetBidsByAuctionID(ID);
             var bidsVM = new AuctionBidsViewModel(bids);
             var img = imageRepo.GetImagesByAuctionID(ID).ToList();
-
+            
             return new AuctionDetailsViewModel(auction, bidsVM, img);   
         }
     }

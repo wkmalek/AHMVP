@@ -18,5 +18,6 @@ namespace AHWForm.View
         string DateCreated { get; set; }
         List<AuctionBidViewModel> bids {get;set;}
         List<ImagesModel> listOFImages { get; set; }
+        string Currency { get; set; }
     }
 }

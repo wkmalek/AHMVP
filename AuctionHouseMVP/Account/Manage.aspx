@@ -25,53 +25,8 @@
                     <dt>External Logins:</dt>
                     <dd><%: LoginsCount %>
                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
-
                     </dd>
-                    <%--
-                        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-                        See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-                        Uncomment the following blocks after you have set up two-factor authentication
-                    --%>
-                    <%--
-                    <dt>Phone Number:</dt>
-                    <% if (HasPhoneNumber)
-                       { %>
-                    <dd>
-                        <asp:HyperLink NavigateUrl="/Account/AddPhoneNumber" runat="server" Text="[Add]" />
-                    </dd>
-                    <% }
-                       else
-                       { %>
-                    <dd>
-                        <asp:Label Text="" ID="PhoneNumber" runat="server" />
-                        <asp:HyperLink NavigateUrl="/Account/AddPhoneNumber" runat="server" Text="[Change]" /> &nbsp;|&nbsp;
-                        <asp:LinkButton Text="[Remove]" OnClick="RemovePhone_Click" runat="server" />
-                    </dd>
-                    <% } %>
-                    --%>
-
-                    <dt>Two-Factor Authentication:</dt>
-                    <dd>
-                        <p>
-                            There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                            for details on setting up this ASP.NET application to support two-factor authentication.
-                        </p>
-                        <% if (TwoFactorEnabled)
-                          { %> 
-                        <%--
-                        Enabled
-                        <asp:LinkButton Text="[Disable]" runat="server" CommandArgument="false" OnClick="TwoFactorDisable_Click" />
-                        --%>
-                        <% }
-                          else
-                          { %> 
-                        <%--
-                        Disabled
-                        <asp:LinkButton Text="[Enable]" CommandArgument="true" OnClick="TwoFactorEnable_Click" runat="server" />
-                        --%>
-                        <% } %>
-                    </dd>
+                    
                     <dt>MainCurrency:</dt>
                     <dd>
                         <asp:DropDownList runat="server" ID="CurrencyDropDown" OnSelectedIndexChanged="CurrencyDropDown_OnSelectedIndexChanged" AutoPostBack="true"/>
@@ -80,6 +35,16 @@
                     <dd>
                         <asp:DropDownList runat="server" ID="LanguageDropDown" OnSelectedIndexChanged="LanguageDropDown_OnSelectedIndexChanged" AutoPostBack="true"/>
                     </dd>
+                    <dt>PublicApiKey</dt>
+                    <dd>
+                        <asp:Label runat="server" ID="PublicApiKey" />
+                    </dd>
+                    <dt>PrivateApiKey</dt>
+                    <dd>
+                        <asp:Label runat="server" ID="PrivateApiKey" />
+                    </dd>
+                    
+                    <dt><asp:Button runat="server" ID="GenerateNewPairOfKeysButton" OnClick="GenerateNewPairOfKeysButton_OnClick" Text="Generate new keys"/></dt>
                 </dl>
             </div>
         </div>

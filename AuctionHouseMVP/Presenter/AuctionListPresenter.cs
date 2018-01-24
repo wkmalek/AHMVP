@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AHWForm.Models;
 
 namespace AHWForm.Presenter
 {
@@ -22,11 +23,14 @@ namespace AHWForm.Presenter
                 "~/AuctionDetails/Id=" + HttpContext.Current.Request.QueryString["Id"]);      
         }
 
-        internal void PopulateAuctionList()
+        internal void PopulateAuctionList(string currency)
         {
-            var vm = _pModel.LoadAuctions(HttpContext.Current.Request.QueryString["Category"]);
+            var vm = _pModel.LoadAuctions(HttpContext.Current.Request.QueryString["Category"], currency);
+          
             _pView.vm = vm.mainList;
         }
+
+        
     }
 
 

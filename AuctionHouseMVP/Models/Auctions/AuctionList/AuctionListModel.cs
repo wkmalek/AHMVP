@@ -13,6 +13,7 @@ namespace AHWForm.Models
         private IBidsRepository bidsRepo { get; set; }
         private ICategoryRepository catRepo { get; set; }
 
+
         public AuctionListModel()
         {
             this.auctionRepo = new AuctionsRepository();
@@ -20,11 +21,11 @@ namespace AHWForm.Models
             this.catRepo = new CategoryRepository(new CategoryContext());
         }
 
-        public AuctionListViewModel LoadAuctions(string ID)
+        public AuctionListViewModel LoadAuctions(string ID, string currency)
         {
             var cats = catRepo.GetCategoriesWithChilds(ID);
             var auctions = auctionRepo.GetAuctionsByCatList(cats);
-            AuctionListViewModel vm = new AuctionListViewModel(auctions);
+            AuctionListViewModel vm = new AuctionListViewModel(auctions, currency);
             return vm;
         }
     }
