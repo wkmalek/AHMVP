@@ -15,9 +15,9 @@ namespace AHWForm.ExtMethods
             {
                 return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(id).UserName;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                ExHelper.HandleException(e);
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                 return "";
             }
 

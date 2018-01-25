@@ -95,7 +95,7 @@ namespace AHWForm.Account
                 }
                 catch (Exception ex)
                 {
-                    ExHelper.HandleException(ex);
+                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                 }
 
                 try
@@ -104,7 +104,7 @@ namespace AHWForm.Account
                 }
                 catch (Exception ex)
                 {
-                    ExHelper.HandleException(ex);
+                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                 }
 
                 ApiAuthRepository apiRepo = new ApiAuthRepository();
@@ -237,7 +237,7 @@ namespace AHWForm.Account
                 }
                 catch (Exception ex)
                 {
-                    ExHelper.HandleException(ex);
+                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                 }
                 finally
                 {

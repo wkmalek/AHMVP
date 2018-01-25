@@ -32,7 +32,7 @@ namespace AHWForm.ExtMethods
             }
             catch (Exception ex)
             {
-                ExHelper.HandleException(ex);
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
             }
             return false;
         }
@@ -60,7 +60,7 @@ namespace AHWForm.ExtMethods
                 }
                 catch (CryptographicException ex)
                 {
-                    ExHelper.HandleException(ex);
+                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     success = false;
                 }
                 finally

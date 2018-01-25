@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Json.NET.Web, Version=1.0.49.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Json.NET.Web.1.0.49\lib\portable45-net45+win8+wpa81\Json.NET.Web.dll</HintPath>
       <Private>True</Private>
@@ -261,6 +265,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="AuctionDetails.aspx" />
     <Content Include="AuctionListPage.aspx" />
     <Content Include="Bid.aspx" />
@@ -341,7 +346,6 @@
     </Compile>
     <Compile Include="ExtMethods\ApiPostDecrypter.cs" />
     <Compile Include="ExtMethods\EncryptionModule.cs" />
-    <Compile Include="ExtMethods\ExHelper.cs" />
     <Compile Include="ExtMethods\ImageHelper.cs" />
     <Compile Include="ExtMethods\MiscHelper.cs" />
     <Compile Include="ExtMethods\UIHelper.cs" />
@@ -619,6 +623,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Logger\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
