@@ -15,7 +15,7 @@ using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class CreateAuction : System.Web.UI.Page, IExtensionMethods, ICreateAuctionView
+    public partial class CreateAuction : System.Web.UI.Page, ICreateAuctionView
     {
         private CreateAuctionPresenter p;
         public IEnumerable<CategoryModel> tv { get; set; }

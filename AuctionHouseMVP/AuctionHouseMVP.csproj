@@ -281,7 +281,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
-    <Content Include="WebService1.asmx" />
+    <Content Include="Models\App.config" />
+    <Content Include="Models\packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\UnderConstruction.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -337,6 +338,31 @@
   <ItemGroup>
     <Compile Include="Api\WebApiController.cs" />
     <Compile Include="Api\WebApiConfig.cs" />
+    <Compile Include="Helper\ImageHelper.cs" />
+    <Compile Include="Models\ApiDataObject.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\AuctionBidsViewModel.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\AuctionBidViewModel.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\AuctionDetailsModel.cs" />
+    <Compile Include="Models\Auctions\AuctionDetails\IAuctionDetailsModel.cs" />
+    <Compile Include="Models\Auctions\AuctionList\AuctionListModel.cs" />
+    <Compile Include="Models\Auctions\AuctionList\AuctionListSingleElemVM.cs" />
+    <Compile Include="Models\Auctions\AuctionList\AuctionListViewModel.cs" />
+    <Compile Include="Models\Auctions\AuctionList\IAuctionListModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionThroughApiModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionViewModel.cs" />
+    <Compile Include="Models\Auctions\CreateAuction\ICreateAuctionModel.cs" />
+    <Compile Include="Models\Auctions\SingleAuctionViewModel.cs" />
+    <Compile Include="Models\Bids\IBidViewModel.cs" />
+    <Compile Include="Models\Bids\NewBidViewModel.cs" />
+    <Compile Include="Models\Category\CategoryFetchModel.cs" />
+    <Compile Include="Models\Comments\CommentsBuyView.cs" />
+    <Compile Include="Models\Comments\CommentsSellView.cs" />
+    <Compile Include="Models\Comments\ExtendentComments.cs" />
+    <Compile Include="Models\Comments\ICommentsModel.cs" />
+    <Compile Include="Models\Comments\UserCommentsModel.cs" />
+    <Compile Include="Models\IMasterPageModel.cs" />
+    <Compile Include="Models\MasterPageViewModel.cs" />
     <Compile Include="CreateComment.aspx.cs">
       <DependentUpon>CreateComment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -344,17 +370,6 @@
     <Compile Include="CreateComment.aspx.designer.cs">
       <DependentUpon>CreateComment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ExtMethods\ApiPostDecrypter.cs" />
-    <Compile Include="ExtMethods\EncryptionModule.cs" />
-    <Compile Include="ExtMethods\ImageHelper.cs" />
-    <Compile Include="ExtMethods\MiscHelper.cs" />
-    <Compile Include="ExtMethods\UIHelper.cs" />
-    <Compile Include="ExtMethods\UrlHelper.cs" />
-    <Compile Include="ExtMethods\UserHelper.cs" />
-    <Compile Include="Models\ApiDataObject.cs" />
-    <Compile Include="Models\ApiUser.cs" />
-    <Compile Include="Models\Auctions\AuctionDetails\AuctionBidsViewModel.cs" />
-    <Compile Include="Models\Auctions\AuctionDetails\AuctionDetailsModel.cs" />
     <Compile Include="AccountComments.aspx.cs">
       <DependentUpon>AccountComments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -504,20 +519,6 @@
     <Compile Include="Bid.aspx.designer.cs">
       <DependentUpon>Bid.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ExtMethods\ExtensionMethods.cs" />
-    <Compile Include="ExtMethods\IExtensionMethods.cs" />
-    <Compile Include="Models\Auctions\AuctionDetails\AuctionBidViewModel.cs" />
-    <Compile Include="Models\Auctions\AuctionList\AuctionListModel.cs" />
-    <Compile Include="Models\Auctions\AuctionList\AuctionListSingleElemVM.cs" />
-    <Compile Include="Models\Auctions\AuctionList\AuctionListViewModel.cs" />
-    <Compile Include="Models\Auctions\AuctionDetails\IAuctionDetailsModel.cs" />
-    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionModel.cs" />
-    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionThroughApiModel.cs" />
-    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionViewModel.cs" />
-    <Compile Include="Models\Auctions\CreateAuction\ICreateAuctionModel.cs" />
-    <Compile Include="Models\Comments\CommentsBuyView.cs" />
-    <Compile Include="Models\Comments\CommentsSellView.cs" />
-    <Compile Include="Models\Comments\ExtendentComments.cs" />
     <Compile Include="CommentSite.aspx.cs">
       <DependentUpon>CommentSite.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -549,45 +550,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Auctions\AuctionModel.cs" />
-    <Compile Include="Models\Bids\BidsModel.cs" />
-    <Compile Include="Models\Category\CategoryModel.cs" />
-    <Compile Include="Models\Comments\CommentsModel.cs" />
-    <Compile Include="Models\Bids\IBidViewModel.cs" />
-    <Compile Include="Models\Comments\UserCommentsModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Enum\paramTypeForCategory.cs" />
-    <Compile Include="Models\Images\ImagesModel.cs" />
-    <Compile Include="Models\MasterPageViewModel.cs" />
-    <Compile Include="Models\Bids\NewBidViewModel.cs" />
-    <Compile Include="Models\Auctions\SingleAuctionViewModel.cs" />
+    <Compile Include="Helper\ExtensionMethods.cs" />
+    <Compile Include="Helper\MiscHelper.cs" />
+    <Compile Include="Helper\UrlHelper.cs" />
+    <Compile Include="Helper\UserHelper.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Presenter\AuctionDetailsPresenter.cs" />
-    <Compile Include="Models\IMasterPageModel.cs" />
     <Compile Include="Presenter\AuctionListPresenter.cs" />
-    <Compile Include="Models\Auctions\AuctionList\IAuctionListModel.cs" />
     <Compile Include="Presenter\BidPresenter.cs" />
     <Compile Include="Presenter\CreateAuctionPresenter.cs" />
     <Compile Include="Presenter\CreateCommentPresenter.cs" />
-    <Compile Include="Models\Comments\ICommentsModel.cs" />
-    <Compile Include="Repos\ApiAuthRepository.cs" />
-    <Compile Include="Repos\CommentsRepository.cs" />
-    <Compile Include="Repos\CurrencyExchangeRepository.cs" />
-    <Compile Include="Repos\IApiAuthRepository.cs" />
-    <Compile Include="Repos\ICommentsRepository.cs" />
-    <Compile Include="Repos\ICurrencyExchangeRepository.cs" />
-    <Compile Include="Repos\IImageRepository.cs" />
-    <Compile Include="Repos\ImageRepository.cs" />
     <Compile Include="View\ICommentsView.cs" />
     <Compile Include="Presenter\UserCommentListPresenter.cs" />
     <Compile Include="View\IAuctionListView.cs" />
     <Compile Include="Presenter\MasterPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repos\AuctionsRepository.cs" />
-    <Compile Include="Repos\BidsRepository.cs" />
-    <Compile Include="Repos\CategoryRepository.cs" />
-    <Compile Include="Repos\IAuctionsRepository.cs" />
-    <Compile Include="Repos\IBidsRepository.cs" />
-    <Compile Include="Repos\ICategoryRepository.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -616,14 +594,9 @@
     <Compile Include="View\ICreateAuctionView.cs" />
     <Compile Include="View\ICreateComment.cs" />
     <Compile Include="View\IMasterPageView.cs" />
-    <Compile Include="WebService1.asmx.cs">
-      <DependentUpon>WebService1.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Logger\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -647,6 +620,18 @@
     <ProjectReference Include="..\..\AuctionHouse MVC\ImageHandler\ImageHandler.csproj">
       <Project>{ee295fc4-a55c-42f1-8c61-383033f2dc57}</Project>
       <Name>ImageHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PocoModels\PocoModels.csproj">
+      <Project>{2f9efa08-7c72-405f-a8cf-99c983d8eef1}</Project>
+      <Name>PocoModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{81cf6c4c-b3c3-4021-8056-1963939d016d}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApi\WebApi.csproj">
+      <Project>{77b886e3-9e40-4f50-a611-b6498a17e041}</Project>
+      <Name>WebApi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

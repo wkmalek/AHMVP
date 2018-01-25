@@ -2,7 +2,7 @@
 -Search filters(done)
 -ValueExchange as repo(Done)
 -Own webservice, rest api, one functionnality of service, json format (Done)
--Logger
+-Logger(Done)
 -DataBound
 -Bugfixing{
 	-Wrong prices

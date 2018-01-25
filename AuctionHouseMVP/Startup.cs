@@ -8,12 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
 using AHWForm.Classes_And_Interfaces;
-using AHWForm.Repos;
 
 [assembly: OwinStartupAttribute(typeof(AHWForm.Startup))]
 namespace AHWForm
 {
-    public partial class Startup: IExtensionMethods
+    public partial class Startup
         { 
 
         

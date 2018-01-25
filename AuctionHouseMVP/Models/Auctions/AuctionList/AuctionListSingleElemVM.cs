@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
-using AHWForm.Classes_And_Interfaces;
 using AHWForm.ExtMethods;
 using AHWForm.Repos;
-using AHWForm.View;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace AHWForm.Models
 {

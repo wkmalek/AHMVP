@@ -9,12 +9,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using AHWForm.Classes_And_Interfaces;
 using AHWForm.ExtMethods;
+using AHWForm.Helper;
 using AHWForm.Models.Comments;
 using AHWForm.Presenter;
 
 namespace AHWForm
 {
-    public partial class CommentSite : System.Web.UI.Page, IExtensionMethods, ICommentsView
+    public partial class CommentSite : System.Web.UI.Page, ICommentsView
     {
         public List<CommentsBuyView> vm { get; set; }
         private UserCommentListPresenter p;

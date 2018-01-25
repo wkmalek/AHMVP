@@ -11,7 +11,7 @@ using AHWForm.Classes_And_Interfaces;
 
 namespace AHWForm
 {
-    public partial class AccountComments : System.Web.UI.Page, IExtensionMethods 
+    public partial class AccountComments : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

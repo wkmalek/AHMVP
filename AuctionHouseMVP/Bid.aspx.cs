@@ -10,12 +10,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using AHWForm.Classes_And_Interfaces;
 using AHWForm.Presenter;
-using AHWForm.Repos;
 using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class Bid : System.Web.UI.Page, IExtensionMethods, IBidView
+    public partial class Bid : System.Web.UI.Page, IBidView
     {
         private BidPresenter p;
         public string Value

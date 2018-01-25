@@ -1,31 +1,31 @@
-﻿using AHWForm.Repos;
-using AHWForm.View;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AHWForm.ExtMethods;
 using AHWForm.Models.Images;
+using AHWForm.Repos;
+using AHWForm.View;
+using Repositories;
 
 namespace AHWForm.Models
 {
     public class AuctionDetailsModel : IAuctionDetailsModel
     {
-        private IAuctionsRepository auctionRepo {get;set;}
-        private IBidsRepository bidsRepo { get; set; }
-        private IImageRepository imageRepo { get; set; }
+        private AuctionsRepository auctionRepo;
+        private BidsRepository bidsRepo;
+        private ImageRepository imageRepo;
         public AuctionDetailsModel()
         {
-            auctionRepo = new AuctionsRepository();
-            bidsRepo = new BidsRepository(new BidContext());
-            imageRepo = new ImageRepository();
+
+            auctionRepo = RepositoryFactory.GetRepositoryInstance<AuctionModel, AuctionsRepository>();
+            bidsRepo = RepositoryFactory.GetRepositoryInstance<BidsModel, BidsRepository>();
+            imageRepo = RepositoryFactory.GetRepositoryInstance<ImagesModel, ImageRepository>();
         }
 
         public AuctionDetailsViewModel LoadAuction(string ID, string currency, ICurrencyExchangeRepository currencyExchangeRepository)
         {
-            var auction = auctionRepo.GetAuctionByID(ID);
+            var auction = auctionRepo.GetSingleElementByID(ID);
             var startPrice = currencyExchangeRepository.GetValueInAnotherCurrency(auction.EndingPrice, auction.Currency, currency);
             var endingPrice = currencyExchangeRepository.GetValueInAnotherCurrency(auction.StartPrice, auction.Currency, currency);
             auction.EndingPrice = endingPrice;
@@ -50,7 +50,7 @@ namespace AHWForm.Models
             AuctionTitle = auc.Title;
             ActualPrice = auc.EndingPrice.ToString();
             //Currency = auc.Currency;
-            CreatorName = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(auc.CreatorId).UserName;
+            CreatorName = UserHelper.GetUserNameById(auc.CreatorId);
             CreatorId = auc.CreatorId;
             ShortDescription = auc.Description;
             LongDescription = auc.LongDescription;

@@ -17,12 +17,11 @@ using MoreLinq;
 using AHWForm.Classes_And_Interfaces;
 using AHWForm.ExtMethods;
 using AHWForm.View;
-using AHWForm.Repos;
 using AHWForm.Presenter;
 
 namespace AHWForm
 {
-    public partial class SiteMaster : MasterPage, IExtensionMethods, IMasterPageView
+    public partial class SiteMaster : MasterPage, IMasterPageView
     {
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";

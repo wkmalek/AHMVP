@@ -199,7 +199,7 @@ namespace AHWForm.Account
                 {
                     ApiMod.PrivateKey = GenerateNewRsaPair().Private;
                     ApiMod.PublicKey = GenerateNewRsaPair().Public;
-                    apiRepo.UpdateApiUser(ApiMod);
+                    apiRepo.Update(ApiMod);
                     apiRepo.Save();
                     
                 }
@@ -212,7 +212,7 @@ namespace AHWForm.Account
                         PublicKey = GenerateNewRsaPair().Public,
                         UserId = User.Identity.GetUserId(),
                     };
-                    apiRepo.InsertUser(apiU);
+                    apiRepo.Insert(apiU);
                     apiRepo.Save();
                 }
             }
