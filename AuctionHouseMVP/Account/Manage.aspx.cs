@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Owin;
 using AHWForm.Models;
 using System.Globalization;
+using System.Security.Cryptography;
 using AHWForm.ExtMethods;
 using AHWForm.Repos;
 
@@ -196,8 +197,8 @@ namespace AHWForm.Account
                 var ApiMod = apiRepo.GetApiUserByUserID(User.Identity.GetUserId());
                 if (ApiMod != null)
                 {
-                    ApiMod.PrivateKey = Guid.NewGuid().ToString();
-                    ApiMod.PublicKey = Guid.NewGuid().ToString();
+                    ApiMod.PrivateKey = GenerateNewRsaPair().Private;
+                    ApiMod.PublicKey = GenerateNewRsaPair().Public;
                     apiRepo.UpdateApiUser(ApiMod);
                     apiRepo.Save();
                     
@@ -207,8 +208,8 @@ namespace AHWForm.Account
                     ApiUser apiU = new ApiUser()
                     {
                         Id = Guid.NewGuid().ToString(),
-                        PrivateKey = Guid.NewGuid().ToString(),
-                        PublicKey = Guid.NewGuid().ToString(),
+                        PrivateKey = GenerateNewRsaPair().Private,
+                        PublicKey = GenerateNewRsaPair().Public,
                         UserId = User.Identity.GetUserId(),
                     };
                     apiRepo.InsertUser(apiU);
@@ -216,6 +217,35 @@ namespace AHWForm.Account
                 }
             }
             Response.Redirect(Request.RawUrl);
+        }
+
+        private class PairOfRsaKeys
+        {
+            public string Public { get; set; }
+            public string Private { get; set; }
+        }
+
+        private PairOfRsaKeys GenerateNewRsaPair()
+        {
+            PairOfRsaKeys keys = new PairOfRsaKeys();
+            using (var rsa = new RSACryptoServiceProvider(1024))
+            {
+                try
+                {
+                    keys.Public = rsa.ToXmlString(false);
+                    keys.Private = rsa.ToXmlString(true);
+                }
+                catch (Exception ex)
+                {
+                    ExHelper.HandleException(ex);
+                }
+                finally
+                {
+                    rsa.PersistKeyInCsp = false;
+                }
+            }
+
+            return keys;
         }
     }
 }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Web;
-using AHWForm.Models;
+﻿using AHWForm.Models;
 using AHWForm.Repos;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security.DataProtection;
-using System.Security.Cryptography;
+
+
 namespace AHWForm.ExtMethods
 {
     public class ApiPostDecrypter
@@ -18,15 +12,16 @@ namespace AHWForm.ExtMethods
         }
 
         private IApiAuthRepository Repo;
+
         public bool GetData<T>(ApiDataObject obj, out T output)
         {
-            output = (T)obj.data;
-            if (CheckAuth(obj)) 
+            output = (T) obj.data;
+            if (CheckAuth(obj))
                 if (CheckDataFormat(obj))
                     return true;
-                    return false;
+            return false;
 
-    }
+        }
 
         private bool CheckDataFormat(ApiDataObject obj)
         {
@@ -36,13 +31,8 @@ namespace AHWForm.ExtMethods
 
         private bool CheckAuth(ApiDataObject obj)
         {
-            //DpapiDataProtectionProvider encryptProvider = new DpapiDataProtectionProvider();
-            ProtectedData encryptProvider = new 
-            //TODO
-            var apiUser = Repo.GetApiUserByPublicKey(obj.PublicKey);
-            var unhashedUser = encryptProvider;
-            var unhashedPass;            
-            //HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().CheckPasswordAsync()
+            
             return true;
         }
     }
+}

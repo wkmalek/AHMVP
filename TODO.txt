@@ -1,7 +1,7 @@
 -Resource, multilang(done)
 -Search filters(done)
 -ValueExchange as repo(Done)
--Own webservice, rest api, one functionnality of service, json format
+-Own webservice, rest api, one functionnality of service, json format (Done)
 -Logger
 -DataBound
 -Bugfixing{

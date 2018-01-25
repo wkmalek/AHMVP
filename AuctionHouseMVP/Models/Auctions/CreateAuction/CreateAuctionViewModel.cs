@@ -25,6 +25,7 @@ namespace AHWForm.Models.Auctions.CreateAuction
         {
             string auctionId = Guid.NewGuid().ToString();
             List <ImagesModel> output = new List<ImagesModel>();
+            if (output.Count > 0) { 
             foreach (var item in ImageGuid)
             {
                 ImagesModel model = new ImagesModel()
@@ -41,7 +42,7 @@ namespace AHWForm.Models.Auctions.CreateAuction
                 };
                 output.Add(model);
             }
-
+            }
             imagesModel = output;
 
             return new AuctionModel()
