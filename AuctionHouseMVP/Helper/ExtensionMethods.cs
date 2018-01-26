@@ -1,29 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using AHWForm.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using MoreLinq;
 using System.Web.UI.WebControls;
-using System;
+using AHWForm.Models;
 
-namespace AHWForm.Classes_And_Interfaces
+namespace AHWForm.Helper
 {
-    public class ExtensionMethods
+    public class TreeHelper
     {
         public static void PopulateNodes(IEnumerable<CategoryModel> categories, TreeView tw)
         {
-            
             foreach (var item in categories)
             {
                 if (item.ParentCategoryId == null)
                 {
-                    var rootNode = new TreeNode(item.Name, item.Id.ToString());
+                    var rootNode = new TreeNode(item.Name, item.Id);
                     AddChildren(categories.ToList(), rootNode);
                     tw.Nodes.Add(rootNode);
                 }
-
             }
         }
 
@@ -33,13 +26,12 @@ namespace AHWForm.Classes_And_Interfaces
             {
                 if (item.ParentCategoryId == activeTreeNode.Value)
                 {
-                    TreeNode tn = new TreeNode(item.Name, item.Id.ToString());
+                    TreeNode tn = new TreeNode(item.Name, item.Id);
 
                     AddChildren(categories, tn);
                     activeTreeNode.ChildNodes.Add(tn);
                 }
             }
-
         }
     }
 }

@@ -1,59 +1,48 @@
-﻿using AHWForm.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using MoreLinq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using AHWForm.Classes_And_Interfaces;
+using AHWForm.Models;
 using AHWForm.Presenter;
 using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class Bid : System.Web.UI.Page, IBidView
+    public partial class Bid : Page, IBidView
     {
         private BidPresenter p;
+
+        public decimal ActualValue
+        {
+            get { return 0;}
+            set { priceLabel.Text = Value.ToString(); }
+        }
+
         public string Value
         {
-            get { return priceTextBox.Text;}
-            set {}
+            get { return priceTextBox.Text; }
+            set { }
         }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             p = new BidPresenter(new NewBidViewModel(), this);
-            
+            p.Load();
+            CompareValidatorPrice.Type = ValidationDataType.Currency;
+            CompareValidatorPrice.ValueToCompare = ActualValue.ToString();
+            CompareValidatorPrice.Operator = ValidationCompareOperator.GreaterThan;
+
+
         }
 
         protected void BidSecond_Click(object sender, EventArgs e)
         {
+            
             p.Bid();
         }
- 
 
-        private bool PriceRange(string text)
+        protected void CompareValidatorPrice_OnInit(object sender, EventArgs e)
         {
-            //returns false if price is wrong or under 0
-            decimal price;
-            try
-            {
-                price = Decimal.Parse(text);
-            }
-            catch
-            {
-                return false;
-            }
-            if (price < 0)
-                return false;
-            return true;
+            
         }
-
-        
-
-
     }
 }

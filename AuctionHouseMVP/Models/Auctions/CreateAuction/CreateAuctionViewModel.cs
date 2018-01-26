@@ -1,63 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using AHWForm.ExtMethods;
 using AHWForm.Models.Images;
 
 namespace AHWForm.Models.Auctions.CreateAuction
 {
-    public class CreateAuctionViewModel:SingleAuctionViewModel
+    public class CreateAuctionViewModel : SingleAuctionViewModel
     {
         public string LongDescription { get; set; }
         public int ExpiresIn { get; set; }
         public string CategoryId { get; set; }
         public List<string> ImageGuid { get; set; }
 
-        public CreateAuctionViewModel()
-        {
-                
-        }
-
         internal AuctionModel GetModel(out List<ImagesModel> imagesModel)
         {
             string auctionId = Guid.NewGuid().ToString();
-            List <ImagesModel> output = new List<ImagesModel>();
-            if (output.Count > 0) { 
-            foreach (var item in ImageGuid)
+            List<ImagesModel> output = new List<ImagesModel>();
+            if (ImageGuid.Count > 0)
             {
-                ImagesModel model = new ImagesModel()
+                foreach (var item in ImageGuid)
                 {
-                    Id = Path.GetFileNameWithoutExtension(item),
-                    AuctionID = auctionId,
-                    CollectionId = "0",
-                    Description = "",
-                    Extension = Path.GetExtension(Path.GetExtension(item)),
-                    Img = null,
-                    IsThumbnail = true,
-                    Title = "",
-                    UserID = UserHelper.GetCurrentUser(),
-                };
-                output.Add(model);
+                    ImagesModel model = new ImagesModel
+                    {
+                        Id = Path.GetFileNameWithoutExtension(item),
+                        AuctionID = auctionId,
+                        CollectionId = "0",
+                        Description = "",
+                        Extension = Path.GetExtension(Path.GetExtension(item)),
+                        Img = null,
+                        IsThumbnail = true,
+                        Title = "",
+                        UserID = UserHelper.GetCurrentUser()
+                    };
+                    output.Add(model);
+                }
             }
-            }
+
             imagesModel = output;
 
-            return new AuctionModel()
+            return new AuctionModel
             {
-                Title = this.AuctionTitle,
-                StartPrice = Decimal.Parse(this.ActualPrice),
-                EndingPrice = Decimal.Parse(this.ActualPrice),
-                Description = this.ShortDescription,
-                LongDescription = this.LongDescription,
+                Title = AuctionTitle,
+                StartPrice = Decimal.Parse(ActualPrice),
+                EndingPrice = Decimal.Parse(ActualPrice),
+                Description = ShortDescription,
+                LongDescription = LongDescription,
                 IsEnded = false,
                 DateCreated = DateTime.Now,
                 ExpiresIn = ExpiresIn,
                 CreatorId = UserHelper.GetCurrentUser(),
                 Id = auctionId,
-                //Currency = "USD";
-                CategoryId = CategoryId,
+                Currency = Currency,
+                CategoryId = CategoryId
             };
         }
     }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AHWForm.Models.Comments;
@@ -10,26 +7,28 @@ using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class CreateComment : System.Web.UI.Page, ICreateCommentView
+    public partial class CreateComment : Page, ICreateCommentView
     {
-        public string Description { get; set; }
-        public string Rate { get; set; }
+        private static readonly int maxRate = 5;
 
         public CreateCommentPresenter p;
 
+        public string Description { get; set; }
+        public string Rate { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            p= new CreateCommentPresenter(new UserBuyCommentsModel(), this);
+            p = new CreateCommentPresenter(new UserBuyCommentsModel(), this);
             if (!Page.IsPostBack)
             {
-                CreateCommentRate.Items.AddRange(new ListItem[] 
+                var listItem = new ListItem[maxRate];
+
+                for (int i = 1; i <= maxRate; i++)
                 {
-                    new ListItem("1"),
-                    new ListItem("2"),
-                    new ListItem("3"),
-                    new ListItem("4"),
-                    new ListItem("5"),
-                });
+                    listItem[i - 1] = new ListItem(i.ToString());
+                }
+
+                CreateCommentRate.Items.AddRange(listItem);
             }
         }
 
@@ -37,10 +36,7 @@ namespace AHWForm
         {
             Description = DescriptionTextBox.Text;
             Rate = CreateCommentRate.SelectedItem.Value;
-            p.CreateNewComment(Description,Rate);
-
+            p.CreateNewComment(Description, Rate);
         }
-
-
     }
 }

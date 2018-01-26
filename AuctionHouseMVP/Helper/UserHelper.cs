@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using Elmah;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
@@ -13,15 +12,14 @@ namespace AHWForm.ExtMethods
         {
             try
             {
-                return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(id).UserName;
+                return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(id)
+                    .UserName;
             }
             catch (Exception ex)
             {
-                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                ErrorSignal.FromCurrentContext().Raise(ex);
                 return "";
             }
-
-            
         }
 
         public static string GetCurrentUser()

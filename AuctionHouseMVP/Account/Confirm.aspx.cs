@@ -3,18 +3,12 @@ using System.Web;
 using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using AHWForm.Models;
 
 namespace AHWForm.Account
 {
     public partial class Confirm : Page
     {
-        protected string StatusMessage
-        {
-            get;
-            private set;
-        }
+        protected string StatusMessage { get; private set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +24,7 @@ namespace AHWForm.Account
                     return;
                 }
             }
+
             successPanel.Visible = false;
             errorPanel.Visible = true;
         }

@@ -73,8 +73,8 @@
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.5\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MoreLinq, Version=2.9.21302.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
-      <HintPath>..\packages\morelinq.2.9.0\lib\net40\MoreLinq.dll</HintPath>
+    <Reference Include="MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.10.0\lib\net40\MoreLinq.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -254,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="AccountComments.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Forgot.aspx" />
@@ -343,6 +342,7 @@
   <ItemGroup>
     <Compile Include="Api\WebApiController.cs" />
     <Compile Include="Api\WebApiConfig.cs" />
+    <Compile Include="Helper\CookieHelper.cs" />
     <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Models\ApiDataObject.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\AuctionBidsViewModel.cs" />
@@ -354,16 +354,12 @@
     <Compile Include="Models\Auctions\AuctionList\AuctionListViewModel.cs" />
     <Compile Include="Models\Auctions\AuctionList\IAuctionListModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\CreateAuctionModel.cs" />
-    <Compile Include="Models\Auctions\CreateAuction\CreateAuctionThroughApiModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\CreateAuctionViewModel.cs" />
     <Compile Include="Models\Auctions\CreateAuction\ICreateAuctionModel.cs" />
     <Compile Include="Models\Auctions\SingleAuctionViewModel.cs" />
     <Compile Include="Models\Bids\IBidViewModel.cs" />
     <Compile Include="Models\Bids\NewBidViewModel.cs" />
-    <Compile Include="Models\Category\CategoryFetchModel.cs" />
     <Compile Include="Models\Comments\CommentsBuyView.cs" />
-    <Compile Include="Models\Comments\CommentsSellView.cs" />
-    <Compile Include="Models\Comments\ExtendentComments.cs" />
     <Compile Include="Models\Comments\ICommentsModel.cs" />
     <Compile Include="Models\Comments\UserCommentsModel.cs" />
     <Compile Include="Models\IMasterPageModel.cs" />
@@ -374,13 +370,6 @@
     </Compile>
     <Compile Include="CreateComment.aspx.designer.cs">
       <DependentUpon>CreateComment.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AccountComments.aspx.cs">
-      <DependentUpon>AccountComments.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AccountComments.aspx.designer.cs">
-      <DependentUpon>AccountComments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\AddPhoneNumber.aspx.cs">
       <DependentUpon>AddPhoneNumber.aspx</DependentUpon>

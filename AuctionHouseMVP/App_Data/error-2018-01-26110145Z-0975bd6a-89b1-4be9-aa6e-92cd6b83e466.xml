@@ -1,0 +1,174 @@
+﻿<error errorId="0975bd6a-89b1-4be9-aa6e-92cd6b83e466" application="/LM/W3SVC/2/ROOT" host="WIN-SHAREPOINTD" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="AHWForm" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at AHWForm.Models.AuctionDetailsModel.LoadAuction(String ID, String currency, ICurrencyExchangeRepository currencyExchangeRepository) in C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\Models\Auctions\AuctionDetails\AuctionDetailsModel.cs:line 32" user="test2@test.pl" time="2018-01-26T11:01:45.4917384Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:currency=PLN; lang=en-US; __AntiXsrfToken=a384e7ff6e9146d3b90a4edaa8bf35e8; .AspNet.ApplicationCookie=FebztX5LIf99nU2UijvcyS7amiTSObvHirXfpkG4tEFlLbWGrqB3ftXMWq1P1PRAnKqal9T3dgacej84AuIsomczWhLyXFEyrZ8-xYgh8-VTkAI77uhYTT6FhIxPd4tR6cKV7kc2Auq6GF-uRvTls6e0WScvoLM82kfknmX4JcI2ZQXS0O23t3mFyJBcOMireKA_Bp7G--vSTI80rnLYwB2imb2sDfiP7jWAur-k7uQ6GQxlrDKFdUs9xWMPWrmaF4SYZIVeQUCyjbOpCM0FXpsGKuT6i1r-eV7HAwEqaYclrcds2fkKFktp2j6MTFU0V0MyWGRDpyz42Bk-321DKyxB6N5GgjmufAzH9cl4-KCUFWgABPkMqDb9loCMJDHhZ2F3ATGAHqqI5EyNIWa9Dra9oa_ZgtIg5TfOCIr1su1WG6jTnky2jOUCeWOASP_I43KHyD2F4MAbq7bPyhxCm1io3EefOIwHGNBZUIsY4OgGikdu3CIslGc5fRAvS9k0&#xD;&#xA;HTTP_HOST:localhost:64131&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: currency=PLN; lang=en-US; __AntiXsrfToken=a384e7ff6e9146d3b90a4edaa8bf35e8; .AspNet.ApplicationCookie=FebztX5LIf99nU2UijvcyS7amiTSObvHirXfpkG4tEFlLbWGrqB3ftXMWq1P1PRAnKqal9T3dgacej84AuIsomczWhLyXFEyrZ8-xYgh8-VTkAI77uhYTT6FhIxPd4tR6cKV7kc2Auq6GF-uRvTls6e0WScvoLM82kfknmX4JcI2ZQXS0O23t3mFyJBcOMireKA_Bp7G--vSTI80rnLYwB2imb2sDfiP7jWAur-k7uQ6GQxlrDKFdUs9xWMPWrmaF4SYZIVeQUCyjbOpCM0FXpsGKuT6i1r-eV7HAwEqaYclrcds2fkKFktp2j6MTFU0V0MyWGRDpyz42Bk-321DKyxB6N5GgjmufAzH9cl4-KCUFWgABPkMqDb9loCMJDHhZ2F3ATGAHqqI5EyNIWa9Dra9oa_ZgtIg5TfOCIr1su1WG6jTnky2jOUCeWOASP_I43KHyD2F4MAbq7bPyhxCm1io3EefOIwHGNBZUIsY4OgGikdu3CIslGc5fRAvS9k0&#xD;&#xA;Host: localhost:64131&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="test2@test.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="test2@test.pl" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="test2@test.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/AuctionDetails" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\AuctionDetails" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="65456" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/AuctionDetails" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64131" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/AuctionDetails" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="currency=PLN; lang=en-US; __AntiXsrfToken=a384e7ff6e9146d3b90a4edaa8bf35e8; .AspNet.ApplicationCookie=FebztX5LIf99nU2UijvcyS7amiTSObvHirXfpkG4tEFlLbWGrqB3ftXMWq1P1PRAnKqal9T3dgacej84AuIsomczWhLyXFEyrZ8-xYgh8-VTkAI77uhYTT6FhIxPd4tR6cKV7kc2Auq6GF-uRvTls6e0WScvoLM82kfknmX4JcI2ZQXS0O23t3mFyJBcOMireKA_Bp7G--vSTI80rnLYwB2imb2sDfiP7jWAur-k7uQ6GQxlrDKFdUs9xWMPWrmaF4SYZIVeQUCyjbOpCM0FXpsGKuT6i1r-eV7HAwEqaYclrcds2fkKFktp2j6MTFU0V0MyWGRDpyz42Bk-321DKyxB6N5GgjmufAzH9cl4-KCUFWgABPkMqDb9loCMJDHhZ2F3ATGAHqqI5EyNIWa9Dra9oa_ZgtIg5TfOCIr1su1WG6jTnky2jOUCeWOASP_I43KHyD2F4MAbq7bPyhxCm1io3EefOIwHGNBZUIsY4OgGikdu3CIslGc5fRAvS9k0" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64131" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="currency">
+      <value string="PLN" />
+    </item>
+    <item name="lang">
+      <value string="en-US" />
+    </item>
+    <item name="__AntiXsrfToken">
+      <value string="a384e7ff6e9146d3b90a4edaa8bf35e8" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="FebztX5LIf99nU2UijvcyS7amiTSObvHirXfpkG4tEFlLbWGrqB3ftXMWq1P1PRAnKqal9T3dgacej84AuIsomczWhLyXFEyrZ8-xYgh8-VTkAI77uhYTT6FhIxPd4tR6cKV7kc2Auq6GF-uRvTls6e0WScvoLM82kfknmX4JcI2ZQXS0O23t3mFyJBcOMireKA_Bp7G--vSTI80rnLYwB2imb2sDfiP7jWAur-k7uQ6GQxlrDKFdUs9xWMPWrmaF4SYZIVeQUCyjbOpCM0FXpsGKuT6i1r-eV7HAwEqaYclrcds2fkKFktp2j6MTFU0V0MyWGRDpyz42Bk-321DKyxB6N5GgjmufAzH9cl4-KCUFWgABPkMqDb9loCMJDHhZ2F3ATGAHqqI5EyNIWa9Dra9oa_ZgtIg5TfOCIr1su1WG6jTnky2jOUCeWOASP_I43KHyD2F4MAbq7bPyhxCm1io3EefOIwHGNBZUIsY4OgGikdu3CIslGc5fRAvS9k0" />
+    </item>
+  </cookies>
+</error>

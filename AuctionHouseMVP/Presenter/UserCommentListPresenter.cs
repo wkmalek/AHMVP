@@ -1,13 +1,11 @@
-﻿using System;
-using System.Web;
-using AHWForm.Models;
+﻿using AHWForm.Helper;
 
 namespace AHWForm
 {
     internal class UserCommentListPresenter
     {
-        ICommentsModel _pModel;
-        ICommentsView _pView;
+        readonly ICommentsModel _pModel;
+        readonly ICommentsView _pView;
 
         public UserCommentListPresenter(ICommentsModel PModel, ICommentsView PView)
         {
@@ -17,8 +15,8 @@ namespace AHWForm
 
         internal void PopulateCommentList()
         {
-            //var vm = _pModel.LoadComments(HttpContext.Current.Request.QueryString["Id"]);
-            var vm = _pModel.LoadComments("03c58d0b-7548-44cf-807b-561884180bb6");
+            var qs = UrlHelper.GetQueryString("Id");
+            var vm = _pModel.LoadComments(qs);
             _pView.vm = vm;
         }
     }

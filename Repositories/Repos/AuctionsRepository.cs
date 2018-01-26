@@ -27,14 +27,10 @@ namespace AHWForm.Repos
             var auction = GetSingleElementByID(ID);
             var date = auction.DateCreated.AddDays(auction.ExpiresIn);
             var comp = DateTime.Compare(date, DateTime.Now);
-            if (comp>0)
+            if (comp <= 0)
             {
-                auction.IsEnded = true;
-                Update(auction);
-                Save();
                 return true;
             }
-
             return false;
         }
 

@@ -16,9 +16,4 @@ namespace AHWForm.Models
         public string Name { get; set; }
     }
 
-    public class CategoryContext : DbContext
-    {
-        public DbSet<CategoryModel> Categories { get; set; }
-
-    }
 }

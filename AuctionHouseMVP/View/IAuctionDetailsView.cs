@@ -1,9 +1,5 @@
-﻿using AHWForm.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AHWForm.Models;
 using AHWForm.Models.Images;
 
 namespace AHWForm.View
@@ -16,8 +12,10 @@ namespace AHWForm.View
         string Price { get; set; }
         string CreatorName { get; set; }
         string DateCreated { get; set; }
-        List<AuctionBidViewModel> bids {get;set;}
+        string DataEnd { get; set; }
+        List<AuctionBidViewModel> bids { get; set; }
         List<ImagesModel> listOFImages { get; set; }
         string Currency { get; set; }
+        bool IsEnded { get; set; }
     }
 }

@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Security.Claims;
-using System.Security.Principal;
+using System.Globalization;
+using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.AspNet.Identity;
+using AHWForm.Helper;
 using AHWForm.Models;
-using System.Linq;
-using System.Data;
-using System.Data.Linq;
-using System.Globalization;
-using MoreLinq;
-using AHWForm.Classes_And_Interfaces;
-using AHWForm.ExtMethods;
-using AHWForm.View;
 using AHWForm.Presenter;
+using AHWForm.View;
+using Microsoft.AspNet.Identity;
 
 namespace AHWForm
 {
@@ -26,10 +19,10 @@ namespace AHWForm
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
-        
-        public IEnumerable<CategoryModel> tv {get;set;}
 
-        
+        public IEnumerable<CategoryModel> tv { get; set; }
+
+
         protected void Page_Init(object sender, EventArgs e)
         {
             // The code below helps to protect against XSRF attacks
@@ -56,9 +49,8 @@ namespace AHWForm
                 {
                     responseCookie.Secure = true;
                 }
-                Response.Cookies.Set(responseCookie);
 
-                
+                Response.Cookies.Set(responseCookie);
             }
 
             if (Request.Cookies["lang"] == null)
@@ -79,16 +71,13 @@ namespace AHWForm
                 Response.Cookies.Add(currencyCookie);
             }
 
-            
-            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(Request.Cookies["lang"].Value);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(Request.Cookies["lang"].Value);
-            
-
+            Thread.CurrentThread.CurrentCulture =
+                CultureInfo.CreateSpecificCulture(CookieHelper.CheckCookie("lang", "en-Us"));
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(CookieHelper.CheckCookie("lang", "en-Us"));
 
             Page.PreLoad += master_Page_PreLoad;
         }
 
-        
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {
@@ -101,8 +90,8 @@ namespace AHWForm
             else
             {
                 // Validate the Anti-XSRF token
-                if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
-                    || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
+                if ((string) ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
+                    || (string) ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
                 {
                     throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
                 }
@@ -111,13 +100,11 @@ namespace AHWForm
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
-            if(!this.IsPostBack)
+            if (!IsPostBack)
             {
                 MasterPagePresenter p = new MasterPagePresenter(new MasterPageViewModel(), this);
                 p.PopulateMasterPage();
-                ExtensionMethods.PopulateNodes(tv, CategoriesTreeView);
+                TreeHelper.PopulateNodes(tv, CategoriesTreeView);
                 CategoriesTreeView.CollapseAll();
             }
         }
@@ -132,8 +119,5 @@ namespace AHWForm
             var value = CategoriesTreeView.SelectedNode.Value;
             Response.Redirect("/AuctionListPage?category=" + value);
         }
-
-        
     }
-
 }

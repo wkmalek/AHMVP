@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AHWForm.Repos;
+﻿using AHWForm.Repos;
+using LINQPad;
 using Repositories;
 
 namespace AHWForm.Models
 {
     public class NewBidViewModel : IBidViewModel
     {
-        
-        public decimal Value { get; set; }
-        private BidsRepository bidsRepo;
-        private AuctionsRepository auctionRepo;
+        private readonly AuctionsRepository auctionRepo;
+        private readonly BidsRepository bidsRepo;
+
         public NewBidViewModel()
         {
             bidsRepo = RepositoryFactory.GetRepositoryInstance<BidsModel, BidsRepository>();
@@ -21,12 +17,12 @@ namespace AHWForm.Models
 
         public bool Bid(BidsModel bidsModel, string ID)
         {
+            //TODO
             BidsModel bid = bidsRepo.GetMaxBidOfAuction(bidsModel.AuctionId);
             var auction = auctionRepo.GetSingleElementByID(ID);
-            
+
             if (!auctionRepo.CheckIfAuctionEnded(ID))
             {
-                
                 if (bid == null)
                 {
                     auction.EndingPrice = bidsModel.Value;
@@ -34,25 +30,31 @@ namespace AHWForm.Models
                     bidsRepo.Save();
                     return true;
                 }
-                else
+
+                if (auctionRepo.CheckIfEndingPriceIsOk(bidsModel))
                 {
-                    if (auctionRepo.CheckIfEndingPriceIsOk(bidsModel))
-                    {
-                        bidsRepo.Insert(bidsModel);
-                        bidsRepo.Save();
-                        return true;
-                    }
-                    else
-                    {
-                        return true;
-                    }
+                    bidsRepo.Insert(bidsModel);
+                    bidsRepo.Save();
+                    return true;
                 }
+
+                return true;
             }
 
-            return false;         
+            return false;
         }
 
-        
-        
+        public bool CheckAuction(string ID)
+        {
+            if (auctionRepo.GetSingleElementByID(ID) == null)
+                return false;
+            return true;
+        }
+
+        public AuctionModel GetAuctionModel(string ID)
+        {
+            return auctionRepo.GetSingleElementByID(ID);
+        }
+            
     }
 }

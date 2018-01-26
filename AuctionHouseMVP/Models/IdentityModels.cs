@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using AHWForm.Models;
 
 namespace AHWForm.Models
 {
@@ -42,6 +39,7 @@ namespace AHWForm.Models
 }
 
 #region Helpers
+
 namespace AHWForm
 {
     public static class IdentityHelper
@@ -50,18 +48,21 @@ namespace AHWForm
         public const string XsrfKey = "XsrfId";
 
         public const string ProviderNameKey = "providerName";
+
+        public const string CodeKey = "code";
+
+        public const string UserIdKey = "userId";
+
         public static string GetProviderNameFromRequest(HttpRequest request)
         {
             return request.QueryString[ProviderNameKey];
         }
 
-        public const string CodeKey = "code";
         public static string GetCodeFromRequest(HttpRequest request)
         {
             return request.QueryString[CodeKey];
         }
 
-        public const string UserIdKey = "userId";
         public static string GetUserIdFromRequest(HttpRequest request)
         {
             return HttpUtility.UrlDecode(request.QueryString[UserIdKey]);
@@ -70,18 +71,21 @@ namespace AHWForm
         public static string GetResetPasswordRedirectUrl(string code, HttpRequest request)
         {
             var absoluteUri = "/Account/ResetPassword?" + CodeKey + "=" + HttpUtility.UrlEncode(code);
-            return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
+            return new Uri(request.Url, absoluteUri).AbsoluteUri;
         }
 
         public static string GetUserConfirmationRedirectUrl(string code, string userId, HttpRequest request)
         {
-            var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" + HttpUtility.UrlEncode(userId);
-            return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
+            var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey +
+                              "=" + HttpUtility.UrlEncode(userId);
+            return new Uri(request.Url, absoluteUri).AbsoluteUri;
         }
 
         private static bool IsLocalUrl(string url)
         {
-            return !string.IsNullOrEmpty(url) && ((url[0] == '/' && (url.Length == 1 || (url[1] != '/' && url[1] != '\\'))) || (url.Length > 1 && url[0] == '~' && url[1] == '/'));
+            return !string.IsNullOrEmpty(url) &&
+                   ((url[0] == '/' && (url.Length == 1 || (url[1] != '/' && url[1] != '\\'))) ||
+                    (url.Length > 1 && url[0] == '~' && url[1] == '/'));
         }
 
         public static void RedirectToReturnUrl(string returnUrl, HttpResponse response)
@@ -97,4 +101,5 @@ namespace AHWForm
         }
     }
 }
+
 #endregion

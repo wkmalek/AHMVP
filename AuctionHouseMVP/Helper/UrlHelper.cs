@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -11,19 +10,26 @@ namespace AHWForm.Helper
     {
         public static Dictionary<string, string> GetQueryString(params string[] qs)
         {
-            Dictionary<string,string> output = new Dictionary<string, string>();
+            Dictionary<string, string> output = new Dictionary<string, string>();
             foreach (var item in qs)
             {
                 output.Add(item, HttpContext.Current.Request.QueryString[item]);
             }
+
             return output;
+        }
+
+        public static string GetQueryString(string key)
+        {
+            return HttpContext.Current.Request.QueryString[key];
         }
 
         public static string MakeQueryString(Dictionary<string, string> qs)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("?");
-            if ((qs != null) || (qs.Count > 0)) { 
+            if (qs?.Count > 0)
+            {
                 foreach (var item in qs)
                 {
                     sb.Append(item.Key);
@@ -34,16 +40,15 @@ namespace AHWForm.Helper
 
                 return sb.ToString();
             }
-            else
-            {
-                return "";
-            }
+
+            return "";
         }
 
-        public static string GetSpecificQueryFromDict(string key, Dictionary<string,string> dict)
+        public static string GetSpecificQueryFromDict(string key, Dictionary<string, string> dict)
         {
-            return dict.Where(x => x.Key == key).FirstOrDefault().Value;
+            return dict.FirstOrDefault(x => x.Key == key).Value;
         }
+
 
         public static string GetUrlForUserSite(string ID)
         {
@@ -52,9 +57,9 @@ namespace AHWForm.Helper
 
         internal static string GetUrlForWriteComment(CommentsModel model)
         {
-            Dictionary<string,string> url = new Dictionary<string, string>()
+            Dictionary<string, string> url = new Dictionary<string, string>
             {
-                {"Id", model.AuctionId},
+                {"Id", model.AuctionId}
             };
             return MakeQueryString(url);
         }
@@ -69,10 +74,14 @@ namespace AHWForm.Helper
             HttpContext.Current.Response.Redirect(link);
         }
 
+        public static void RedirectToAuction(string ID)
+        {
+            Redirect(GetUrlForAuction(ID));
+        }
+
         public static void RedirectToWriteComment(string link)
         {
             Redirect("~/CreateComment" + link);
         }
-        
     }
 }

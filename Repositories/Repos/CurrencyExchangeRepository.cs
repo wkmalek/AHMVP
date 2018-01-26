@@ -30,13 +30,16 @@ namespace AHWForm.Repos
 
         private decimal GetMultiplier(string first, string second)
         {
-            var one = GetAttribute(first, lst).Replace('.', ',');
-            var two = GetAttribute(second, lst).Replace('.', ',');
-            if ((one != null) && (two != null) && (one != "0") && (two != "0"))
-            {
-                return Decimal.Round((Decimal.Parse(two) / Decimal.Parse(one)), 2);
+            if((first != null) && (second != null))
+            { 
+                var one = GetAttribute(first, lst).Replace('.', ',');
+                var two = GetAttribute(second, lst).Replace('.', ',');
+                if ((one != "0") && (two != "0"))
+                {
+                    return Decimal.Round((Decimal.Parse(two) / Decimal.Parse(one)), 2);
+                }
             }
-            return 0;
+            return 1;
         }
 
         private string GetAttribute(string attrib, List<XmlNode> lst)

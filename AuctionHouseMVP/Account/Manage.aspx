@@ -15,18 +15,19 @@
         <div class="col-md-12">
             <div class="form-horizontal">
                 <h4>Change your account settings</h4>
-                <hr />
+                <hr/>
                 <dl class="dl-horizontal">
                     <dt>Password:</dt>
                     <dd>
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Change]" Visible="false" ID="ChangePassword" runat="server" />
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Create]" Visible="false" ID="CreatePassword" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Change]" Visible="false" ID="ChangePassword" runat="server"/>
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Create]" Visible="false" ID="CreatePassword" runat="server"/>
                     </dd>
                     <dt>External Logins:</dt>
-                    <dd><%: LoginsCount %>
-                        <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
+                    <dd>
+                        <%: LoginsCount %>
+                        <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server"/>
                     </dd>
-                    
+
                     <dt>MainCurrency:</dt>
                     <dd>
                         <asp:DropDownList runat="server" ID="CurrencyDropDown" OnSelectedIndexChanged="CurrencyDropDown_OnSelectedIndexChanged" AutoPostBack="true"/>
@@ -37,14 +38,16 @@
                     </dd>
                     <dt>PublicApiKey</dt>
                     <dd>
-                        <asp:Label runat="server" ID="PublicApiKey" />
+                        <asp:Label runat="server" ID="PublicApiKey"/>
                     </dd>
                     <dt>PrivateApiKey</dt>
                     <dd>
-                        <asp:Label runat="server" ID="PrivateApiKey" />
+                        <asp:Label runat="server" ID="PrivateApiKey"/>
                     </dd>
-                    
-                    <dt><asp:Button runat="server" ID="GenerateNewPairOfKeysButton" OnClick="GenerateNewPairOfKeysButton_OnClick" Text="Generate new keys"/></dt>
+
+                    <dt>
+                        <asp:Button runat="server" ID="GenerateNewPairOfKeysButton" OnClick="GenerateNewPairOfKeysButton_OnClick" Text="Generate new keys"/>
+                    </dt>
                 </dl>
             </div>
         </div>

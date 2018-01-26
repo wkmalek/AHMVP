@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AHWForm.Models;
+﻿using System.Web;
+using AHWForm.Helper;
 
 namespace AHWForm.Presenter
 {
@@ -19,19 +16,17 @@ namespace AHWForm.Presenter
 
         internal void RedirectToAuction(string id)
         {
-            HttpContext.Current.Response.Redirect(
-                "~/AuctionDetails/Id=" + HttpContext.Current.Request.QueryString["Id"]);      
+            UrlHelper.RedirectToAuction(UrlHelper.GetUrlForAuction(id));
         }
 
         internal void PopulateAuctionList(string currency)
         {
-            var vm = _pModel.LoadAuctions(HttpContext.Current.Request.QueryString["Category"], currency);
-          
-            _pView.vm = vm.mainList;
+            var qs = UrlHelper.GetQueryString("category");
+            var vm = _pModel.LoadAuctions(qs, currency);
+            if (vm != null)
+                _pView.vm = vm.mainList;
+            else
+                throw new HttpException(404, "Not found selected category: " + qs);
         }
-
-        
     }
-
-
 }

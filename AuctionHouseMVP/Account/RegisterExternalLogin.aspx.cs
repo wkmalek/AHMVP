@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Web;
+using System.Web.UI;
+using AHWForm.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Owin;
-using AHWForm.Models;
 
 namespace AHWForm.Account
 {
-    public partial class RegisterExternalLogin : System.Web.UI.Page
+    public partial class RegisterExternalLogin : Page
     {
         protected string ProviderName
         {
-            get { return (string)ViewState["ProviderName"] ?? String.Empty; }
+            get { return (string) ViewState["ProviderName"] ?? String.Empty; }
             private set { ViewState["ProviderName"] = value; }
         }
 
         protected string ProviderAccountKey
         {
-            get { return (string)ViewState["ProviderAccountKey"] ?? String.Empty; }
+            get { return (string) ViewState["ProviderAccountKey"] ?? String.Empty; }
             private set { ViewState["ProviderAccountKey"] = value; }
         }
 
@@ -36,6 +36,7 @@ namespace AHWForm.Account
                 RedirectOnFail();
                 return;
             }
+
             if (!IsPostBack)
             {
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -46,6 +47,7 @@ namespace AHWForm.Account
                     RedirectOnFail();
                     return;
                 }
+
                 var user = manager.Find(loginInfo.Login);
                 if (user != null)
                 {
@@ -55,7 +57,8 @@ namespace AHWForm.Account
                 else if (User.Identity.IsAuthenticated)
                 {
                     // Apply Xsrf check when linking
-                    var verifiedloginInfo = Context.GetOwinContext().Authentication.GetExternalLoginInfo(IdentityHelper.XsrfKey, User.Identity.GetUserId());
+                    var verifiedloginInfo = Context.GetOwinContext().Authentication
+                        .GetExternalLoginInfo(IdentityHelper.XsrfKey, User.Identity.GetUserId());
                     if (verifiedloginInfo == null)
                     {
                         RedirectOnFail();
@@ -70,7 +73,6 @@ namespace AHWForm.Account
                     else
                     {
                         AddErrors(result);
-                        return;
                     }
                 }
                 else
@@ -78,8 +80,8 @@ namespace AHWForm.Account
                     email.Text = loginInfo.Email;
                 }
             }
-        }        
-        
+        }
+
         protected void LogIn_Click(object sender, EventArgs e)
         {
             CreateAndLoginUser();
@@ -91,9 +93,10 @@ namespace AHWForm.Account
             {
                 return;
             }
+
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
-            var user = new ApplicationUser() { UserName = email.Text, Email = email.Text };
+            var user = new ApplicationUser {UserName = email.Text, Email = email.Text};
             IdentityResult result = manager.Create(user);
             if (result.Succeeded)
             {
@@ -103,6 +106,7 @@ namespace AHWForm.Account
                     RedirectOnFail();
                     return;
                 }
+
                 result = manager.AddLogin(user.Id, loginInfo.Login);
                 if (result.Succeeded)
                 {
@@ -116,12 +120,13 @@ namespace AHWForm.Account
                     return;
                 }
             }
+
             AddErrors(result);
         }
 
-        private void AddErrors(IdentityResult result) 
+        private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors) 
+            foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error);
             }

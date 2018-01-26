@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AHWForm.Models;
+﻿using System.Web;
+using AHWForm.Helper;
 using AHWForm.Models.Auctions.CreateAuction;
 using AHWForm.View;
 
@@ -10,8 +7,8 @@ namespace AHWForm.Presenter
 {
     public class CreateAuctionPresenter
     {
-        private ICreateAuctionModel _pModel;
-        private ICreateAuctionView _pView;
+        private readonly ICreateAuctionModel _pModel;
+        private readonly ICreateAuctionView _pView;
 
         public CreateAuctionPresenter(ICreateAuctionModel PModel, ICreateAuctionView PView)
         {
@@ -21,8 +18,10 @@ namespace AHWForm.Presenter
 
         internal void CreateAuction(CreateAuctionViewModel auc)
         {
-            _pModel.CreateAuction(auc);
-            HttpContext.Current.Response.Redirect("~/AuctionDetails?Id=" + _pModel.Id);           
+            if (_pModel.CreateAuction(auc))
+                UrlHelper.Redirect("~/AuctionDetails?Id=" + _pModel.Id);
+            else
+                throw new HttpException(404, "Auction create failed");
         }
 
         internal void Populate()

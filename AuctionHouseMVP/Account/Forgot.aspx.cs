@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
+using AHWForm.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using AHWForm.Models;
 
 namespace AHWForm.Account
 {
@@ -27,6 +26,7 @@ namespace AHWForm.Account
                     ErrorMessage.Visible = true;
                     return;
                 }
+
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send email with the code and the redirect to reset password page
                 //string code = manager.GeneratePasswordResetToken(user.Id);

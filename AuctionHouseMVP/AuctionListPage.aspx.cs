@@ -1,28 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.Entity;
+using AHWForm.Helper;
 using AHWForm.Models;
 using AHWForm.Presenter;
-using AHWForm.View;
+using Elmah;
+using NUnit.Framework;
 
 namespace AHWForm
 {
-    public partial class AuctionListPage : System.Web.UI.Page, IAuctionListView
+    public partial class AuctionListPage : Page, IAuctionListView
     {
-        public List<AuctionListSingleElemVM> vm { get; set; }
         private AuctionListPresenter p;
+        public List<AuctionListSingleElemVM> vm { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             p = new AuctionListPresenter(new AuctionListModel(), this);
-                p.PopulateAuctionList(HttpContext.Current.Request.Cookies["currency"].Value);
-                AuctionList.DataSource = vm;
-                AuctionList.DataBind();
-                InitializeCulture();
+
+            p.PopulateAuctionList(CookieHelper.CheckCookie("currency", "USD"));
+            List<AuctionListSingleElemVM> list = new List<AuctionListSingleElemVM>();
+            foreach (var item in vm)
+            {
+                if (!item.IsEnded)
+                    list.Add(item);
+            }
+            AuctionList.DataSource = list;
+            AuctionList.DataBind();
+            InitializeCulture();
         }
 
         protected void FilterByPriceAscending_OnClick(object sender, EventArgs e)
@@ -37,7 +44,7 @@ namespace AHWForm
 
         protected void FilterByDateAscending_OnClick(object sender, EventArgs e)
         {
-           AuctionList.Sort("DateCreated", SortDirection.Ascending);
+            AuctionList.Sort("DateCreated", SortDirection.Ascending);
         }
 
         protected void FilterByDateDescending_OnClick(object sender, EventArgs e)
@@ -62,10 +69,18 @@ namespace AHWForm
             if (e.SortDirection == SortDirection.Ascending)
             {
                 if (e.SortExpression == "StartPrice")
-                { 
-                    var y = vm.OrderBy(x => Convert.ToDecimal(x.ActualPrice)).ToList();
-                    vm = y;
+                {
+                    try
+                    {
+                        var y = vm.OrderBy(x => Convert.ToDecimal(x.ActualPrice)).ToList();
+                        vm = y;
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorSignal.FromCurrentContext().Raise(ex);
+                    }
                 }
+
                 if (e.SortExpression == "DateCreated")
                     vm = vm.OrderBy(x => x.DateCreated).ToList();
                 if (e.SortExpression == "Description")
@@ -74,15 +89,59 @@ namespace AHWForm
             else
             {
                 if (e.SortExpression == "StartPrice")
-                    vm = vm.OrderByDescending(x => Convert.ToDecimal(x.ActualPrice)).ToList();
+                {
+                    try
+                    {
+                        var y = vm.OrderByDescending(x => Convert.ToDecimal(x.ActualPrice)).ToList();
+                        vm = y;
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorSignal.FromCurrentContext().Raise(ex);
+                    }
+                }
+
                 if (e.SortExpression == "DateCreated")
                     vm = vm.OrderByDescending(x => x.DateCreated).ToList();
                 if (e.SortExpression == "Description")
                     vm = vm.OrderByDescending(x => x.ShortDescription).ToList();
             }
 
-            AuctionList.DataSource = vm;
+            List<AuctionListSingleElemVM> list = new List<AuctionListSingleElemVM>();
+            if (!WithEndedAuctions.Checked)
+                foreach (var item in vm)
+                {
+                    if (!item.IsEnded)
+                        list.Add(item);
+
+                }
+            else
+            {
+                list = vm;
+            }
+            AuctionList.DataSource = list;
             AuctionList.DataBind();
+
+        }
+
+
+        protected void WithEndedAuctions_OnCheckedChanged(object sender, EventArgs e)
+        {
+             List<AuctionListSingleElemVM> list = new List<AuctionListSingleElemVM>();
+            if(!WithEndedAuctions.Checked)
+            foreach (var item in vm)
+            {
+                if(!item.IsEnded)
+                    list.Add(item);
+
+            }
+            else
+            {
+                list = vm;
+            }
+                AuctionList.DataSource = list;
+            AuctionList.DataBind();
+
         }
     }
 }

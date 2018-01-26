@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AHWForm.ExtMethods;
+﻿using AHWForm.ExtMethods;
 using AHWForm.Helper;
 
 namespace AHWForm.Models.Comments
@@ -9,7 +8,6 @@ namespace AHWForm.Models.Comments
         public CommentsBuyView(CommentsModel model, bool CommentGranted)
         {
             Id = model.Id;
-            
             AuctionUrl = UrlHelper.GetUrlForAuction(model.AuctionId);
             AuctionTitle = MiscHelper.GetAuctionTitle(model.AuctionId);
             BuyerUrl = UrlHelper.GetUrlForUserSite(model.BuyerId);
@@ -22,7 +20,6 @@ namespace AHWForm.Models.Comments
             this.CommentGranted = CommentGranted;
         }
 
-        [ScaffoldColumn(false)]
         public string Id { get; set; }
         public string AuctionUrl { get; set; }
         public string AuctionTitle { get; set; }

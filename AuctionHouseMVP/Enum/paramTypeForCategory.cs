@@ -4,12 +4,12 @@
     {
         ByPrice,
         ByDate,
-        ByDescription,
+        ByDescription
     }
 
     public enum paramDirectionOfSorting
     {
         Ascending,
-        Descending,
+        Descending
     }
 }

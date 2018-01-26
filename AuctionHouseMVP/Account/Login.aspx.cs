@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using AHWForm.Models;
 
 namespace AHWForm.Account
 {
@@ -33,7 +30,8 @@ namespace AHWForm.Account
 
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
+                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked,
+                    shouldLockout: false);
 
                 switch (result)
                 {
@@ -44,10 +42,11 @@ namespace AHWForm.Account
                         Response.Redirect("/Account/Lockout");
                         break;
                     case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
-                                                        Request.QueryString["ReturnUrl"],
-                                                        RememberMe.Checked),
-                                          true);
+                        Response.Redirect(String.Format(
+                                "/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
+                                Request.QueryString["ReturnUrl"],
+                                RememberMe.Checked),
+                            true);
                         break;
                     case SignInStatus.Failure:
                     default:

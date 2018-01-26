@@ -1,33 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Owin;
-using AHWForm.Models;
 using System.Globalization;
 using System.Security.Cryptography;
-using AHWForm.ExtMethods;
+using System.Threading;
+using System.Web;
+using System.Web.UI;
+using AHWForm.Models;
 using AHWForm.Repos;
+using Elmah;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AHWForm.Account
 {
-    public partial class Manage : System.Web.UI.Page
+    public partial class Manage : Page
     {
-        protected string SuccessMessage
-        {
-            get;
-            private set;
-        }
-
-        private bool HasPassword(ApplicationUserManager manager)
-        {
-            return manager.HasPassword(User.Identity.GetUserId());
-        }
+        protected string SuccessMessage { get; private set; }
 
         public bool HasPhoneNumber { get; private set; }
 
@@ -36,6 +23,11 @@ namespace AHWForm.Account
         public bool TwoFactorBrowserRemembered { get; private set; }
 
         public int LoginsCount { get; set; }
+
+        private bool HasPassword(ApplicationUserManager manager)
+        {
+            return manager.HasPassword(User.Identity.GetUserId());
+        }
 
         protected void Page_Load()
         {
@@ -82,7 +74,7 @@ namespace AHWForm.Account
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
                 }
                 //
-                
+
                 //TO CHANGE
                 LanguageDropDown.Items.Add("en-US");
                 LanguageDropDown.Items.Add("pl-PL");
@@ -95,7 +87,7 @@ namespace AHWForm.Account
                 }
                 catch (Exception ex)
                 {
-                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    ErrorSignal.FromCurrentContext().Raise(ex);
                 }
 
                 try
@@ -104,7 +96,7 @@ namespace AHWForm.Account
                 }
                 catch (Exception ex)
                 {
-                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    ErrorSignal.FromCurrentContext().Raise(ex);
                 }
 
                 ApiAuthRepository apiRepo = new ApiAuthRepository();
@@ -144,6 +136,7 @@ namespace AHWForm.Account
             {
                 return;
             }
+
             var user = manager.FindById(User.Identity.GetUserId());
             if (user != null)
             {
@@ -186,7 +179,7 @@ namespace AHWForm.Account
             langCookie.Value = LanguageDropDown.SelectedItem.Value;
             langCookie.Expires = DateTime.Now.AddDays(7);
             Response.Cookies.Add(langCookie);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Request.Cookies["lang"].Value);
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Request.Cookies["lang"].Value);
         }
 
         protected void GenerateNewPairOfKeysButton_OnClick(object sender, EventArgs e)
@@ -201,28 +194,22 @@ namespace AHWForm.Account
                     ApiMod.PublicKey = GenerateNewRsaPair().Public;
                     apiRepo.Update(ApiMod);
                     apiRepo.Save();
-                    
                 }
                 else
                 {
-                    ApiUser apiU = new ApiUser()
+                    ApiUser apiU = new ApiUser
                     {
                         Id = Guid.NewGuid().ToString(),
                         PrivateKey = GenerateNewRsaPair().Private,
                         PublicKey = GenerateNewRsaPair().Public,
-                        UserId = User.Identity.GetUserId(),
+                        UserId = User.Identity.GetUserId()
                     };
                     apiRepo.Insert(apiU);
                     apiRepo.Save();
                 }
             }
-            Response.Redirect(Request.RawUrl);
-        }
 
-        private class PairOfRsaKeys
-        {
-            public string Public { get; set; }
-            public string Private { get; set; }
+            Response.Redirect(Request.RawUrl);
         }
 
         private PairOfRsaKeys GenerateNewRsaPair()
@@ -237,7 +224,7 @@ namespace AHWForm.Account
                 }
                 catch (Exception ex)
                 {
-                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    ErrorSignal.FromCurrentContext().Raise(ex);
                 }
                 finally
                 {
@@ -246,6 +233,12 @@ namespace AHWForm.Account
             }
 
             return keys;
+        }
+
+        private class PairOfRsaKeys
+        {
+            public string Public { get; set; }
+            public string Private { get; set; }
         }
     }
 }

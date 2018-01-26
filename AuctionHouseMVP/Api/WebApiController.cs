@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using AHWForm.ExtMethods;
-using AHWForm.Models;
 using AHWForm.Models.Auctions.CreateAuction;
-using AHWForm.Presenter;
 
 namespace AHWForm.Api
 {
     public class WebApiController : ApiController
     {
         // GET api/<controller>
-        public CreateAuctionThroughApiModel Get()
+        public CreateAuctionViewModel Get()
         {
-            return new CreateAuctionThroughApiModel()
+            return new CreateAuctionViewModel
             {
                 Id = Guid.NewGuid().ToString(),
                 AuctionTitle = "sad",
@@ -30,7 +24,6 @@ namespace AHWForm.Api
                 ExpiresIn = 2,
                 LongDescription = "asdasdasd"
             };
-            
         }
 
         // GET api/<controller>/5
@@ -40,7 +33,7 @@ namespace AHWForm.Api
         }
 
         // POST api/<controller>
-        public bool Post([FromBody] CreateAuctionThroughApiModel vmodel)
+        public bool Post([FromBody] CreateAuctionViewModel vmodel)
         {
             CreateAuctionModel model = new CreateAuctionModel();
             model.CreateAuction(vmodel);
@@ -48,7 +41,7 @@ namespace AHWForm.Api
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 

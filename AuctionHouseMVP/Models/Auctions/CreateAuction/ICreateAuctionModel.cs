@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace AHWForm.Models.Auctions.CreateAuction
 {
     public interface ICreateAuctionModel
     {
-        void CreateAuction(CreateAuctionViewModel auc);
+        string Id { get; }
+        bool CreateAuction(CreateAuctionViewModel auc);
         IEnumerable<CategoryModel> LoadCategories();
-        string Id { get; set; }
     }
 }

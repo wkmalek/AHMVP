@@ -3,24 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace AHWForm.Account
 {
-    public partial class ManageLogins : System.Web.UI.Page
+    public partial class ManageLogins : Page
     {
-        protected string SuccessMessage
-        {
-            get;
-            private set;
-        }
-        protected bool CanRemoveExternalLogins
-        {
-            get;
-            private set;
-        }
+        protected string SuccessMessage { get; private set; }
+
+        protected bool CanRemoveExternalLogins { get; private set; }
 
         private bool HasPassword(ApplicationUserManager manager)
         {
@@ -56,6 +48,7 @@ namespace AHWForm.Account
                 signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
                 msg = "?m=RemoveLoginSuccess";
             }
+
             Response.Redirect("~/Account/ManageLogins" + msg);
         }
     }

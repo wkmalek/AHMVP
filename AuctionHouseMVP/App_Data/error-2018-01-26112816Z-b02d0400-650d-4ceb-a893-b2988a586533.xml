@@ -1,0 +1,226 @@
+﻿<error errorId="b02d0400-650d-4ceb-a893-b2988a586533" application="/LM/W3SVC/2/ROOT" host="WIN-SHAREPOINTD" type="System.IO.FileLoadException" message="Could not load file or assembly 'MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)" source="Repositories" detail="System.IO.FileLoadException: Could not load file or assembly 'MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)&#xD;&#xA;File name: 'MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d'&#xD;&#xA;   at AHWForm.Repos.BidsRepository.GetMaxBidOfAuction(String Id)&#xD;&#xA;   at AHWForm.Models.NewBidViewModel.Bid(BidsModel bidsModel, String ID) in C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\Models\Bids\NewBidViewModel.cs:line 21&#xD;&#xA;   at AHWForm.Presenter.BidPresenter.Bid() in C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\Presenter\BidPresenter.cs:line 35&#xD;&#xA;&#xD;&#xA;=== Pre-bind state information ===&#xD;&#xA;LOG: DisplayName = MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d&#xA; (Fully-specified)&#xD;&#xA;LOG: Appbase = file:///C:/Users/Administrator/Documents/Visual Studio 2015/Projects/AHMVP/AuctionHouseMVP/&#xD;&#xA;LOG: Initial PrivatePath = C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\bin&#xD;&#xA;Calling assembly : Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.&#xD;&#xA;===&#xD;&#xA;LOG: This bind starts in default load context.&#xD;&#xA;LOG: Using application configuration file: C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\web.config&#xD;&#xA;LOG: Using host configuration file: C:\Users\Administrator\Documents\IISExpress\config\aspnet.config&#xD;&#xA;LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.&#xD;&#xA;LOG: Post-policy reference: MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d&#xD;&#xA;LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/root/380a250e/95293000/MoreLinq.DLL.&#xD;&#xA;LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/root/380a250e/95293000/MoreLinq/MoreLinq.DLL.&#xD;&#xA;LOG: Attempting download of new URL file:///C:/Users/Administrator/Documents/Visual Studio 2015/Projects/AHMVP/AuctionHouseMVP/bin/MoreLinq.DLL.&#xD;&#xA;WRN: Comparing the assembly name resulted in the mismatch: Minor Version&#xD;&#xA;ERR: Failed to complete setup of assembly (hr = 0x80131040). Probing terminated.&#xD;&#xA;" user="test2@test.pl" time="2018-01-26T11:28:16.2051979Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:1599&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:lang=en-US; __AntiXsrfToken=a384e7ff6e9146d3b90a4edaa8bf35e8; ASP.NET_SessionId=vbohexwbnbngzvdio3xlm0sy; .AspNet.ApplicationCookie=NI1oBiP5w2CZnOFkHiPKOuIw80O5oVHktaNrgnSUmdjPnOUniCPXKO3N4VY9mwTbQZWjrDWwM1VvvVP9nGJywir04cbSMuZPWkHt-nUM3SHemLh1TkAow_t7DOT1sm5w4zhQT2yXQD6Re2CRAt3m7NyC9CNmJsNtQavoayIokZAqAwv9n5TheerbUMrzGKJ_Ae9nKjkH58J-vCKMsOCl3j4FyrRXIw3Yxr6jHWN0rewO3OkPSk-iuZnW6R2HjH1MtrlRijjuCT8FQ446Pwr8aOlJVikGk-4GmM0tv38Y0NsfrbDn-aWp0GjEAIVz2QaFsXazol3XCjKO0-yiJ0MWUVIPiFeILisOPijeyFLw1p9vTqAzh2lmXJjX0qoNdRzbOV3x1HWulXg7BhcHVWySAY05uIm3nCKTCK6ix20xbnNXvC2ZGCLoHItT8qi1QeRyNPJ2xxYhcuZGOa6s1F0viGjYhDpVQjA3G0nLlxPk7vuX4dDo2y_RJLihMTVdjPkR; currency=USD&#xD;&#xA;HTTP_HOST:localhost:64131&#xD;&#xA;HTTP_REFERER:http://localhost:64131/Bid?Id=052bf666-5875-43d9-b3bd-e97b6ecbbbbc&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:64131&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 1599&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: lang=en-US; __AntiXsrfToken=a384e7ff6e9146d3b90a4edaa8bf35e8; ASP.NET_SessionId=vbohexwbnbngzvdio3xlm0sy; .AspNet.ApplicationCookie=NI1oBiP5w2CZnOFkHiPKOuIw80O5oVHktaNrgnSUmdjPnOUniCPXKO3N4VY9mwTbQZWjrDWwM1VvvVP9nGJywir04cbSMuZPWkHt-nUM3SHemLh1TkAow_t7DOT1sm5w4zhQT2yXQD6Re2CRAt3m7NyC9CNmJsNtQavoayIokZAqAwv9n5TheerbUMrzGKJ_Ae9nKjkH58J-vCKMsOCl3j4FyrRXIw3Yxr6jHWN0rewO3OkPSk-iuZnW6R2HjH1MtrlRijjuCT8FQ446Pwr8aOlJVikGk-4GmM0tv38Y0NsfrbDn-aWp0GjEAIVz2QaFsXazol3XCjKO0-yiJ0MWUVIPiFeILisOPijeyFLw1p9vTqAzh2lmXJjX0qoNdRzbOV3x1HWulXg7BhcHVWySAY05uIm3nCKTCK6ix20xbnNXvC2ZGCLoHItT8qi1QeRyNPJ2xxYhcuZGOa6s1F0viGjYhDpVQjA3G0nLlxPk7vuX4dDo2y_RJLihMTVdjPkR; currency=USD&#xD;&#xA;Host: localhost:64131&#xD;&#xA;Referer: http://localhost:64131/Bid?Id=052bf666-5875-43d9-b3bd-e97b6ecbbbbc&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&#xD;&#xA;Origin: http://localhost:64131&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="test2@test.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="test2@test.pl" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="test2@test.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="1599" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Bid" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\Bid" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="Id=052bf666-5875-43d9-b3bd-e97b6ecbbbbc" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="49916" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Bid" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64131" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Bid" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="1599" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="lang=en-US; __AntiXsrfToken=a384e7ff6e9146d3b90a4edaa8bf35e8; ASP.NET_SessionId=vbohexwbnbngzvdio3xlm0sy; .AspNet.ApplicationCookie=NI1oBiP5w2CZnOFkHiPKOuIw80O5oVHktaNrgnSUmdjPnOUniCPXKO3N4VY9mwTbQZWjrDWwM1VvvVP9nGJywir04cbSMuZPWkHt-nUM3SHemLh1TkAow_t7DOT1sm5w4zhQT2yXQD6Re2CRAt3m7NyC9CNmJsNtQavoayIokZAqAwv9n5TheerbUMrzGKJ_Ae9nKjkH58J-vCKMsOCl3j4FyrRXIw3Yxr6jHWN0rewO3OkPSk-iuZnW6R2HjH1MtrlRijjuCT8FQ446Pwr8aOlJVikGk-4GmM0tv38Y0NsfrbDn-aWp0GjEAIVz2QaFsXazol3XCjKO0-yiJ0MWUVIPiFeILisOPijeyFLw1p9vTqAzh2lmXJjX0qoNdRzbOV3x1HWulXg7BhcHVWySAY05uIm3nCKTCK6ix20xbnNXvC2ZGCLoHItT8qi1QeRyNPJ2xxYhcuZGOa6s1F0viGjYhDpVQjA3G0nLlxPk7vuX4dDo2y_RJLihMTVdjPkR; currency=USD" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64131" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:64131/Bid?Id=052bf666-5875-43d9-b3bd-e97b6ecbbbbc" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:64131" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="Id">
+      <value string="052bf666-5875-43d9-b3bd-e97b6ecbbbbc" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__EVENTTARGET">
+      <value string="" />
+    </item>
+    <item name="__EVENTARGUMENT">
+      <value string="" />
+    </item>
+    <item name="CategoriesTreeView_ExpandState">
+      <value string="ccnnccnnn" />
+    </item>
+    <item name="CategoriesTreeView_SelectedNode">
+      <value string="" />
+    </item>
+    <item name="CategoriesTreeView_PopulateLog">
+      <value string="" />
+    </item>
+    <item name="__VIEWSTATE">
+      <value string="uEdHZ5yAb/g/ZXhFsaxvxRFmYCUslc9RECI/Rz2qAyoGQ/Sri+56bh9D8EdaGDDHCXdCh1j8Utf7Q3fEzByOQ1fDLEf4MfGT1jN+9GceNpWdpwhScSffyFnpOjCshsV3M2AXRQgcm1DJELYQXa2um3pDHTgeOzWp5qMnxZR/mKyuJu/7QYPUmHDDyqZAkAuu04hyg60rZLCWvfTB7BkHhR/fmnEEhAg17IJAR4GxDvKH+aoqhuV79Kc0/2CEsfr6JduxmX/+EB3Wj+COpFd6KF00kAd1BO/j0XajkUMF6f97iIERUr+Tgt9Fe/AlMy66sjhT1gJHJmGlcCCJAA8Wa3nS3VoT0JalOvA5xbZo5BNYbBs6f+IUFbOm1xycke6VGdOuD6HTZ9/z+bJvLCcTh5XggrBGh1eHGVTHG5eMFRnZD47eowt8Qpq9VpRSMvxy1F6T67aAWhgsjPLbMbQral9BBmhwoMZEK8Jp0xTJx95PPM+negJ793PeEFjMEudjDUqF3HCEiGVBvr2HkZk0JtY/+5lafGoYmIQ/TBnmgr4AI2XHM16iCVfhKkMgOCNAHWJJcew7ZgxhNXE3OSkGL4328Vq22+XO1tPx96F39N3KvTOBSuBcW8fAiJQrxZUvtIqt8Nf9VzLuF3mbyyu5Rm39n7oZgCD8DY0NjHb28ol1B01e0y0DyGanyQ8i1e+k0T4uUp9In3mJqxU2aIiKns45XbcqXXEDRgQ4nBtjTFlrwLQIjVESFcilY3mB4Jio1nf+x2Ca5cYJVAkzuipbJSa9GYZjgPcu30CRR9hIy/rv2uINy/pit0voqvjVuUmWSAOhpg08tzyzZFog/WuOniT9KHOmQLIgF74QEpVfzZo=" />
+    </item>
+    <item name="ctl00$MainContent$BidSecond">
+      <value string="Button" />
+    </item>
+    <item name="ctl00$MainContent$priceTextBox">
+      <value string="122" />
+    </item>
+    <item name="__VIEWSTATEGENERATOR">
+      <value string="145F2315" />
+    </item>
+    <item name="__EVENTVALIDATION">
+      <value string="ERMCeAvAK9SjDjjHe50ezWlFww8gF4G5Q1Xru8jgw3Rleyg0XyLpUI+UdXUiV0rFB7b++mzX5GTjolLsGp9A0XJP9tWDQHmoKJbJzQf3mQy+y3SvDQqijbC0BIF3iqZUuUZsTWfBlcooyyJbVn+Yaqv7MZgsIHJX+XwX+PKe4DS2ZRW2FXkXre8bnyEdowUta00dAS8cHrWMpkTQf3apnp56AdXwiGxfkEpJI4juRoR6OFhfADSEoo2O6D9lQ2aWSUg+oQInQBHppbU3ETukAJjexNc1TU0xOUtDVfigzIWTeKVUF+G1SAOjJ8kgrU9QaYYGjk6IixWrb1ZkuyPhZ6XozEY1wgvyAxo7ZwlIte8=" />
+    </item>
+  </form>
+  <cookies>
+    <item name="lang">
+      <value string="en-US" />
+    </item>
+    <item name="__AntiXsrfToken">
+      <value string="a384e7ff6e9146d3b90a4edaa8bf35e8" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="vbohexwbnbngzvdio3xlm0sy" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="NI1oBiP5w2CZnOFkHiPKOuIw80O5oVHktaNrgnSUmdjPnOUniCPXKO3N4VY9mwTbQZWjrDWwM1VvvVP9nGJywir04cbSMuZPWkHt-nUM3SHemLh1TkAow_t7DOT1sm5w4zhQT2yXQD6Re2CRAt3m7NyC9CNmJsNtQavoayIokZAqAwv9n5TheerbUMrzGKJ_Ae9nKjkH58J-vCKMsOCl3j4FyrRXIw3Yxr6jHWN0rewO3OkPSk-iuZnW6R2HjH1MtrlRijjuCT8FQ446Pwr8aOlJVikGk-4GmM0tv38Y0NsfrbDn-aWp0GjEAIVz2QaFsXazol3XCjKO0-yiJ0MWUVIPiFeILisOPijeyFLw1p9vTqAzh2lmXJjX0qoNdRzbOV3x1HWulXg7BhcHVWySAY05uIm3nCKTCK6ix20xbnNXvC2ZGCLoHItT8qi1QeRyNPJ2xxYhcuZGOa6s1F0viGjYhDpVQjA3G0nLlxPk7vuX4dDo2y_RJLihMTVdjPkR" />
+    </item>
+    <item name="currency">
+      <value string="USD" />
+    </item>
+  </cookies>
+</error>

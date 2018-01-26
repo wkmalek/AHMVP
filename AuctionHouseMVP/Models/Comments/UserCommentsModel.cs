@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using AHWForm.Repos;
+using Elmah;
 using Repositories;
 
 namespace AHWForm.Models.Comments
 {
     public class UserBuyCommentsModel : ICommentsModel
     {
-        
-        AuctionsRepository auctionRepo = RepositoryFactory.GetRepositoryInstance<AuctionModel, AuctionsRepository>();
-        CommentsRepository commentsRepo = RepositoryFactory.GetRepositoryInstance<CommentsModel, CommentsRepository>();
+        private readonly AuctionsRepository auctionRepo =
+            RepositoryFactory.GetRepositoryInstance<AuctionModel, AuctionsRepository>();
+
+        private readonly CommentsRepository commentsRepo =
+            RepositoryFactory.GetRepositoryInstance<CommentsModel, CommentsRepository>();
 
         public List<CommentsBuyView> LoadComments(string v)
         {
+            //TODO
             var auctions = auctionRepo.GetAuctionByUserID(v);
             var comments = LoadBuyerCommentsModel(v);
             List<CommentsBuyView> output = new List<CommentsBuyView>();
@@ -25,24 +27,23 @@ namespace AHWForm.Models.Comments
                 if (!String.IsNullOrEmpty(auc.WinnerId))
                 {
                     CommentsBuyView com;
-                    
-                    var comment = comments.Where(x => x.BuyerId == auc.WinnerId && x.AuctionId == auc.Id).FirstOrDefault();
-
+                    var comment = comments.FirstOrDefault(x => x.BuyerId == auc.WinnerId && x.AuctionId == auc.Id);
                     if (comment != null)
                     {
                         com = new CommentsBuyView(comment, false);
                     }
                     else
                     {
-                        com = new CommentsBuyView(new CommentsModel()
+                        com = new CommentsBuyView(new CommentsModel
                         {
                             BuyerId = auc.WinnerId,
                             AuctionId = auc.Id,
                             Description = "",
                             Id = null,
-                            SellerId = auc.CreatorId,
+                            SellerId = auc.CreatorId
                         }, true);
                     }
+
                     output.Add(com);
                 }
             }
@@ -50,25 +51,34 @@ namespace AHWForm.Models.Comments
             return output;
         }
 
+        public bool CreateComment(string rate, string desc, string ID)
+        {
+            try
+            {
+                var auction = auctionRepo.GetSingleElementByID(ID);
+                CommentsModel comment = new CommentsModel
+                {
+                    Rate = Int32.Parse(rate),
+                    Description = desc,
+                    Id = Guid.NewGuid().ToString(),
+                    AuctionId = auction.Id,
+                    BuyerId = auction.WinnerId,
+                    SellerId = auction.CategoryId
+                };
+                commentsRepo.Insert(comment);
+                commentsRepo.Save();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                return false;
+            }
+        }
+
         private List<CommentsModel> LoadBuyerCommentsModel(string v)
         {
             return commentsRepo.GetBuyCommentsByUserID(v).ToList();
-        }
-
-        public void CreateComment(string rate, string desc, string ID)
-        {
-            var auction = auctionRepo.GetSingleElementByID(ID);
-            CommentsModel comment = new CommentsModel()
-            {
-                Rate = Int32.Parse(rate),
-                Description = desc,
-                Id = Guid.NewGuid().ToString(),
-                AuctionId = auction.Id,
-                BuyerId = auction.WinnerId,
-                SellerId = auction.CategoryId,
-            };
-            commentsRepo.Insert(comment);
-            commentsRepo.Save();
         }
     }
 }

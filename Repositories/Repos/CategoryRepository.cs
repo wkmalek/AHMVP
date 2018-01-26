@@ -18,6 +18,8 @@ namespace AHWForm.Repos
         public IEnumerable<CategoryModel> GetCategoriesWithChilds(string id)
         {
             //returns list of categories with their childrens
+            if (id == null)
+               return GetAllElements();
             CategoryModel cat = GetSingleElementByID(id);
             List<CategoryModel> list = new List<CategoryModel>();
             list.Add(cat);
