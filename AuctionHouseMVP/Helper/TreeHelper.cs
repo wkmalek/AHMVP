@@ -11,12 +11,10 @@ namespace AHWForm.Helper
         {
             foreach (var item in categories)
             {
-                if (item.ParentCategoryId == null)
-                {
-                    var rootNode = new TreeNode(item.Name, item.Id);
-                    AddChildren(categories.ToList(), rootNode);
-                    tw.Nodes.Add(rootNode);
-                }
+                if (item.ParentCategoryId != null) continue;
+                var rootNode = new TreeNode(item.Name, item.Id);
+                AddChildren(categories.ToList(), rootNode);
+                tw.Nodes.Add(rootNode);
             }
         }
 
@@ -24,13 +22,11 @@ namespace AHWForm.Helper
         {
             foreach (var item in categories)
             {
-                if (item.ParentCategoryId == activeTreeNode.Value)
-                {
-                    TreeNode tn = new TreeNode(item.Name, item.Id);
+                if (item.ParentCategoryId != activeTreeNode.Value) continue;
+                var tn = new TreeNode(item.Name, item.Id);
 
-                    AddChildren(categories, tn);
-                    activeTreeNode.ChildNodes.Add(tn);
-                }
+                AddChildren(categories, tn);
+                activeTreeNode.ChildNodes.Add(tn);
             }
         }
     }

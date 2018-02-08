@@ -13,13 +13,13 @@ namespace AHWForm {
     public partial class Bid {
         
         /// <summary>
-        /// CompareValidatorPrice control.
+        /// CustomValidatorPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorPrice;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidatorPrice;
         
         /// <summary>
         /// priceLabel control.

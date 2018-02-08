@@ -18,7 +18,7 @@ namespace AHWForm.Models
         public bool Bid(BidsModel bidsModel, string ID)
         {
             //TODO
-            BidsModel bid = bidsRepo.GetMaxBidOfAuction(bidsModel.AuctionId);
+            var bid = bidsRepo.GetMaxBidOfAuction(bidsModel.AuctionId);
             var auction = auctionRepo.GetSingleElementByID(ID);
 
             if (!auctionRepo.CheckIfAuctionEnded(ID))
@@ -31,14 +31,11 @@ namespace AHWForm.Models
                     return true;
                 }
 
-                if (auctionRepo.CheckIfEndingPriceIsOk(bidsModel))
-                {
-                    bidsRepo.Insert(bidsModel);
-                    bidsRepo.Save();
-                    return true;
-                }
-
+                if (!auctionRepo.CheckIfEndingPriceIsOk(bidsModel)) return true;
+                bidsRepo.Insert(bidsModel);
+                bidsRepo.Save();
                 return true;
+
             }
 
             return false;
@@ -46,14 +43,18 @@ namespace AHWForm.Models
 
         public bool CheckAuction(string ID)
         {
-            if (auctionRepo.GetSingleElementByID(ID) == null)
-                return false;
-            return true;
+            return auctionRepo.GetSingleElementByID(ID) != null;
         }
 
         public AuctionModel GetAuctionModel(string ID)
         {
             return auctionRepo.GetSingleElementByID(ID);
+        }
+
+        ~NewBidViewModel()
+        {
+            auctionRepo.Dispose();
+            bidsRepo.Dispose();
         }
             
     }

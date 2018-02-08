@@ -29,6 +29,9 @@ namespace AHWForm.Repos
             var comp = DateTime.Compare(date, DateTime.Now);
             if (comp <= 0)
             {
+                auction.IsEnded = true;
+                Update(auction);
+                Save();
                 return true;
             }
             return false;
@@ -36,6 +39,8 @@ namespace AHWForm.Repos
 
         public bool CheckIfEndingPriceIsOk(BidsModel bid)
         {
+            if (bid == null)
+                return true;
             var auc = GetSingleElementByID(bid.AuctionId);
             if (auc.EndingPrice < bid.Value)
             {
@@ -60,6 +65,11 @@ namespace AHWForm.Repos
                 lst.Add(item.Id);
             }
             return GetAllElements().Where(x => lst.Contains(x.CategoryId));
+        }
+
+        ~AuctionsRepository()
+        {
+            Dispose(false);
         }
     }
 }

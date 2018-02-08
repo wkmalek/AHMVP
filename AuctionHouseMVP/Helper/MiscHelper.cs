@@ -6,7 +6,7 @@ namespace AHWForm.ExtMethods
     {
         public static string GetAuctionTitle(string ID)
         {
-            AuctionsRepository repo = new AuctionsRepository();
+            var repo = new AuctionsRepository();
             return repo.GetSingleElementByID(ID).Title;
         }
     }

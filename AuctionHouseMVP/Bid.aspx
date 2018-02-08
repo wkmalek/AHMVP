@@ -4,12 +4,12 @@
     <tr>
         <td>
             <asp:RequiredFieldValidator runat="server" ControlToValidate="priceTextBox" ErrorMessage="FieldNeeded"/>
-            <asp:CompareValidator runat="server" ID="CompareValidatorPrice" />
+            <asp:CustomValidator runat="server" ID="CustomValidatorPrice"  ControlToValidate="priceTextBox" OnServerValidate="CustomValidatorPrice_OnServerValidate" ErrorMessage="Price to low"/>
         </td>
     </tr>
     
     <asp:Label runat="server" ID="priceLabel" /> 
-    <asp:Button ID="BidSecond" runat="server" Text="Button" OnClick="BidSecond_Click"/> <asp:RegularExpressionValidator runat="server" ControlToValidate="priceTextBox" ErrorMessage="Only numbers" ValidationExpression="[0-9]"/>
+    <asp:Button ID="BidSecond" runat="server" Text="Button" OnClick="BidSecond_Click"/> <asp:RegularExpressionValidator runat="server" ControlToValidate="priceTextBox" ErrorMessage="Only numbers" ValidationExpression="^[0-9]+$"/>
     <asp:TextBox ID="priceTextBox" runat="server"></asp:TextBox>
 
 

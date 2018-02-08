@@ -1,6 +1,7 @@
 ﻿using System;
 using AHWForm.Presenter;
 using AHWForm.Repos;
+using LINQPad.FSharpExtensions;
 using Repositories;
 
 namespace AHWForm.Models
@@ -25,20 +26,22 @@ namespace AHWForm.Models
             if (auctions == null) throw new ArgumentNullException(nameof(auctions));
             foreach (var item in auctions)
             {
-                if (auctionRepo.CheckIfAuctionEnded(item.Id))
-                {
-                    item.IsEnded = true;
-                    var maxBid = bidsRepo.GetMaxBidOfAuction(item.Id);
-                    if (maxBid != null)
-                        item.WinnerId = maxBid.UserId;
-                    else
-                        item.WinnerId = null;
-                    auctionRepo.Update(item);
-                }
+                if (!auctionRepo.CheckIfAuctionEnded(item.Id)) continue;
+                item.IsEnded = true;
+                var maxBid = bidsRepo.GetMaxBidOfAuction(item.Id);
+                item.WinnerId = maxBid?.UserId;
+                auctionRepo.Update(item);
             }
             auctionRepo.Save();
-            AuctionListViewModel vm = new AuctionListViewModel(auctions, currency);
+            var vm = new AuctionListViewModel(auctions, currency);
             return vm;
+        }
+
+        ~AuctionListModel()
+        {
+            auctionRepo.Dispose();
+            bidsRepo.Dispose();
+            catRepo.Dispose();
         }
     }
 }

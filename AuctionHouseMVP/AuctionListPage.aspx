@@ -36,22 +36,22 @@
                         <%# Eval("AuctionTitle") %>
                     </asp:HyperLink>
                 </td>
+                
                 <td>
                     <%# Eval("ActualPrice") %>
+                </td>
+                
+                <td>
+                    <%# Eval("DateEnd") %>
                 </td>
 
                 <td>
                     <%# Eval("DateCreated") %>
                 </td>
 
-
-                <td>
-
                 <td>
                     <%# Eval("ShortDescription") %>
                 </td>
-
-            </td>
 
             </tr>
         </ItemTemplate>
@@ -62,8 +62,8 @@
                         <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
                             <tr runat="server" style="background-color: #f2fbfc; color: #333333;">
                                 <th runat="server">Title</th>
-                                <th runat="server">StartPrice</th>
-                                <th runat="server">EndingPrice</th>
+                                <th runat="server">ActualPrice</th>
+                                <th runat="server">DateEnd</th>
                                 <th runat="server">DateCreated</th>
                                 <th runat="server">Description</th>
                             </tr>

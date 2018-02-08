@@ -15,13 +15,13 @@ namespace AHWForm.Models.Auctions.CreateAuction
 
         internal AuctionModel GetModel(out List<ImagesModel> imagesModel)
         {
-            string auctionId = Guid.NewGuid().ToString();
-            List<ImagesModel> output = new List<ImagesModel>();
+            var auctionId = Guid.NewGuid().ToString();
+            var output = new List<ImagesModel>();
             if (ImageGuid.Count > 0)
             {
                 foreach (var item in ImageGuid)
                 {
-                    ImagesModel model = new ImagesModel
+                    var model = new ImagesModel
                     {
                         Id = Path.GetFileNameWithoutExtension(item),
                         AuctionID = auctionId,

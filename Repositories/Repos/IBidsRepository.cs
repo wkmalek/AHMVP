@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace AHWForm.Repos
 {
-    public interface IBidsRepository<T> where T:class
+    public interface IBidsRepository<T>: IRepository<T> where T:class
     {
         IEnumerable<T> GetBidsByUserID(string ID);
         IEnumerable<T> GetBidsByAuctionID(string ID);
         T GetMaxBidOfAuction(string auctionId);
+
     }
 }

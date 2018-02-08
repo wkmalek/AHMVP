@@ -40,5 +40,10 @@ namespace AHWForm.Repos
             }
             return categoryList;
         }
+
+        ~CategoryRepository()
+        {
+            Dispose(false);
+        }
     }
 }

@@ -8,22 +8,8 @@ namespace AHWForm.Api
     public class WebApiController : ApiController
     {
         // GET api/<controller>
-        public CreateAuctionViewModel Get()
+        public void Get()
         {
-            return new CreateAuctionViewModel
-            {
-                Id = Guid.NewGuid().ToString(),
-                AuctionTitle = "sad",
-                ActualPrice = "123",
-                CategoryId = "2131",
-                CreatorName = "asdasd",
-                CreatorId = UserHelper.GetCurrentUser(),
-                Currency = "USD",
-                DateCreated = DateTime.Now.ToString(),
-                DateEnd = DateTime.Now.AddDays(2).ToString(),
-                ExpiresIn = 2,
-                LongDescription = "asdasdasd"
-            };
         }
 
         // GET api/<controller>/5

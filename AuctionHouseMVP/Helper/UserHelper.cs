@@ -26,5 +26,10 @@ namespace AHWForm.ExtMethods
         {
             return HttpContext.Current.User.Identity.GetUserId();
         }
+
+        public static bool IsUserLoggedIn()
+        {
+            return System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+        }
     }
 }

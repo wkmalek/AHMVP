@@ -99,21 +99,7 @@ namespace AHWForm.Account
                     ErrorSignal.FromCurrentContext().Raise(ex);
                 }
 
-                ApiAuthRepository apiRepo = new ApiAuthRepository();
-                if (User.Identity.IsAuthenticated)
-                {
-                    var ApiMod = apiRepo.GetApiUserByUserID(User.Identity.GetUserId());
-                    if (ApiMod != null)
-                    {
-                        PublicApiKey.Text = ApiMod.PublicKey;
-                        PrivateApiKey.Text = ApiMod.PrivateKey;
-                    }
-                    else
-                    {
-                        PublicApiKey.Text = "";
-                        PrivateApiKey.Text = "";
-                    }
-                }
+
             }
         }
 
@@ -180,65 +166,6 @@ namespace AHWForm.Account
             langCookie.Expires = DateTime.Now.AddDays(7);
             Response.Cookies.Add(langCookie);
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Request.Cookies["lang"].Value);
-        }
-
-        protected void GenerateNewPairOfKeysButton_OnClick(object sender, EventArgs e)
-        {
-            ApiAuthRepository apiRepo = new ApiAuthRepository();
-            if (User.Identity.IsAuthenticated)
-            {
-                var ApiMod = apiRepo.GetApiUserByUserID(User.Identity.GetUserId());
-                if (ApiMod != null)
-                {
-                    ApiMod.PrivateKey = GenerateNewRsaPair().Private;
-                    ApiMod.PublicKey = GenerateNewRsaPair().Public;
-                    apiRepo.Update(ApiMod);
-                    apiRepo.Save();
-                }
-                else
-                {
-                    ApiUser apiU = new ApiUser
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        PrivateKey = GenerateNewRsaPair().Private,
-                        PublicKey = GenerateNewRsaPair().Public,
-                        UserId = User.Identity.GetUserId()
-                    };
-                    apiRepo.Insert(apiU);
-                    apiRepo.Save();
-                }
-            }
-
-            Response.Redirect(Request.RawUrl);
-        }
-
-        private PairOfRsaKeys GenerateNewRsaPair()
-        {
-            PairOfRsaKeys keys = new PairOfRsaKeys();
-            using (var rsa = new RSACryptoServiceProvider(1024))
-            {
-                try
-                {
-                    keys.Public = rsa.ToXmlString(false);
-                    keys.Private = rsa.ToXmlString(true);
-                }
-                catch (Exception ex)
-                {
-                    ErrorSignal.FromCurrentContext().Raise(ex);
-                }
-                finally
-                {
-                    rsa.PersistKeyInCsp = false;
-                }
-            }
-
-            return keys;
-        }
-
-        private class PairOfRsaKeys
-        {
-            public string Public { get; set; }
-            public string Private { get; set; }
         }
     }
 }

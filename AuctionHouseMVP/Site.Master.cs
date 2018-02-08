@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AHWForm.ExtMethods;
 using AHWForm.Helper;
 using AHWForm.Models;
 using AHWForm.Presenter;
@@ -106,6 +107,10 @@ namespace AHWForm
                 p.PopulateMasterPage();
                 TreeHelper.PopulateNodes(tv, CategoriesTreeView);
                 CategoriesTreeView.CollapseAll();
+                if (!UserHelper.IsUserLoggedIn())
+                {
+                    CreateAuctionLabel.Visible = false;
+                }
             }
         }
 

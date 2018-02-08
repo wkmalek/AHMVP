@@ -8,7 +8,7 @@ namespace AHWForm.Models
         public AuctionBidsViewModel(IEnumerable<BidsModel> bids)
         {
             bidsViewModel = new List<AuctionBidViewModel>();
-            foreach (BidsModel item in bids)
+            foreach (var item in bids)
             {
                 bidsViewModel.Add(new AuctionBidViewModel(item));
             }

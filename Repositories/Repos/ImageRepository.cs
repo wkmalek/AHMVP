@@ -26,5 +26,10 @@ namespace AHWForm.Repos
         {
             return context.dbSet.Where(x => x.AuctionID == ID);
         }
+
+        ~ImageRepository()
+        {
+            Dispose(false);
+        }
     }
 }

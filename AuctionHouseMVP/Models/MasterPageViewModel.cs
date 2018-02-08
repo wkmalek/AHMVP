@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AHWForm.Models;
 using AHWForm.Repos;
 using Repositories;
@@ -17,6 +18,11 @@ namespace AHWForm.Presenter
         public IEnumerable<CategoryModel> LoadCategories()
         {
             return catRepo.GetAllElements();
+        }
+
+        ~MasterPageViewModel()
+        {
+            catRepo.Dispose();
         }
     }
 }

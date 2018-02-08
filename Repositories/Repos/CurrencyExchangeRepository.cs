@@ -9,53 +9,39 @@ namespace AHWForm.Repos
 {
     public class CurrencyExchangeRepository: ICurrencyExchangeRepository
     {
-        private static readonly string linkToService = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
-        private XmlNodeList nodes;
-        private List<XmlNode> lst;
+        private const string linkToService = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+        private readonly List<XmlNode> lst;
         public CurrencyExchangeRepository()
         {
-            List<string> finallist = new List<string>();
-            XmlDocument doc = new XmlDocument();
+            //var finallist = new List<string>();
+            var doc = new XmlDocument();
             doc.Load(linkToService);
 
             XmlElement root = doc.DocumentElement;
-            nodes = root.GetElementsByTagName("Cube");
+            if (root == null) return;
+            var nodes = root.GetElementsByTagName("Cube");
             lst = new List<XmlNode>();
-            for (int i = 0; i < nodes.Count; i++)
+            for (var i = 0; i < nodes.Count; i++)
             {
                 lst.Add(nodes[i]);
             }
-
         }
 
         private decimal GetMultiplier(string first, string second)
         {
-            if((first != null) && (second != null))
-            { 
-                var one = GetAttribute(first, lst).Replace('.', ',');
-                var two = GetAttribute(second, lst).Replace('.', ',');
-                if ((one != "0") && (two != "0"))
-                {
-                    return Decimal.Round((Decimal.Parse(two) / Decimal.Parse(one)), 2);
-                }
+            if ((first == null) || (second == null)) return 1;
+            var one = GetAttribute(first, lst).Replace('.', ',');
+            var two = GetAttribute(second, lst).Replace('.', ',');
+            if ((one != "0") && (two != "0"))
+            {
+                return decimal.Round((decimal.Parse(two) / decimal.Parse(one)), 2);
             }
             return 1;
         }
 
-        private string GetAttribute(string attrib, List<XmlNode> lst)
+        private static string GetAttribute(string attrib, IEnumerable<XmlNode> lst)
         {
-            if (attrib == "EUR")
-                return "1";
-            foreach (var item in lst)
-            {
-                if (item.Attributes["currency"]?.Value != null)
-                    if (item.Attributes.Count > 0)
-                        if (item.Attributes["currency"].Value == attrib)
-                        {
-                            return item.Attributes["rate"].Value;
-                        }
-            }
-            return null;
+            return attrib == "EUR" ? "1" : (from item in lst where item.Attributes?["currency"]?.Value != null where item.Attributes.Count > 0 where item.Attributes["currency"].Value == attrib select item.Attributes["rate"].Value).FirstOrDefault();
         }
 
         public decimal GetValueInAnotherCurrency(decimal value, string currency, string currency2)
@@ -64,5 +50,7 @@ namespace AHWForm.Repos
                 return value;
             return (GetMultiplier(currency, currency2)) * value;
         }
+
+        
     }
 }

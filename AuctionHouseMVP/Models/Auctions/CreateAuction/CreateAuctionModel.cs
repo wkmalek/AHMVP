@@ -50,5 +50,12 @@ namespace AHWForm.Models.Auctions.CreateAuction
         {
             return catRepo.GetAllElements();
         }
+
+        ~CreateAuctionModel()
+        {
+            auctionRepo.Dispose();
+            catRepo.Dispose();
+            imageRepo.Dispose();
+        }
     }
 }

@@ -13,8 +13,8 @@ namespace AHWForm
 
         public decimal ActualValue
         {
-            get { return 0;}
-            set { priceLabel.Text = Value.ToString(); }
+            get { return decimal.Parse(priceLabel.Text);}
+            set { priceLabel.Text = value.ToString(); }
         }
 
         public string Value
@@ -27,9 +27,7 @@ namespace AHWForm
         {
             p = new BidPresenter(new NewBidViewModel(), this);
             p.Load();
-            CompareValidatorPrice.Type = ValidationDataType.Currency;
-            CompareValidatorPrice.ValueToCompare = ActualValue.ToString();
-            CompareValidatorPrice.Operator = ValidationCompareOperator.GreaterThan;
+            
 
 
         }
@@ -40,9 +38,10 @@ namespace AHWForm
             p.Bid();
         }
 
-        protected void CompareValidatorPrice_OnInit(object sender, EventArgs e)
+        protected void CustomValidatorPrice_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            
+            args.IsValid = (decimal.Parse(args.Value) > ActualValue);
+
         }
     }
 }

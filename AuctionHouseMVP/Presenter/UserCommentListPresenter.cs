@@ -1,4 +1,5 @@
-﻿using AHWForm.Helper;
+﻿using AHWForm.ExtMethods;
+using AHWForm.Helper;
 
 namespace AHWForm
 {
@@ -16,6 +17,10 @@ namespace AHWForm
         internal void PopulateCommentList()
         {
             var qs = UrlHelper.GetQueryString("Id");
+            if (string.IsNullOrEmpty(qs) && UserHelper.IsUserLoggedIn())
+            {
+                qs = UserHelper.GetCurrentUser();
+            }
             var vm = _pModel.LoadComments(qs);
             _pView.vm = vm;
         }

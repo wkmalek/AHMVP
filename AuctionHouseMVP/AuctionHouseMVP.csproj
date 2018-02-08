@@ -344,7 +344,6 @@
     <Compile Include="Api\WebApiConfig.cs" />
     <Compile Include="Helper\CookieHelper.cs" />
     <Compile Include="Helper\ImageHelper.cs" />
-    <Compile Include="Models\ApiDataObject.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\AuctionBidsViewModel.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\AuctionBidViewModel.cs" />
     <Compile Include="Models\Auctions\AuctionDetails\AuctionDetailsModel.cs" />
@@ -544,8 +543,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Enum\paramTypeForCategory.cs" />
-    <Compile Include="Helper\ExtensionMethods.cs" />
+    <Compile Include="Helper\TreeHelper.cs" />
     <Compile Include="Helper\MiscHelper.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
     <Compile Include="Helper\UserHelper.cs" />
@@ -622,10 +620,6 @@
     <ProjectReference Include="..\Repositories\Repositories.csproj">
       <Project>{81cf6c4c-b3c3-4021-8056-1963939d016d}</Project>
       <Name>Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebApi\WebApi.csproj">
-      <Project>{77b886e3-9e40-4f50-a611-b6498a17e041}</Project>
-      <Name>WebApi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

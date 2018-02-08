@@ -72,14 +72,19 @@ namespace AHWForm
 
         public bool IsEnded
         {
-            get { return IsEnded; }
-            set { Bid.Visible = !value; }
+            get { return Bid.Visible;}
+            set
+            {
+                if(value || !UserHelper.IsUserLoggedIn() || CreatorName == UserHelper.GetUserNameById(UserHelper.GetCurrentUser()))
+                Bid.Visible = false;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(), this);
             p.PopulateAuction(CookieHelper.CheckCookie("currency", "USD"));
+
             if (listOFImages != null)
                 foreach (var item in listOFImages)
                 {

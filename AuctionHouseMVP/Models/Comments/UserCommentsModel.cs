@@ -20,34 +20,31 @@ namespace AHWForm.Models.Comments
             //TODO
             var auctions = auctionRepo.GetAuctionByUserID(v);
             var comments = LoadBuyerCommentsModel(v);
-            List<CommentsBuyView> output = new List<CommentsBuyView>();
+            var output = new List<CommentsBuyView>();
 
             foreach (var auc in auctions)
             {
-                if (!String.IsNullOrEmpty(auc.WinnerId))
+                if (string.IsNullOrEmpty(auc.WinnerId)) continue;
+                CommentsBuyView com;
+                var comment = comments.FirstOrDefault(x => x.BuyerId == auc.WinnerId && x.AuctionId == auc.Id);
+                if (comment != null)
                 {
-                    CommentsBuyView com;
-                    var comment = comments.FirstOrDefault(x => x.BuyerId == auc.WinnerId && x.AuctionId == auc.Id);
-                    if (comment != null)
-                    {
-                        com = new CommentsBuyView(comment, false);
-                    }
-                    else
-                    {
-                        com = new CommentsBuyView(new CommentsModel
-                        {
-                            BuyerId = auc.WinnerId,
-                            AuctionId = auc.Id,
-                            Description = "",
-                            Id = null,
-                            SellerId = auc.CreatorId
-                        }, true);
-                    }
-
-                    output.Add(com);
+                    com = new CommentsBuyView(comment, false);
                 }
-            }
+                else
+                {
+                    com = new CommentsBuyView(new CommentsModel
+                    {
+                        BuyerId = auc.WinnerId,
+                        AuctionId = auc.Id,
+                        Description = "",
+                        Id = null,
+                        SellerId = auc.CreatorId
+                    }, true);
+                }
 
+                output.Add(com);
+            }
             return output;
         }
 
@@ -56,9 +53,9 @@ namespace AHWForm.Models.Comments
             try
             {
                 var auction = auctionRepo.GetSingleElementByID(ID);
-                CommentsModel comment = new CommentsModel
+                var comment = new CommentsModel
                 {
-                    Rate = Int32.Parse(rate),
+                    Rate = int.Parse(rate),
                     Description = desc,
                     Id = Guid.NewGuid().ToString(),
                     AuctionId = auction.Id,
@@ -79,6 +76,12 @@ namespace AHWForm.Models.Comments
         private List<CommentsModel> LoadBuyerCommentsModel(string v)
         {
             return commentsRepo.GetBuyCommentsByUserID(v).ToList();
+        }
+
+        ~UserBuyCommentsModel()
+        {
+            auctionRepo.Dispose();
+            commentsRepo.Dispose();
         }
     }
 }

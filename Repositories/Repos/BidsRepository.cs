@@ -21,12 +21,7 @@ namespace AHWForm.Repos
         public BidsModel GetMaxBidOfAuction(string Id)
         {
             var bids = GetBidsByAuctionID(Id);
-            if (bids.Count() > 0)
-            {
-                return bids.MaxBy(x => x.Value);
-            }
-
-            return null;
+            return bids.Any() ? bids.MaxBy(x => x.Value) : null;
         }
 
         public IEnumerable<BidsModel> GetBidsByAuctionID(string ID)
@@ -39,5 +34,9 @@ namespace AHWForm.Repos
             return context.dbSet.Where(x => x.AuctionId == ID).ToList();
         }
 
+        ~BidsRepository()
+        {
+            Dispose(false);
+        }
     }
 }

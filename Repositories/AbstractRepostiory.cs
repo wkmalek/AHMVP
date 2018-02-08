@@ -2,30 +2,15 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AHWForm.Models;
 using AHWForm.Repos;
 using Repositories.Context;
 
 namespace Repositories
 {
-    public abstract class AbstractRepostiory<T>:IRepository<T>,IDisposable where T:class
+    public abstract class AbstractRepostiory<T> : IRepository<T>, IDisposable where T : class
     {
+        private bool disposed;
         protected GenericContextFactory<T> context { get; set; }
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            disposed = true;
-        }
 
         public T GetSingleElementByID(string ID)
         {
@@ -57,5 +42,24 @@ namespace Repositories
         {
             return context.dbSet.ToList();
         }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    context.Dispose();
+                }
+            }
+
+            disposed = true;
+        }
+
+        ~AbstractRepostiory()
+        {
+            Dispose(false);
+        }
+
     }
 }

@@ -10,13 +10,7 @@ namespace AHWForm.Helper
     {
         public static Dictionary<string, string> GetQueryString(params string[] qs)
         {
-            Dictionary<string, string> output = new Dictionary<string, string>();
-            foreach (var item in qs)
-            {
-                output.Add(item, HttpContext.Current.Request.QueryString[item]);
-            }
-
-            return output;
+            return qs.ToDictionary(item => item, item => HttpContext.Current.Request.QueryString[item]);
         }
 
         public static string GetQueryString(string key)
@@ -26,22 +20,19 @@ namespace AHWForm.Helper
 
         public static string MakeQueryString(Dictionary<string, string> qs)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("?");
-            if (qs?.Count > 0)
+            if (!(qs?.Count > 0)) return "";
+            foreach (var item in qs)
             {
-                foreach (var item in qs)
-                {
-                    sb.Append(item.Key);
-                    sb.Append("=");
-                    sb.Append(item.Value);
-                    sb.Append("&");
-                }
-
-                return sb.ToString();
+                sb.Append(item.Key);
+                sb.Append("=");
+                sb.Append(item.Value);
+                sb.Append("&");
             }
 
-            return "";
+            return sb.ToString();
+
         }
 
         public static string GetSpecificQueryFromDict(string key, Dictionary<string, string> dict)
@@ -57,7 +48,7 @@ namespace AHWForm.Helper
 
         internal static string GetUrlForWriteComment(CommentsModel model)
         {
-            Dictionary<string, string> url = new Dictionary<string, string>
+            var url = new Dictionary<string, string>
             {
                 {"Id", model.AuctionId}
             };

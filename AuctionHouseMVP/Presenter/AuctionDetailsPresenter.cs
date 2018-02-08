@@ -33,7 +33,7 @@ namespace AHWForm.Presenter
             var vm = _pModel.LoadAuction(qs, currency, new CurrencyExchangeRepository());
             if (vm != null)
             {
-                _pView.AuctionTitle = vm.ActualPrice;
+                _pView.AuctionTitle = vm.AuctionTitle;
                 _pView.CreatorName = vm.CreatorName;
                 _pView.DateCreated = vm.DateCreated;
                 _pView.LongDescription = vm.LongDescription;
@@ -48,7 +48,6 @@ namespace AHWForm.Presenter
             else
             {
                 //TODO
-                //Error message from resources? 
                 throw new HttpException(404, "Not found auction with ID: " + qs);
             }
         }
