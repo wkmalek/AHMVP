@@ -43,9 +43,7 @@ namespace AHWForm.Presenter
                 {
                     throw new HttpException(404, "AuctionNotCreated");
                 }
-
-                //should refresh db
-                HttpContext.Current.Response.Redirect("~/AuctionDetails?Id=" + qs);
+                UrlHelper.RedirectToAuction(qs);
             }
             catch(Exception ex)
             {

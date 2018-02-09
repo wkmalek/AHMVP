@@ -4,7 +4,7 @@ using AHWForm.Models.Images;
 
 namespace AHWForm.View
 {
-    public interface IAuctionDetailsView
+    public interface IAuctionDetailsView : IMVPView
     {
         string AuctionTitle { get; set; }
         string ShortDescription { get; set; }

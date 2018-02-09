@@ -62,7 +62,7 @@ namespace AHWForm.Helper
 
         public static void Redirect(string link)
         {
-            HttpContext.Current.Response.Redirect(link);
+            HttpContext.Current.Response.Redirect(link, false);
         }
 
         public static void RedirectToAuction(string ID)

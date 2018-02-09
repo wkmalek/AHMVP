@@ -7,16 +7,14 @@ using AHWForm.View;
 
 namespace AHWForm.Presenter
 {
-    public class AuctionDetailsPresenter
+    public class AuctionDetailsPresenter<T,U> : AbstractPresenter<T,U> where T : IModel where U : IMVPView
 
     {
-        readonly IAuctionDetailsModel _pModel;
-        readonly IAuctionDetailsView _pView;
+        internal readonly IAuctionDetailsModel _pModel;
+        internal readonly IAuctionDetailsView _pView;
 
-        public AuctionDetailsPresenter(IAuctionDetailsModel PModel, IAuctionDetailsView PView)
+        public AuctionDetailsPresenter(T PModel, U PView) : base(PModel, PView)
         {
-            _pModel = PModel;
-            _pView = PView;
         }
 
         internal void Bid()

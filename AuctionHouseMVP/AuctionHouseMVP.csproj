@@ -362,6 +362,7 @@
     <Compile Include="Models\Comments\ICommentsModel.cs" />
     <Compile Include="Models\Comments\UserCommentsModel.cs" />
     <Compile Include="Models\IMasterPageModel.cs" />
+    <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\MasterPageViewModel.cs" />
     <Compile Include="CreateComment.aspx.cs">
       <DependentUpon>CreateComment.aspx</DependentUpon>
@@ -548,11 +549,15 @@
     <Compile Include="Helper\UrlHelper.cs" />
     <Compile Include="Helper\UserHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="Presenter\AbstractPresenter.cs" />
     <Compile Include="Presenter\AuctionDetailsPresenter.cs" />
     <Compile Include="Presenter\AuctionListPresenter.cs" />
     <Compile Include="Presenter\BidPresenter.cs" />
     <Compile Include="Presenter\CreateAuctionPresenter.cs" />
     <Compile Include="Presenter\CreateCommentPresenter.cs" />
+    <Compile Include="Presenter\IPresenter.cs" />
+    <Compile Include="Presenter\PresenterFactory.cs" />
     <Compile Include="View\ICommentsView.cs" />
     <Compile Include="Presenter\UserCommentListPresenter.cs" />
     <Compile Include="View\IAuctionListView.cs" />
@@ -586,6 +591,8 @@
     <Compile Include="View\ICreateAuctionView.cs" />
     <Compile Include="View\ICreateComment.cs" />
     <Compile Include="View\IMasterPageView.cs" />
+    <Compile Include="View\IMVPView.cs" />
+    <Compile Include="View\MyPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

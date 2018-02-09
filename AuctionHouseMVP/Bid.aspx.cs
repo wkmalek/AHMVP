@@ -27,21 +27,17 @@ namespace AHWForm
         {
             p = new BidPresenter(new NewBidViewModel(), this);
             p.Load();
-            
-
-
         }
 
         protected void BidSecond_Click(object sender, EventArgs e)
         {
-            
+            if(Page.IsValid)
             p.Bid();
         }
 
         protected void CustomValidatorPrice_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            args.IsValid = (decimal.Parse(args.Value) > ActualValue);
-
+            args.IsValid = (decimal.Parse(args.Value) > ActualValue);       
         }
     }
 }

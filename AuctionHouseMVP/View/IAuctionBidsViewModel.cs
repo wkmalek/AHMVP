@@ -3,7 +3,7 @@ using AHWForm.Models;
 
 namespace AHWForm.View
 {
-    public interface IAuctionBidsViewModel
+    public interface IAuctionBidsViewModel:IMVPView
     {
         IList<AuctionBidViewModel> bidsViewModel { get; }
     }

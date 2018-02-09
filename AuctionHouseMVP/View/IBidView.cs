@@ -1,6 +1,6 @@
 ﻿namespace AHWForm.View
 {
-    public interface IBidView
+    public interface IBidView : IMVPView
     {
         string Value { get; set; }
         decimal ActualValue { get; set; }

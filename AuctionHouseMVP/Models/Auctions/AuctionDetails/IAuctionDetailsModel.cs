@@ -2,7 +2,7 @@
 
 namespace AHWForm.Models
 {
-    public interface IAuctionDetailsModel
+    public interface IAuctionDetailsModel : IModel
     {
         AuctionDetailsViewModel LoadAuction(string ID, string currency, ICurrencyExchangeRepository currencyRepository);
     }

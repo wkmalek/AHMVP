@@ -82,7 +82,8 @@ namespace AHWForm
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(), this);
+            var x = new AuctionDetailsModel();
+            AuctionDetailsPresenter p = new AuctionDetailsPresenter<>(x, this);
             p.PopulateAuction(CookieHelper.CheckCookie("currency", "USD"));
 
             if (listOFImages != null)
@@ -95,14 +96,6 @@ namespace AHWForm
             ImageGallery.DataSource = listOFImages;
             ImageGallery.DataBind();
             BidsList.DataBind();
-        }
-
-        protected override void InitializeCulture()
-        {
-            var langCookie = CookieHelper.CheckCookie("lang", "en-US");
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(langCookie);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCookie);
-            base.InitializeCulture();
         }
 
         protected void Bid_Click(object sender, EventArgs e)

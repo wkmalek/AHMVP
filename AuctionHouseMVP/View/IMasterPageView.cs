@@ -3,7 +3,7 @@ using AHWForm.Models;
 
 namespace AHWForm.View
 {
-    public interface IMasterPageView
+    public interface IMasterPageView:IMVPView
     {
         IEnumerable<CategoryModel> tv { get; set; }
     }

@@ -3,7 +3,7 @@ using AHWForm.Models;
 
 namespace AHWForm.View
 {
-    public interface ICreateAuctionView
+    public interface ICreateAuctionView : IMVPView
     {
         IEnumerable<CategoryModel> tv { get; set; }
     }
