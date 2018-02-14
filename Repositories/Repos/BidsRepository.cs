@@ -4,34 +4,35 @@ using System.Linq;
 using System.Web;
 using AHWForm.Models;
 using System.Data.Entity;
+using System.Xml;
 using MoreLinq;
 using Repositories;
 using Repositories.Context;
 
 namespace AHWForm.Repos
 {
-    public class BidsRepository : AbstractRepostiory<BidsModel>, IBidsRepository<BidsModel> 
+    public class BidsRepository : AbstractDbRepostiory<BidsModel>, IBidsRepository<BidsModel> 
     {
-
-        public BidsRepository()
-        {
-            context = new GenericContextFactory<BidsModel>("BidContext");
-        }
-
         public BidsModel GetMaxBidOfAuction(string Id)
         {
+            Connect();
             var bids = GetBidsByAuctionID(Id);
-            return bids.Any() ? bids.MaxBy(x => x.Value) : null;
+            var output = bids.Any() ? bids.MaxBy(x => x.Value) : null;
+            return output;
         }
 
         public IEnumerable<BidsModel> GetBidsByAuctionID(string ID)
         {
-            return context.dbSet.Where(x => x.AuctionId == ID).ToList();
+            Connect();
+            var output = context.dbSet.Where(x => x.AuctionId == ID).ToList();
+            return output;
         }
 
         public IEnumerable<BidsModel> GetBidsByUserID(string ID)
         {
-            return context.dbSet.Where(x => x.AuctionId == ID).ToList();
+            Connect();
+            var output = context.dbSet.Where(x => x.AuctionId == ID).ToList();
+            return output;
         }
 
         ~BidsRepository()

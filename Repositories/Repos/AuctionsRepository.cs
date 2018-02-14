@@ -10,16 +10,16 @@ using Repositories.Context;
 
 namespace AHWForm.Repos
 {
-    public class AuctionsRepository : AbstractRepostiory<AuctionModel>, IAuctionsRepository<AuctionModel>
+    public class AuctionsRepository : AbstractDbRepostiory<AuctionModel>, IAuctionsRepository<AuctionModel>
     {
-        public AuctionsRepository()
-        {
-            context = new GenericContextFactory<AuctionModel>("AuctionContext");
-        }
+        
 
         public IEnumerable<AuctionModel> GetAuctionByUserID(string ID)
         {
-            return context.dbSet.Where(x => x.WinnerId == ID).ToList();
+            Connect();
+            var output = context.dbSet.Where(x => x.WinnerId == ID).ToList();
+            context.Dispose();
+            return output;
         }
 
         public bool CheckIfAuctionEnded(string ID)
@@ -54,17 +54,23 @@ namespace AHWForm.Repos
 
         public IEnumerable<AuctionModel> GetAuctionModelsBySingleCategory(string ID)
         {
-            return context.dbSet.Where(x => x.CategoryId == ID);
+            Connect();
+            var output = context.dbSet.Where(x => x.CategoryId == ID);
+            context.Dispose();
+            return output; 
         }
 
         public IEnumerable<AuctionModel> GetAuctionsByCatList(IEnumerable<CategoryModel> Categories)
         {
+            Connect();
             List<string> lst = new List<string>();
             foreach (var item in Categories)
             {
                 lst.Add(item.Id);
             }
-            return GetAllElements().Where(x => lst.Contains(x.CategoryId));
+            var output = GetAllElements().Where(x => lst.Contains(x.CategoryId));
+            context.Dispose();
+            return output;
         }
 
         ~AuctionsRepository()

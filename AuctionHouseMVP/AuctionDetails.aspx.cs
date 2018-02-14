@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.Web.UI;
@@ -12,7 +13,7 @@ using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class AuctionDetails : Page, IAuctionDetailsView
+    public partial class AuctionDetails : ViewBasePage<AuctionDetailsPresenter, IAuctionDetailsView>, IAuctionDetailsView
     {
         public string AuctionTitle
         {
@@ -59,10 +60,25 @@ namespace AHWForm
         public List<AuctionBidViewModel> bids
         {
             get { return null; }
-            set { BidsList.DataSource = value; }
+            set
+            {
+                BidsList.DataSource = value;
+                BidsList.DataBind();
+            }
         }
 
-        public List<ImagesModel> listOFImages { get; set; }
+        private List<ImagesModel> _listofImages;
+
+        public List<ImagesModel> listOFImages
+        {
+            get { return _listofImages; }
+            set
+            {
+                _listofImages = value;
+                ImageGallery.DataSource = listOFImages;
+                ImageGallery.DataBind();
+            }
+        }
 
         public string Currency
         {
@@ -80,28 +96,20 @@ namespace AHWForm
             }
         }
 
+        public string Thumbnail
+        {
+            get { return ThumbnailImg.ImageUrl; }
+            set { ThumbnailImg.ImageUrl = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            var x = new AuctionDetailsModel();
-            AuctionDetailsPresenter p = new AuctionDetailsPresenter<>(x, this);
-            p.PopulateAuction(CookieHelper.CheckCookie("currency", "USD"));
-
-            if (listOFImages != null)
-                foreach (var item in listOFImages)
-                {
-                    if (item.IsThumbnail)
-                        Thumbnail.ImageUrl = ImageHelper.GetUrlForImage(item.Id, item.Extension);
-                }
-
-            ImageGallery.DataSource = listOFImages;
-            ImageGallery.DataBind();
-            BidsList.DataBind();
+            _presenter.PopulateAuction();
         }
 
         protected void Bid_Click(object sender, EventArgs e)
         {
-            AuctionDetailsPresenter p = new AuctionDetailsPresenter(new AuctionDetailsModel(), this);
-            p.Bid();
+            _presenter.Bid();
         }
     }
 }

@@ -30,10 +30,10 @@ body {
 .dl-horizontal dt { white-space: normal; }
 
 .container_bodycontent {
-    margin-left: 200px;
+    padding-left: 200px;
     float: left;
     width: 100%;
-    border-left: 1px solid;
+    border: 1px solid;
 }
 
 .navigation_tree {
@@ -183,4 +183,8 @@ input[type="select"] { max-width: 280px; }
     min-width: 200px;
     min-height: 50px;
     width: 70%;
+}
+
+.auctionList {
+    width: 100%;
 }

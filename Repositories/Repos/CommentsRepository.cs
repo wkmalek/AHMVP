@@ -9,22 +9,23 @@ using Repositories.Context;
 
 namespace AHWForm.Repos
 {
-    public class CommentsRepository:AbstractRepostiory<CommentsModel>, ICommentsRepository<CommentsModel>
+    public class CommentsRepository:AbstractDbRepostiory<CommentsModel>, ICommentsRepository<CommentsModel>
     {
-
-        public CommentsRepository()
-        {
-            context = new GenericContextFactory<CommentsModel>("CommentsContext");
-        }
 
         public IEnumerable<CommentsModel> GetBuyCommentsByUserID(string ID)
         {
-            return context.dbSet.Where(x => x.BuyerId == ID).ToList();
+            Connect();
+            var output = context.dbSet.Where(x => x.BuyerId == ID).ToList();
+            context.Dispose();
+            return output;
         }
 
         public IEnumerable<CommentsModel> GetSellCommentsByUserID(string ID)
         {
-            return context.dbSet.Where(x => x.SellerId == ID).ToList();
+            Connect();
+            var output = context.dbSet.Where(x => x.SellerId == ID).ToList();
+            context.Dispose();
+            return output;
         }
 
         ~CommentsRepository()

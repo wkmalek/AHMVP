@@ -15,8 +15,17 @@ namespace AHWForm.Repos
         {
             //var finallist = new List<string>();
             var doc = new XmlDocument();
-            doc.Load(linkToService);
+            try
+            {
+                doc.Load(linkToService);
+            }
+            catch (Exception e)
+            {
+                //TODO exception handle here
 
+                return;
+            }
+            
             XmlElement root = doc.DocumentElement;
             if (root == null) return;
             var nodes = root.GetElementsByTagName("Cube");
@@ -27,16 +36,21 @@ namespace AHWForm.Repos
             }
         }
 
-        private decimal GetMultiplier(string first, string second)
+        private decimal? GetMultiplier(string first, string second)
         {
-            if ((first == null) || (second == null)) return 1;
-            var one = GetAttribute(first, lst).Replace('.', ',');
-            var two = GetAttribute(second, lst).Replace('.', ',');
-            if ((one != "0") && (two != "0"))
+            if (lst!=null)
             {
-                return decimal.Round((decimal.Parse(two) / decimal.Parse(one)), 2);
+                if ((first == null) || (second == null)) return 1;
+                var one = GetAttribute(first, lst).Replace('.', ',');
+                var two = GetAttribute(second, lst).Replace('.', ',');
+                if ((one != "0") && (two != "0"))
+                {
+                    return decimal.Round((decimal.Parse(two) / decimal.Parse(one)), 2);
+                }
+                return 1;
             }
-            return 1;
+
+            return null;
         }
 
         private static string GetAttribute(string attrib, IEnumerable<XmlNode> lst)
@@ -44,11 +58,13 @@ namespace AHWForm.Repos
             return attrib == "EUR" ? "1" : (from item in lst where item.Attributes?["currency"]?.Value != null where item.Attributes.Count > 0 where item.Attributes["currency"].Value == attrib select item.Attributes["rate"].Value).FirstOrDefault();
         }
 
-        public decimal GetValueInAnotherCurrency(decimal value, string currency, string currency2)
+        public decimal? GetValueInAnotherCurrency(decimal value, string currency, string currency2)
         {
             if (currency == currency2)
                 return value;
-            return (GetMultiplier(currency, currency2)) * value;
+            var output = (GetMultiplier(currency, currency2));
+            return output * value;
+
         }
 
         

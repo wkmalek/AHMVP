@@ -22,13 +22,13 @@ namespace AHWForm {
         protected global::System.Web.UI.WebControls.Label AuctionTitleLabel;
         
         /// <summary>
-        /// Thumbnail control.
+        /// ThumbnailImg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Thumbnail;
+        protected global::System.Web.UI.WebControls.Image ThumbnailImg;
         
         /// <summary>
         /// PriceLabel control.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AHWForm.View
 {
-    public interface IMVPView
+    public interface IMyView
     {
 
     }

@@ -1,29 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuctionListPage.aspx.cs" Inherits="AHWForm.AuctionListPage" %>
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuctionListPage.aspx.cs" Inherits="AHWForm.AuctionListPage" meta:resourcekey="PageResource1" %>
+<%@ Register Src="SortControl.ascx" TagName="SortControl" TagPrefix="uc" %>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
 
-    <div id="AuctionListSearchFilters">
-        <asp:Label runat="server" ID="FilterByPriceLabel" Text="ByPrice"/>
-        <asp:LinkButton runat="server" Text="&#8595;" ID="FilterByPriceAscending" OnClick="FilterByPriceAscending_OnClick"/>
-        <asp:LinkButton runat="server" Text="&#8593;" ID="FilterByPriceDescending" OnClick="FilterByPriceDescending_OnClick"/>
-
-        <asp:Label runat="server" ID="FilterByDateLabel" Text="ByDate"/>
-        <asp:LinkButton runat="server" Text="&#8595;" ID="FilterByDateAscending" OnClick="FilterByDateAscending_OnClick"/>
-        <asp:LinkButton runat="server" Text="&#8593;" ID="FilterByDateDescending" OnClick="FilterByDateDescending_OnClick"/>
-
-        <asp:Label runat="server" ID="FilterByDescriptionLabel" Text="ByDescription"/>
-        <asp:LinkButton runat="server" Text="&#8595;" ID="FilterByDescriptionAscending" OnClick="FilterByDescriptionAscending_OnClick"/>
-        <asp:LinkButton runat="server" Text="&#8593;" ID="FilterByDescriptionDescending" OnClick="FilterByDescriptionDescending_OnClick"/>
+    
+    <uc:SortControl runat="server" ID="sortControl" meta:resourcekey="SortControl" />
+    
+    <asp:ListView ID="AuctionList" runat="server" ItemType="AHWForm.Models.AuctionListSingleElemVM" >
         
-        <asp:Label runat="server" ID="WithEndedAuctionsLabel" Text="With ended auctions"></asp:Label>
-        <asp:CheckBox runat="server" ID="WithEndedAuctions" Checked="False" OnCheckedChanged="WithEndedAuctions_OnCheckedChanged" AutoPostBack="true"/>
-    </div>
-
-    <asp:ListView ID="AuctionList" runat="server" ItemType="AHWForm.Models.AuctionListSingleElemVM" OnSorting="AuctionList_OnSorting">
-
         <EmptyDataTemplate>
             <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
-                <tr>
-                    <td>No data was returned.</td>
+                <tr runat="server">
+                    <td runat="server"><asp:Label runat="server"/></td>
                 </tr>
             </table>
         </EmptyDataTemplate>
@@ -32,9 +19,7 @@
             <tr style="background-color: #f2fbfc; color: #333333;">
 
                 <td>
-                    <asp:HyperLink runat="server" ID="AuctionLink" NavigateUrl='<%# Eval("AuctionUrl") %>'>
-                        <%# Eval("AuctionTitle") %>
-                    </asp:HyperLink>
+                    <asp:HyperLink runat="server" ID="AuctionLink" NavigateUrl='<%# Eval("AuctionUrl") %>' meta:resourcekey="AuctionLinkResource1"></asp:HyperLink>
                 </td>
                 
                 <td>
@@ -56,16 +41,16 @@
             </tr>
         </ItemTemplate>
         <LayoutTemplate>
-            <table runat="server">
+            <table runat="server" class="auctionList">
                 <tr runat="server">
                     <td runat="server">
-                        <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
+                        <table id="itemPlaceholderContainer" runat="server" border="1" style="width: 100%; background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
                             <tr runat="server" style="background-color: #f2fbfc; color: #333333;">
-                                <th runat="server">Title</th>
-                                <th runat="server">ActualPrice</th>
-                                <th runat="server">DateEnd</th>
-                                <th runat="server">DateCreated</th>
-                                <th runat="server">Description</th>
+                                <th runat="server"><asp:Label runat="server" meta:resourcekey="AuctionTitle"/></th>
+                                <th runat="server"><asp:Label runat="server" meta:resourcekey="AuctionPrice"/></th>
+                                <th runat="server"><asp:Label runat="server" meta:resourcekey="AuctionDateBegin"/></th>
+                                <th runat="server"><asp:Label runat="server" meta:resourcekey="AuctionDateEnd"/></th>
+                                <th runat="server"><asp:Label runat="server" meta:resourcekey="AuctionDescription"/></th>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
                             </tr>
@@ -76,9 +61,9 @@
                     <td runat="server" style="text-align: center; background-color: #f2fbfc; font-family: Verdana, Arial, Helvetica, sans-serif; color: #333333;">
                         <asp:DataPager ID="DataPager1" runat="server" PageSize="25">
                             <Fields>
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"/>
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" meta:resourcekey="ButtonFirst"/>
                                 <asp:NumericPagerField/>
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"/>
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" meta:resourcekey="ButtonLast"/>
                             </Fields>
                         </asp:DataPager>
                     </td>
@@ -86,6 +71,6 @@
             </table>
         </LayoutTemplate>
     </asp:ListView>
-
+    
 
 </asp:Content>

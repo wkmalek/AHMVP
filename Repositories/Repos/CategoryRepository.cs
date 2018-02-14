@@ -8,22 +8,24 @@ using Repositories.Context;
 
 namespace AHWForm.Repos
 {
-    public class CategoryRepository :AbstractRepostiory<CategoryModel>, ICategoryRepository<CategoryModel>
+    public class CategoryRepository :AbstractDbRepostiory<CategoryModel>, ICategoryRepository<CategoryModel>
     {
-        public CategoryRepository()
-        {
-            context = new GenericContextFactory<CategoryModel>("CategoryContext");
-        }
-
         public IEnumerable<CategoryModel> GetCategoriesWithChilds(string id)
         {
+            Connect();
             //returns list of categories with their childrens
             if (id == null)
-               return GetAllElements();
+            {
+                var outp = GetAllElements();
+                context.Dispose();
+                return outp;
+            }
             CategoryModel cat = GetSingleElementByID(id);
             List<CategoryModel> list = new List<CategoryModel>();
             list.Add(cat);
-            return FindAllChildrens(list, cat.Id);    
+            var output = FindAllChildrens(list, cat.Id);
+            context.Dispose();
+            return output;
         }
 
         private List<CategoryModel> FindAllChildrens(List<CategoryModel> categoryList, string parentId)

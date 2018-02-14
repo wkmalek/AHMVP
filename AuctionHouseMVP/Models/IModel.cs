@@ -8,6 +8,5 @@ namespace AHWForm.Models
 {
     public interface IModel
     {
-
     }
 }

@@ -4,7 +4,7 @@ using AHWForm.View;
 
 namespace AHWForm
 {
-    internal interface ICommentsView : IMVPView
+    public interface ICommentsView : IMyView
     {
         List<CommentsBuyView> vm { get; set; }
     }

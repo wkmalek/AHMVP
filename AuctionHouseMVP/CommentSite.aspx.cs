@@ -4,22 +4,29 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using AHWForm.Helper;
 using AHWForm.Models.Comments;
+using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class CommentSite : Page, ICommentsView
+    public partial class CommentSite : ViewBasePage<UserCommentListPresenter,ICommentsView>, ICommentsView
     {
-        private UserCommentListPresenter p;
-        public List<CommentsBuyView> vm { get; set; }
+        private List<CommentsBuyView> _vm;
+        public List<CommentsBuyView> vm
+        {
+            get { return _vm; }
+            set
+            {
+                _vm = value;
+                CommentList.DataSource = vm;
+                CommentList.DataBind();
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
-                p = new UserCommentListPresenter(new UserBuyCommentsModel(), this);
-                p.PopulateCommentList();
-                CommentList.DataSource = vm;
-                CommentList.DataBind();
+                _presenter.PopulateCommentList();
             }
         }
 

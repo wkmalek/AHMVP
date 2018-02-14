@@ -8,7 +8,6 @@ namespace AHWForm.Models
         {
             Bidder = UserHelper.GetUserNameById(bids.UserId);
             Value = bids.Value.ToString();
-            //TODO
             DateCreated = bids.DateCreated.ToString();
             Id = bids.Id;
         }

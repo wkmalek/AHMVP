@@ -1,18 +1,13 @@
 ﻿using AHWForm.ExtMethods;
 using AHWForm.Helper;
+using AHWForm.Models.Comments;
+using AHWForm.Presenter;
 
 namespace AHWForm
 {
-    internal class UserCommentListPresenter
+    public class UserCommentListPresenter:AbstractPresenter<ICommentsView>
     {
-        readonly ICommentsModel _pModel;
-        readonly ICommentsView _pView;
-
-        public UserCommentListPresenter(ICommentsModel PModel, ICommentsView PView)
-        {
-            _pModel = PModel;
-            _pView = PView;
-        }
+        readonly ICommentsModel _pModel = new UserBuyCommentsModel();
 
         internal void PopulateCommentList()
         {

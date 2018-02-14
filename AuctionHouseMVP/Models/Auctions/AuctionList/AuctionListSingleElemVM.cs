@@ -10,9 +10,19 @@ namespace AHWForm.Models
         {
             Id = auctionModel.Id;
             AuctionTitle = auctionModel.Title;
-            ActualPrice = exchangeRepository
-                .GetValueInAnotherCurrency(auctionModel.EndingPrice, auctionModel.Currency, currency).ToString();
-            Currency = currency;
+            var priceExchanged = exchangeRepository
+                .GetValueInAnotherCurrency(auctionModel.EndingPrice, auctionModel.Currency, currency);
+            if (priceExchanged != null)
+            {
+                ActualPrice = priceExchanged.ToString();
+                Currency = currency; 
+            }
+            else
+            {
+                ActualPrice = auctionModel.EndingPrice.ToString();
+                Currency = auctionModel.Currency;
+            }
+            
             CreatorName = UserHelper.GetUserNameById(auctionModel.CreatorId);
             CreatorId = auctionModel.CreatorId;
             ShortDescription = auctionModel.Description;

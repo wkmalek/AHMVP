@@ -39,11 +39,18 @@ namespace AHWForm.Models
                 var endingPrice =
                     currencyExchangeRepository.GetValueInAnotherCurrency(auction.EndingPrice, auction.Currency,
                         currency);
-                auction.EndingPrice = endingPrice;
-                auction.StartPrice = startPrice;
-                auction.Currency = currency;
+
                 var bids = bidsRepo.GetBidsByAuctionID(ID);
-                var bidsVM = new AuctionBidsViewModel(bids);
+                var bidsVM = new AuctionBidsViewModel(bids, currency, auction.Currency, currencyExchangeRepository);
+
+                if (endingPrice != null && startPrice != null)
+                {
+                    auction.EndingPrice = (decimal)endingPrice;
+                    auction.StartPrice = (decimal)startPrice;
+                    auction.Currency = currency;
+                }
+
+                
                 var img = imageRepo.GetImagesByAuctionID(ID).ToList();
 
                 return new AuctionDetailsViewModel(auction, bidsVM, img);

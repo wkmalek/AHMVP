@@ -10,7 +10,7 @@
             </div>
             <div class="PhotoAndRightBar">
                 <div class="Photo">
-                    <asp:Image runat="server" ID="Thumbnail"/>
+                    <asp:Image runat="server" ID="ThumbnailImg"/>
 
                 </div>
                 <div class="BasicInfo">
@@ -49,9 +49,7 @@
             </div>
         </div>
         <div class="MiddleInfo">
-            <%--<div class="AuctionText">--%>
             <asp:TextBox runat="server" ID="AuctionLongDescription" CssClass="AuctionText" TextMode="MultiLine" ReadOnly="true"/>
-            <%--</div>--%>
             <asp:DataList runat="server" ID="ImageGallery" RepeatLayout="Table" RepeatColumns="5" CellPadding="2" CellSpacing="20">
                 <ItemTemplate>
                     <table class="GalleryItem" cellpadding="0" cellspacing="0" border="0">
@@ -68,7 +66,7 @@
             <div class="Bidders">
                 <asp:ListView runat="server" ID="BidsList" ItemType="AHWForm.Models.AuctionBidViewModel">
                     <ItemTemplate>
-                        <tr style="background-color: #FFFBD6; color: #333333;" ">
+                        <tr style="background-color: #FFFBD6; color: #333333;" >
                             <td>
                                 <%# Eval("Bidder") %>
                             </td>
@@ -78,18 +76,7 @@
                             <td>
                                 <%# Eval("DateCreated") %>
                             </td>
-                            <%--            <td>
-                    <asp:DynamicControl Value />
-                </td>
-                <td>
-                    <asp:DynamicControl DateCreated />
-                </td>
-    
-                <td>
-                    
-                    <asp:DynamicControl "Description Bidder/>
-                    
-                </td>--%>
+                                      
 
                         </tr>
                     </ItemTemplate>

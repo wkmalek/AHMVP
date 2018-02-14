@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using AHWForm.Models;
 using AHWForm.View;
 
 namespace AHWForm.Presenter
 {
-    public abstract class AbstractPresenter<T,U> : IPresenter where T : IModel where U : IMVPView
+    public abstract class AbstractPresenter<TView> where TView : IMyView 
     {
-        internal readonly T _pModel;
-        internal readonly U _pView;
-
-        protected AbstractPresenter(T PModel, U PView)
-        {
-            _pView = PView;
-            _pModel = PModel;
-        }
+        protected internal TView _pView { get; set; }
     }
 }

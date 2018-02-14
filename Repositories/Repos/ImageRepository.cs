@@ -10,21 +10,22 @@ using Repositories.Context;
 
 namespace AHWForm.Repos
 {
-    public class ImageRepository: AbstractRepostiory<ImagesModel>, IImageRepository<ImagesModel>
+    public class ImageRepository: AbstractDbRepostiory<ImagesModel>, IImageRepository<ImagesModel>
     { 
-        public ImageRepository()
-        {
-            context = new GenericContextFactory<ImagesModel>("ImagesContext");
-        }
-
         public IEnumerable<ImagesModel> GetImagesByUserID(string ID)
         {
-            return context.dbSet.Where(x => x.UserID == ID);
+            Connect();
+            var output = context.dbSet.Where(x => x.UserID == ID).ToList();
+            context.Dispose();
+            return output;
         }
 
         public IEnumerable<ImagesModel> GetImagesByAuctionID(string ID)
         {
-            return context.dbSet.Where(x => x.AuctionID == ID);
+            Connect();
+            var output = context.dbSet.Where(x => x.AuctionID == ID).ToList();
+            context.Dispose();
+            return output;
         }
 
         ~ImageRepository()

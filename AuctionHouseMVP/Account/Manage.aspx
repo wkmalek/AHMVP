@@ -45,9 +45,6 @@
                         <asp:Label runat="server" ID="PrivateApiKey"/>
                     </dd>
 
-                    <dt>
-                        <asp:Button runat="server" ID="GenerateNewPairOfKeysButton" OnClick="GenerateNewPairOfKeysButton_OnClick" Text="Generate new keys"/>
-                    </dt>
                 </dl>
             </div>
         </div>

@@ -1,8 +1,8 @@
 ﻿namespace AHWForm.View
 {
-    public interface ICreateCommentView:IMVPView
+    public interface ICreateCommentView : IMyView
     {
         string Description { get; set; }
-        string Rate { get; set; }
+        string Rate { get; }
     }
 }

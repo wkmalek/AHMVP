@@ -1,0 +1,226 @@
+﻿<error errorId="d276efda-c546-451a-b17d-99e6e68f968b" application="/LM/W3SVC/2/ROOT" host="WIN-SHAREPOINTD" type="System.ArgumentException" message="Invalid postback or callback argument.  Event validation is enabled using &lt;pages enableEventValidation=&quot;true&quot;/&gt; in configuration or &lt;%@ Page EnableEventValidation=&quot;true&quot; %&gt; in a page.  For security purposes, this feature verifies that arguments to postback or callback events originate from the server control that originally rendered them.  If the data is valid and expected, use the ClientScriptManager.RegisterForEventValidation method in order to register the postback or callback data for validation." source="System.Web" detail="System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---&gt; System.ArgumentException: Invalid postback or callback argument.  Event validation is enabled using &lt;pages enableEventValidation=&quot;true&quot;/&gt; in configuration or &lt;%@ Page EnableEventValidation=&quot;true&quot; %&gt; in a page.  For security purposes, this feature verifies that arguments to postback or callback events originate from the server control that originally rendered them.  If the data is valid and expected, use the ClientScriptManager.RegisterForEventValidation method in order to register the postback or callback data for validation.&#xD;&#xA;   at System.Web.UI.ClientScriptManager.ValidateEvent(String uniqueId, String argument)&#xD;&#xA;   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)&#xD;&#xA;   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)&#xD;&#xA;   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)&#xD;&#xA;   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.HandleError(Exception e)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest()&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest(HttpContext context)&#xD;&#xA;   at ASP.auctionlistpage_aspx.ProcessRequest(HttpContext context)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="test@test.pl" time="2018-02-13T11:15:52.5658276Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Invalid postback or callback argument. &amp;nbsp;Event validation is enabled using &amp;lt;pages enableEventValidation=&amp;quot;true&amp;quot;/&amp;gt; in configuration or &amp;lt;%@ Page EnableEventValidation=&amp;quot;true&amp;quot; %&amp;gt; in a page. &amp;nbsp;For security purposes, this feature verifies that arguments to postback or callback events originate from the server control that originally rendered them. &amp;nbsp;If the data is valid and expected, use the ClientScriptManager.RegisterForEventValidation method in order to register the postback or callback data for validation.&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Server Error in '/' Application.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Invalid postback or callback argument. &amp;nbsp;Event validation is enabled using &amp;lt;pages enableEventValidation=&amp;quot;true&amp;quot;/&amp;gt; in configuration or &amp;lt;%@ Page EnableEventValidation=&amp;quot;true&amp;quot; %&amp;gt; in a page. &amp;nbsp;For security purposes, this feature verifies that arguments to postback or callback events originate from the server control that originally rendered them. &amp;nbsp;If the data is valid and expected, use the ClientScriptManager.RegisterForEventValidation method in order to register the postback or callback data for validation.&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Description: &lt;/b&gt;An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Exception Details: &lt;/b&gt;System.ArgumentException: Invalid postback or callback argument. &amp;nbsp;Event validation is enabled using &amp;lt;pages enableEventValidation=&amp;quot;true&amp;quot;/&amp;gt; in configuration or &amp;lt;%@ Page EnableEventValidation=&amp;quot;true&amp;quot; %&amp;gt; in a page. &amp;nbsp;For security purposes, this feature verifies that arguments to postback or callback events originate from the server control that originally rendered them. &amp;nbsp;If the data is valid and expected, use the ClientScriptManager.RegisterForEventValidation method in order to register the postback or callback data for validation.&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Source Error:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&#xD;&#xA;&#xD;&#xA;An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Stack Trace:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;[ArgumentException: Invalid postback or callback argument.  Event validation is enabled using &amp;lt;pages enableEventValidation=&amp;quot;true&amp;quot;/&amp;gt; in configuration or &amp;lt;%@ Page EnableEventValidation=&amp;quot;true&amp;quot; %&amp;gt; in a page.  For security purposes, this feature verifies that arguments to postback or callback events originate from the server control that originally rendered them.  If the data is valid and expected, use the ClientScriptManager.RegisterForEventValidation method in order to register the postback or callback data for validation.]&#xD;&#xA;   System.Web.UI.ClientScriptManager.ValidateEvent(String uniqueId, String argument) +9851658&#xD;&#xA;   System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument) +125&#xD;&#xA;   System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument) +12&#xD;&#xA;   System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument) +15&#xD;&#xA;   System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData) +35&#xD;&#xA;   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +1639&#xD;&#xA;&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:7690&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__AntiXsrfToken=5510bac5d9f642898ba9e5d5548d5439; ASP.NET_SessionId=xjhcrzhxbgzcrsxpa1bfjp1v; currency=PLN; lang=pl-PL; .AspNet.ApplicationCookie=SONb0Bdt7mugG0NSd_6JJrb96AmymiwmarQJSzsqghoaNvS3y2ZUZf4FCEfCBNAQef-FECdJrGvB0NEB8Lvc20ST8rxLQukYRg83YNG0WLifkj359YjG4QlioPRE7lGxalwlq1u7drJ5zVPGLCx2hHFjuJC8tBb8CKRUBGFzhIf-FsjF6jS2mUY_tfn-JZWyw5oNG4YOjlAQJZkTJXfiu6Ub72cKHRhluwRbPFWatWTMyvlURIv3KJT32NQ_KCBLNyBh_WNlXJYK2Cz-x3GCn9PXtx8yr8CCh040gpLeTZtlT4BjU78SnmyoA3mboN0U9kf41q0UflgoYH0-FqH83e64Fey5AX-qcJ7SBV9oULzw_A6b6XrlLibpv2IIXpbaTJfqiDb-hd2YcIsWxOPi23sw6p7KGijkB9S9uVR0XStl7xWS7Y7AkyvT40l-4ETUPM3-jImZNX7pFJx6l1BFZhAds8Xpwz-lAfrUmAqsihZU9DvqgCo2fMrEl-TnT6W3&#xD;&#xA;HTTP_HOST:localhost:64131&#xD;&#xA;HTTP_REFERER:http://localhost:64131/AuctionListPage?category=1&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:64131&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 7690&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __AntiXsrfToken=5510bac5d9f642898ba9e5d5548d5439; ASP.NET_SessionId=xjhcrzhxbgzcrsxpa1bfjp1v; currency=PLN; lang=pl-PL; .AspNet.ApplicationCookie=SONb0Bdt7mugG0NSd_6JJrb96AmymiwmarQJSzsqghoaNvS3y2ZUZf4FCEfCBNAQef-FECdJrGvB0NEB8Lvc20ST8rxLQukYRg83YNG0WLifkj359YjG4QlioPRE7lGxalwlq1u7drJ5zVPGLCx2hHFjuJC8tBb8CKRUBGFzhIf-FsjF6jS2mUY_tfn-JZWyw5oNG4YOjlAQJZkTJXfiu6Ub72cKHRhluwRbPFWatWTMyvlURIv3KJT32NQ_KCBLNyBh_WNlXJYK2Cz-x3GCn9PXtx8yr8CCh040gpLeTZtlT4BjU78SnmyoA3mboN0U9kf41q0UflgoYH0-FqH83e64Fey5AX-qcJ7SBV9oULzw_A6b6XrlLibpv2IIXpbaTJfqiDb-hd2YcIsWxOPi23sw6p7KGijkB9S9uVR0XStl7xWS7Y7AkyvT40l-4ETUPM3-jImZNX7pFJx6l1BFZhAds8Xpwz-lAfrUmAqsihZU9DvqgCo2fMrEl-TnT6W3&#xD;&#xA;Host: localhost:64131&#xD;&#xA;Referer: http://localhost:64131/AuctionListPage?category=1&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36&#xD;&#xA;Origin: http://localhost:64131&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="test@test.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="test@test.pl" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="test@test.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="7690" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/AuctionListPage" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\AuctionListPage" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="category=1" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="53217" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/AuctionListPage" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64131" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/AuctionListPage" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="7690" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__AntiXsrfToken=5510bac5d9f642898ba9e5d5548d5439; ASP.NET_SessionId=xjhcrzhxbgzcrsxpa1bfjp1v; currency=PLN; lang=pl-PL; .AspNet.ApplicationCookie=SONb0Bdt7mugG0NSd_6JJrb96AmymiwmarQJSzsqghoaNvS3y2ZUZf4FCEfCBNAQef-FECdJrGvB0NEB8Lvc20ST8rxLQukYRg83YNG0WLifkj359YjG4QlioPRE7lGxalwlq1u7drJ5zVPGLCx2hHFjuJC8tBb8CKRUBGFzhIf-FsjF6jS2mUY_tfn-JZWyw5oNG4YOjlAQJZkTJXfiu6Ub72cKHRhluwRbPFWatWTMyvlURIv3KJT32NQ_KCBLNyBh_WNlXJYK2Cz-x3GCn9PXtx8yr8CCh040gpLeTZtlT4BjU78SnmyoA3mboN0U9kf41q0UflgoYH0-FqH83e64Fey5AX-qcJ7SBV9oULzw_A6b6XrlLibpv2IIXpbaTJfqiDb-hd2YcIsWxOPi23sw6p7KGijkB9S9uVR0XStl7xWS7Y7AkyvT40l-4ETUPM3-jImZNX7pFJx6l1BFZhAds8Xpwz-lAfrUmAqsihZU9DvqgCo2fMrEl-TnT6W3" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64131" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:64131/AuctionListPage?category=1" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:64131" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="category">
+      <value string="1" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__EVENTTARGET">
+      <value string="" />
+    </item>
+    <item name="__EVENTARGUMENT">
+      <value string="" />
+    </item>
+    <item name="CategoriesTreeView_ExpandState">
+      <value string="ccnnccnnn" />
+    </item>
+    <item name="CategoriesTreeView_SelectedNode">
+      <value string="" />
+    </item>
+    <item name="CategoriesTreeView_PopulateLog">
+      <value string="" />
+    </item>
+    <item name="__LASTFOCUS">
+      <value string="" />
+    </item>
+    <item name="__VIEWSTATE">
+      <value string="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" />
+    </item>
+    <item name="ctl00$MainContent$AuctionList$DataPager1$ctl02$ctl00">
+      <value string="Last" />
+    </item>
+    <item name="__VIEWSTATEGENERATOR">
+      <value string="4194DEEE" />
+    </item>
+    <item name="__EVENTVALIDATION">
+      <value string="ThBSGubXPOhsCc++6874c3T9EeV0ZnJcU7OhhcGJ/xHth/lht/PhG8HBqwrgJWUhbGzxyx9cUXnuF+/3s9HclkhdiYBOp0EHE/dcjFeCf0z0iOJfqspYO/FCwx50+anewMQ7ZLtJTgc8mDxvUIYxlaWYMGvfZqZO1nVTnwvF5YNu9iBwrqe7eq7IFhxPyOoQt8X7NUw2QbwJKInULiehCipKMLmwIwbxvxJIFxu8vAwhxT4Ac6KKlG1M6DJmI7VWNOrV2isAx6XH8aAr4a6EGE1aKRRmbzE5crmHxhpmRgA4VxVsQog9jjDvmw5MTSD5v6ZqDlYkHS2LmH31HslSOzPhCAsDmy4awvwDLgLmD4AqfiHRS8d4zRGVX0l3ujf/VlAGbu1NKHM5qD5FZdtatmfPefEn78M0JJrS5X3XJdCdL0RH+E/p5SF9YknwP8c9p6Rvt88EMGgscp8v3SPzTFd8kGZcKcWiEbiJAR2Dy7yp8ue5h64NrHQWt88OZ6dioHGXyZASRwVg/PiGRDQJUw==" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__AntiXsrfToken">
+      <value string="5510bac5d9f642898ba9e5d5548d5439" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="xjhcrzhxbgzcrsxpa1bfjp1v" />
+    </item>
+    <item name="currency">
+      <value string="PLN" />
+    </item>
+    <item name="lang">
+      <value string="pl-PL" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="SONb0Bdt7mugG0NSd_6JJrb96AmymiwmarQJSzsqghoaNvS3y2ZUZf4FCEfCBNAQef-FECdJrGvB0NEB8Lvc20ST8rxLQukYRg83YNG0WLifkj359YjG4QlioPRE7lGxalwlq1u7drJ5zVPGLCx2hHFjuJC8tBb8CKRUBGFzhIf-FsjF6jS2mUY_tfn-JZWyw5oNG4YOjlAQJZkTJXfiu6Ub72cKHRhluwRbPFWatWTMyvlURIv3KJT32NQ_KCBLNyBh_WNlXJYK2Cz-x3GCn9PXtx8yr8CCh040gpLeTZtlT4BjU78SnmyoA3mboN0U9kf41q0UflgoYH0-FqH83e64Fey5AX-qcJ7SBV9oULzw_A6b6XrlLibpv2IIXpbaTJfqiDb-hd2YcIsWxOPi23sw6p7KGijkB9S9uVR0XStl7xWS7Y7AkyvT40l-4ETUPM3-jImZNX7pFJx6l1BFZhAds8Xpwz-lAfrUmAqsihZU9DvqgCo2fMrEl-TnT6W3" />
+    </item>
+  </cookies>
+</error>

@@ -4,7 +4,7 @@ using AHWForm.View;
 
 namespace AHWForm.Presenter
 {
-    public interface IAuctionListView : IMVPView
+    public interface IAuctionListView : IMyView
     {
         List<AuctionListSingleElemVM> vm { get; set; }
     }

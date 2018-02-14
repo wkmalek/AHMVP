@@ -7,16 +7,9 @@ using AHWForm.View;
 
 namespace AHWForm.Presenter
 {
-    public class BidPresenter
+    public class BidPresenter : AbstractPresenter<IBidView>
     {
-        private IBidViewModel _pModel;
-        private IBidView _pView;
-
-        public BidPresenter(IBidViewModel PModel, IBidView PView)
-        {
-            _pModel = PModel;
-            _pView = PView;
-        }
+        internal readonly IBidViewModel _pModel = new NewBidViewModel();
 
         internal void Load()
         {

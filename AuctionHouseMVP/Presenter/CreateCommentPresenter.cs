@@ -1,20 +1,14 @@
 ﻿using System.Web;
 using AHWForm.Helper;
+using AHWForm.Models.Comments;
 using AHWForm.View;
 
 namespace AHWForm.Presenter
 {
-    public class CreateCommentPresenter
+    public class CreateCommentPresenter:AbstractPresenter<ICreateCommentView>
     {
-        private readonly ICommentsModel _pModel;
-        private ICreateCommentView _pView;
-
-        public CreateCommentPresenter(ICommentsModel PModel, ICreateCommentView PView)
-        {
-            _pView = PView;
-            _pModel = PModel;
-        }
-
+        private readonly ICommentsModel _pModel = new UserBuyCommentsModel();
+       
         internal void CreateNewComment(string desc, string rate)
         {
             var qs = UrlHelper.GetQueryString("Id");

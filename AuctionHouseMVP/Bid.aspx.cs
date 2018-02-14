@@ -7,10 +7,9 @@ using AHWForm.View;
 
 namespace AHWForm
 {
-    public partial class Bid : Page, IBidView
+    public partial class Bid : ViewBasePage<BidPresenter, IBidView>, IBidView
     {
-        private BidPresenter p;
-
+        
         public decimal ActualValue
         {
             get { return decimal.Parse(priceLabel.Text);}
@@ -25,14 +24,13 @@ namespace AHWForm
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            p = new BidPresenter(new NewBidViewModel(), this);
-            p.Load();
+            _presenter.Load();
         }
 
         protected void BidSecond_Click(object sender, EventArgs e)
         {
             if(Page.IsValid)
-            p.Bid();
+            _presenter.Bid();
         }
 
         protected void CustomValidatorPrice_OnServerValidate(object source, ServerValidateEventArgs args)

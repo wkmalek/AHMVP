@@ -2,6 +2,6 @@
 {
     public interface ICurrencyExchangeRepository
     {
-        decimal GetValueInAnotherCurrency(decimal value, string currency, string currency2);
+        decimal? GetValueInAnotherCurrency(decimal value, string currency, string currency2);
     }
 }

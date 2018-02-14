@@ -4,7 +4,7 @@ using AHWForm.Models.Images;
 
 namespace AHWForm.View
 {
-    public interface IAuctionDetailsView : IMVPView
+    public interface IAuctionDetailsView  : IMyView
     {
         string AuctionTitle { get; set; }
         string ShortDescription { get; set; }
@@ -17,5 +17,6 @@ namespace AHWForm.View
         List<ImagesModel> listOFImages { get; set; }
         string Currency { get; set; }
         bool IsEnded { get; set; }
+        string Thumbnail { get; set; }
     }
 }

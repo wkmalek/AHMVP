@@ -1,0 +1,220 @@
+﻿<error errorId="74a0a4c2-0540-488e-977c-824a6b93142d" application="/LM/W3SVC/2/ROOT" host="WIN-SHAREPOINTD" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="AHWForm" detail="System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at AHWForm.SortControl.WithEndedAuctions_OnCheckedChanged(Object sender, EventArgs e) in C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\SortControl.ascx.cs:line 63&#xD;&#xA;   at System.Web.UI.WebControls.CheckBox.OnCheckedChanged(EventArgs e)&#xD;&#xA;   at System.Web.UI.WebControls.CheckBox.RaisePostDataChangedEvent()&#xD;&#xA;   at System.Web.UI.WebControls.CheckBox.System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent()&#xD;&#xA;   at System.Web.UI.Page.RaiseChangedEvents()&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.HandleError(Exception e)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest()&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest(HttpContext context)&#xD;&#xA;   at ASP.auctionlistpage_aspx.ProcessRequest(HttpContext context) in C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\380a250e\95293000\App_Web_21vyjohi.0.cs:line 0&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="test@test.pl" time="2018-02-12T12:38:38.1018604Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Object reference not set to an instance of an object.&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Server Error in '/' Application.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Object reference not set to an instance of an object.&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Description: &lt;/b&gt;An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Exception Details: &lt;/b&gt;System.NullReferenceException: Object reference not set to an instance of an object.&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Source Error:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;Line 61:             List&amp;lt;AuctionListSingleElemVM&amp;gt; list = new List&amp;lt;AuctionListSingleElemVM&amp;gt;();&#xD;&#xA;Line 62:             if (!WithEndedAuctions.Checked)&#xD;&#xA;&lt;font color=red&gt;Line 63:                 foreach (var item in vm)&#xD;&#xA;&lt;/font&gt;Line 64:                 {&#xD;&#xA;Line 65:                     if (!item.IsEnded)&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Source File: &lt;/b&gt; C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\SortControl.ascx.cs&lt;b&gt; &amp;nbsp;&amp;nbsp; Line: &lt;/b&gt; 63&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Stack Trace:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;[NullReferenceException: Object reference not set to an instance of an object.]&#xD;&#xA;   AHWForm.SortControl.WithEndedAuctions_OnCheckedChanged(Object sender, EventArgs e) in C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\SortControl.ascx.cs:63&#xD;&#xA;   System.Web.UI.WebControls.CheckBox.OnCheckedChanged(EventArgs e) +116&#xD;&#xA;   System.Web.UI.WebControls.CheckBox.RaisePostDataChangedEvent() +139&#xD;&#xA;   System.Web.UI.WebControls.CheckBox.System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent() +12&#xD;&#xA;   System.Web.UI.Page.RaiseChangedEvents() +132&#xD;&#xA;   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +1559&#xD;&#xA;&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:1975&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:lang=en-US; currency=USD; __AntiXsrfToken=5510bac5d9f642898ba9e5d5548d5439; .AspNet.ApplicationCookie=sw0wkfBE8ylL4FeS63qyn3RmYN7AxGctHiQgtpIE5k0cDlUpePbDFzTgnqSCxP4javsQ6H6Np6SsJdg2HAa5HXqVHiru84Uv2XgiETTww9DziLsznjwPrKYNjV7ij2wBbdNJxIfU4VZlw8WrmqAPkBaGH6ATNNZuKQd4jDQHWwP1eqLhxUS-rkYjjF-_7v9JxgUlHbtUpa1rlP0OpOugxPvxlseqtAfvvZ46mfTxue_JBQibOWUfeeZGIR-WltxmZFY8MQnAHcBDh5TSDvltQbV-U2r1CN3YplD8ORZGROrCDkvIVq5yZTc4q4ykzZhR7x1nITX-7tElVoFN0raqdytJMTYcVoFpCgUdEcurHeD-VAj3-aQoX4-gsUY6jCCiEum6B6pcYcyCuGqgIloFP5iF_0jLPtfGiaAsWzTUCBCEOI-N1ZeYo1zqUuEWZ2_osTQjOiWqqp1CUyOHdAOZbGN-y61DCKkk__8C3-IQk1d8V5e_LyTOfkmqo6p4R7SI&#xD;&#xA;HTTP_HOST:localhost:64131&#xD;&#xA;HTTP_REFERER:http://localhost:64131/AuctionListPage?category=1&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:64131&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 1975&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: lang=en-US; currency=USD; __AntiXsrfToken=5510bac5d9f642898ba9e5d5548d5439; .AspNet.ApplicationCookie=sw0wkfBE8ylL4FeS63qyn3RmYN7AxGctHiQgtpIE5k0cDlUpePbDFzTgnqSCxP4javsQ6H6Np6SsJdg2HAa5HXqVHiru84Uv2XgiETTww9DziLsznjwPrKYNjV7ij2wBbdNJxIfU4VZlw8WrmqAPkBaGH6ATNNZuKQd4jDQHWwP1eqLhxUS-rkYjjF-_7v9JxgUlHbtUpa1rlP0OpOugxPvxlseqtAfvvZ46mfTxue_JBQibOWUfeeZGIR-WltxmZFY8MQnAHcBDh5TSDvltQbV-U2r1CN3YplD8ORZGROrCDkvIVq5yZTc4q4ykzZhR7x1nITX-7tElVoFN0raqdytJMTYcVoFpCgUdEcurHeD-VAj3-aQoX4-gsUY6jCCiEum6B6pcYcyCuGqgIloFP5iF_0jLPtfGiaAsWzTUCBCEOI-N1ZeYo1zqUuEWZ2_osTQjOiWqqp1CUyOHdAOZbGN-y61DCKkk__8C3-IQk1d8V5e_LyTOfkmqo6p4R7SI&#xD;&#xA;Host: localhost:64131&#xD;&#xA;Referer: http://localhost:64131/AuctionListPage?category=1&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36&#xD;&#xA;Origin: http://localhost:64131&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="test@test.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="test@test.pl" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="test@test.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="1975" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/AuctionListPage" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\AHMVP\AuctionHouseMVP\AuctionListPage" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="category=1" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="53570" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/AuctionListPage" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64131" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/AuctionListPage" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="1975" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="lang=en-US; currency=USD; __AntiXsrfToken=5510bac5d9f642898ba9e5d5548d5439; .AspNet.ApplicationCookie=sw0wkfBE8ylL4FeS63qyn3RmYN7AxGctHiQgtpIE5k0cDlUpePbDFzTgnqSCxP4javsQ6H6Np6SsJdg2HAa5HXqVHiru84Uv2XgiETTww9DziLsznjwPrKYNjV7ij2wBbdNJxIfU4VZlw8WrmqAPkBaGH6ATNNZuKQd4jDQHWwP1eqLhxUS-rkYjjF-_7v9JxgUlHbtUpa1rlP0OpOugxPvxlseqtAfvvZ46mfTxue_JBQibOWUfeeZGIR-WltxmZFY8MQnAHcBDh5TSDvltQbV-U2r1CN3YplD8ORZGROrCDkvIVq5yZTc4q4ykzZhR7x1nITX-7tElVoFN0raqdytJMTYcVoFpCgUdEcurHeD-VAj3-aQoX4-gsUY6jCCiEum6B6pcYcyCuGqgIloFP5iF_0jLPtfGiaAsWzTUCBCEOI-N1ZeYo1zqUuEWZ2_osTQjOiWqqp1CUyOHdAOZbGN-y61DCKkk__8C3-IQk1d8V5e_LyTOfkmqo6p4R7SI" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64131" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:64131/AuctionListPage?category=1" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:64131" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="category">
+      <value string="1" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__EVENTTARGET">
+      <value string="ctl00$MainContent$sortControl$WithEndedAuctions" />
+    </item>
+    <item name="__EVENTARGUMENT">
+      <value string="" />
+    </item>
+    <item name="CategoriesTreeView_ExpandState">
+      <value string="ccnnccnnn" />
+    </item>
+    <item name="CategoriesTreeView_SelectedNode">
+      <value string="" />
+    </item>
+    <item name="CategoriesTreeView_PopulateLog">
+      <value string="" />
+    </item>
+    <item name="__LASTFOCUS">
+      <value string="" />
+    </item>
+    <item name="__VIEWSTATE">
+      <value string="8thf3XzRIlSIPj+EQQa5Om+OolnF9VkHNMassHFUiAQ0m6bNR3K+VwmtnGEHyzQt2Q9PS8zJP4t941HoNdUuzr4HRvAMFDo/rkYksiIIYPtElci0C52nA13+3KZ++0vNkFOi/uxKU7knHbCD4qwtCv1Y37XX+THy+s4mCexo0GZAs+WxD1AeyEEma/GqCSPtxiGCUUB8/lNZMU4lyOjNvEoJr8ZRDnXM1tHoOVxKL9pWiM+OwBh+tWFJHlSCxiKem75fxAKGcRVo/YyXONJ31KytW/YhBy759zi1YcllNmRO6M1O9UWy5vjjOkxSxW6t5VJeZxLJjT7WpV0ogRu6kTAqokGKlaDquCpxGFlr+mRwp8PpKAQ9ZEcWvP42nL5hVM6h5ZhpA1HzpHG8ELUsfk9gfUvVKf+svqeBZ17JhAVs8Drb5B2tfjtaBxOqv6QyD3mnK+E4vDSio7t6A/uwNP3ohowF7r1dpgIQitLggk0rHEOmz93tN7Snqii4NidKYAWLKtWUAj8mVzsivyXtdeJ3d46AMxwa+IgnJtTM3NHlJb5pQns9RBd3aRIG5eazLym8l6u9xkzjgCA5t4e+tjSXTWzquUVRh5SDHn7bJOqFSP/mjIZ8yjNPwlJ6/XJ+yjPmWyjrxTIbXv2RLu4XUc4UnsejHsQdbjoNdi1tOhpxOgXB+pAMbdBCwxbeVL7Ck2N+nBGnO5urhhJbaUJkh5I3qMJgJkJztsV9z4CxarjSnXJIUDMDqHCwvcsPxxQfjmNakI0tPvD9IQd/RDQWll0L9bqPXlBloVwe2347W8LyN8m0H0CDl+DnplEcPL+TWGG5siS/K8v15zHZwpVMvH3/2Tuip8xHmJNgAOfAZavHO8sWiMXQNpJbxIH/dSXz6hZ5NsJ45Fv7XMSLzABEhzZjsbrOCmHkFFGAvGCPB2Fv6lWPXMSFyJDyrBM/IBRLtjC2BSNHJknCBt7k8UpKXzKghy7R/uNYL3SXnQJPg15kYV2Ov0PtzQ1Jl58nHn5Ub04znzWvRq7ytCwnUBed7pUBGf9BvMYhP0k60EHJUP0p7Ib76o6zcC56NtFf1xqg+xmKve4fh2rga+K9D2Xf9Q==" />
+    </item>
+    <item name="__VIEWSTATEGENERATOR">
+      <value string="4194DEEE" />
+    </item>
+    <item name="__EVENTVALIDATION">
+      <value string="6hG/AANMou2LMn4+zaP7/Wxd1/S/xi1NOTVZhCKuDukMPszpkpYGMbnG9CltVS5yf4y+dpW9pt0G7vZUrQlc+tebvYBBTPHjFvpHlGVyoW2s3L3t1LNc7wxZYOf4utzR/pU6HRw9lwKSfPNv9fWaTFZKKz3ZCyPz36xIiFh0ZK7qQTyrI5dBR+eQtaSvUyRAi55q0vMHR/YfsWUlD8Pd75JZi+T4YXyNa9GLdySTJCcoQfHXUG/MPuhNwLMHLwqjS/s+niLsOsaW3JAZKfh1F3zv8Z+R/gz6M9sZ7fexu6sQ4o3CsfFUp7Cc4/bidCkLUd1+6AXl1tymgcWbzrJwX8Ia2gJsj3UlArqUs7YbDDQgN8fwAAcczKvwnQOJFDrHQ7252/mqEYbEAL6HVP+biSMi7nf9gqGUrwrEXhisoQPgv9laaYym1im0HV+umL5XODYdqYPt0RGmTRSUuK9Q6g==" />
+    </item>
+  </form>
+  <cookies>
+    <item name="lang">
+      <value string="en-US" />
+    </item>
+    <item name="currency">
+      <value string="USD" />
+    </item>
+    <item name="__AntiXsrfToken">
+      <value string="5510bac5d9f642898ba9e5d5548d5439" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="sw0wkfBE8ylL4FeS63qyn3RmYN7AxGctHiQgtpIE5k0cDlUpePbDFzTgnqSCxP4javsQ6H6Np6SsJdg2HAa5HXqVHiru84Uv2XgiETTww9DziLsznjwPrKYNjV7ij2wBbdNJxIfU4VZlw8WrmqAPkBaGH6ATNNZuKQd4jDQHWwP1eqLhxUS-rkYjjF-_7v9JxgUlHbtUpa1rlP0OpOugxPvxlseqtAfvvZ46mfTxue_JBQibOWUfeeZGIR-WltxmZFY8MQnAHcBDh5TSDvltQbV-U2r1CN3YplD8ORZGROrCDkvIVq5yZTc4q4ykzZhR7x1nITX-7tElVoFN0raqdytJMTYcVoFpCgUdEcurHeD-VAj3-aQoX4-gsUY6jCCiEum6B6pcYcyCuGqgIloFP5iF_0jLPtfGiaAsWzTUCBCEOI-N1ZeYo1zqUuEWZ2_osTQjOiWqqp1CUyOHdAOZbGN-y61DCKkk__8C3-IQk1d8V5e_LyTOfkmqo6p4R7SI" />
+    </item>
+  </cookies>
+</error>
