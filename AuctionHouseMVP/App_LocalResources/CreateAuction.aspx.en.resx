@@ -196,7 +196,7 @@
     <value />
   </data>
   <data name="PageResource1.Title" xml:space="preserve">
-    <value>Create auction</value>
+    <value>- My ASP.NET Application</value>
   </data>
   <data name="PassNewAuctionButtonResource1.Text" xml:space="preserve">
     <value>Create auction</value>

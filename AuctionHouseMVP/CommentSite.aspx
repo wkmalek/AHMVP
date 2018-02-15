@@ -1,29 +1,28 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CommentSite.aspx.cs" Inherits="AHWForm.CommentSite" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CommentSite.aspx.cs" Inherits="AHWForm.CommentSite" meta:resourcekey="PageResource1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ListView ID="CommentList" runat="server" DataKeyNames="Id" OnItemCommand="CommentList_OnItemCommand">
         <EmptyDataTemplate>
             <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
-                <tr>
-                    <td>No data was returned.</td>
+                <tr runat="server">
+                    <td runat="server"><asp:Label Text="No data was returned."/></td>
                 </tr>
             </table>
         </EmptyDataTemplate>
         <ItemTemplate>
             <tr style="background-color: #FFFBD6; color: #333333;">
-                <%--<td><%# Eval("Id") %></td>--%>
                 <td>
-                    <asp:HyperLink runat="server" NavigateUrl='<%# Eval("AuctionUrl") %>'><%# Eval("AuctionTitle") %></asp:HyperLink>
+                    <asp:HyperLink runat="server" NavigateUrl='<%# Eval("AuctionUrl") %>' meta:resourcekey="HyperLinkResource1"><%# Eval("AuctionTitle") %></asp:HyperLink>
                 </td>
                 <td>
-                    <asp:HyperLink runat="server" NavigateUrl='<%# Eval("BuyerUrl") %>'><%# Eval("BuyerName") %></asp:HyperLink>
+                    <asp:HyperLink runat="server" NavigateUrl='<%# Eval("BuyerUrl") %>' meta:resourcekey="HyperLinkResource2"><%# Eval("BuyerName") %></asp:HyperLink>
                 </td>
                 <td>
-                    <asp:HyperLink runat="server" NavigateUrl='<%# Eval("SellerUrl") %>'><%# Eval("SellerName") %></asp:HyperLink>
+                    <asp:HyperLink runat="server" NavigateUrl='<%# Eval("SellerUrl") %>' meta:resourcekey="HyperLinkResource3"><%# Eval("SellerName") %></asp:HyperLink>
                 </td>
                 <td><%# Eval("Rate") %></td>
                 <td><%# Eval("Description") %></td>
                 <td>
-                    <asp:Button runat="server" CommandName="Go" CommandArgument='<%#Eval("WriteCommentUrl") %>' Visible=<%# Eval("CommentGranted") %>/>
+                    <asp:Button runat="server" CommandName="Go" CommandArgument='<%# Eval("WriteCommentUrl") %>' Visible=<%# Eval("CommentGranted") %> meta:resourcekey="ButtonResource1"/>
                 </td>
             </tr>
         </ItemTemplate>
